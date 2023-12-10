@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/main.css">
+    <script src="./js/jquery.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="radio" checked id="theme_raadio_light">
+    <input type="radio" id="theme_raadio_dark">
+
+    <!-- Div Button -->
+    <!-- <div class="btn_elm btn_lg div_btn">
+                <div class="button_elm_trigger"></div>
+                <p class="btn_text">Let's Go!</p>
+            </div> -->
+
+
+    <!-- First Screen If no user found -->
+    <!-- <div class="modal_cont first_section">
+        <div class="modal_inner first_section_inner_modal">
+            <img src="./assets/images/MYBABYLogo.png" alt="" class="logo_img">
+            <h1>Welcome!</h1>
+            <p class="info_text">This is your baby’s personal tracker app. Jot down statistics like bowel movements,
+                weight, and more!</p>
+            <h3>Ready to get started?</h3>
+
+            <button class="btn_elm" id="">Let's Go!</button>
+        </div>
+    </div> -->
+
+    <!-- Sign up modal -->
+    <div class="modal_cont first_section">
+        <div class="modal_inner first_section_inner_modal">
+            <h1>Sign Up</h1>
+            <p class="info_text">The information and the data you provide this app will only be stored on your phone. It
+                can be deleted by clearing your browser cache or by deleting this app.</p>
+            <h3>Ready to get started?</h3>
+            <div class="main_form_cont">
+                <div class="form_section_cont">
+                    <label for="fullname">Baby’s First and Last Name</label>
+                    <input type="text" name="fullname" placeholder="John Doe" class="">
+                </div>
+                
+                <div class="form_section_cont">
+                    <label for="birthday">Baby’s Birthday</label>
+                    <input type="date" class="" name="birthday">
+                </div>
+
+                <div class="form_section_cont">
+                    <label for="gender">Baby's Gender</label>
+                    <select name="gender" id="">
+                        <option value="male">Select..</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn_elm">Sign Baby Up</button>
+
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Import Custom Scripts -->
+    <script src="./js/app.js"></script>
+    <script src="./js/actions.js"></script>
+
+</body>
+
+</html>

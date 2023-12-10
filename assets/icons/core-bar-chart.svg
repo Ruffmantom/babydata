@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="Icon_core-bar-chart" data-name="Icon core-bar-chart" transform="translate(-1.125 -1.125)">
+    <path id="Path_1" data-name="Path 1" d="M8.875,17.792h3.667a1,1,0,0,0,1-1V8.125a1,1,0,0,0-1-1H8.875a1,1,0,0,0-1,1v8.667A1,1,0,0,0,8.875,17.792Zm.333-9.333h3v8h-3ZM20.875,1.125H17.208a1,1,0,0,0-1,1V16.792a1,1,0,0,0,1,1h3.667a1,1,0,0,0,1-1V2.125a1,1,0,0,0-1-1Zm-.333,15.333h-3v-14h3Z" transform="translate(-2.75)" fill="#333"/>
+    <path id="Path_2" data-name="Path 2" d="M2.458,1.125H1.125v20h20V19.792H2.458Z" transform="translate(0 0)" fill="#333"/>
+  </g>
+</svg>
