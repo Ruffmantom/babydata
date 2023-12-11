@@ -64,7 +64,8 @@ h5 {
     margin-bottom: 15px;
 }
 
-p,label {
+p,
+label {
     margin-bottom: 10px;
 }
 
@@ -80,7 +81,9 @@ p,label {
     border-radius: 7px;
 }
 
-
+.main_cont {
+    position: relative;
+}
 
 .modal_cont {
     position: fixed;
@@ -120,17 +123,79 @@ p,label {
     padding: 10px 0;
     text-align: left;
 }
-.form_section_cont>input,.form_section_cont>select{
+
+.form_section_cont>input,
+.form_section_cont>select {
     margin-top: 10px;
 }
 
 input,
 select {
     font-size: 16px;
+    color: var(--text-color);
     padding: 14px;
     width: 100%;
     border: none;
     outline: none;
     border-radius: 7px;
     background-color: var(--primary-background);
+}
+
+/* footer controller */
+.footer_menu {
+    position: fixed;
+    width: 700px;
+    height: 700px;
+    /* height: max-content; */
+    border-radius: 200pc;
+    background-color: var(--secondary-background);
+    bottom: -570px;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 20px;
+    border: 3px solid var(--primary-background);
+}
+
+.footer_menu_item {
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10pc;
+    background-color: var(--primary-background);
+    top: 0;
+    
+}
+.footer_menu_item.active{
+    background-color: var(--accent-color);
+ 
+}
+.footer_menu_item.active>svg{
+    color: var(--secondary-background);
+    fill: var(--secondary-background);
+}
+.footer_menu_item>svg {
+    width: 33px;
+}
+.footer_menu_item.left{
+    left: 30%;
+    top: 40px;
+}
+.footer_menu_item.center{
+    left: 50%;
+    transform: translate(-50%);
+    top: 20px;
+}
+.footer_menu_item.right{
+    right: 30%;
+    top: 40px;
+}
+.footer_menu_btn{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10pc;
+    z-index: 9;
 }
