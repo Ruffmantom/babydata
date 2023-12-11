@@ -20,7 +20,7 @@
             </div> -->
 
 
-    <!-- First Screen If no user found -->
+    <!-- rst Screen If no user found -->
     <!-- <div class="modal_cont first_section">
         <div class="modal_inner first_section_inner_modal">
             <img src="./assets/images/MYBABYLogo.png" alt="" class="logo_img">
@@ -70,37 +70,117 @@
     <div class="main_cont">
 
         <div class="content_cont">
+            <!-- these containers will be swapped out and re rendered when actions happen -->
+            <div class="home_container">
+                <div id="title_block">
+                    <div id="baby_settings_button" class="btn_elm btn_lg div_btn">
+                        <div class="button_elm_trigger"></div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17.587" viewBox="0 0 20 17.587">
+                            <g id="Icon_core-baby" data-name="Icon core-baby" transform="translate(-1.029 -2.216)">
+                                <path id="Path_3" data-name="Path 3"
+                                    d="M18.047,9.2a7.636,7.636,0,0,0-5.576-4.505L13.58,2.919l-1.124-.7-1.463,2.34A7.625,7.625,0,0,0,4.011,9.2a2.982,2.982,0,1,0,0,5.964,7.626,7.626,0,0,0,14.036,0,2.982,2.982,0,1,0,0-5.964Zm1.125,4.142a1.648,1.648,0,0,1-1.15.5l-.859.016-.336.79a6.3,6.3,0,0,1-11.6,0l-.336-.79-.859-.016a1.656,1.656,0,1,1,0-3.312l.859-.016.336-.79a6.3,6.3,0,0,1,11.6,0l.336.79.859.016a1.656,1.656,0,0,1,1.15,2.816Z"
+                                    transform="translate(0 0)" />
+                                <path id="Path_4" data-name="Path 4"
+                                    d="M11.813,16.313H13.47V17.97H11.813Zm5.635,0H19.1V17.97H17.447Zm-1.989,6.3A3.314,3.314,0,0,0,18.773,19.3H12.144a3.314,3.314,0,0,0,3.314,3.314Z"
+                                    transform="translate(-4.43 -5.79)" />
+                            </g>
+                        </svg>
 
+                    </div>
+                    <p class="baby_name_title">Lizzy Ruff</p>
+                    <p>Good Morning, Lizzy! You are 6 days old today!</p>
+                </div>
+                <div class="widget_main_cont">
+
+
+                    <!-- first chart -->
+                    <div class="widget_cont">
+                        <div class="widget_title_block">
+                            <h4 class="widget_title">Diaper Count</h4>
+                            <div class="widget_setting_dd">
+                                <div class="widget_setting_dd_preview">
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="6" height="3.499">
+                                        <path id="Icon_fa-solid-angle-down" data-name="Icon fa-solid-angle-down"
+                                            d="M4.892,12.348a.5.5,0,0,0,.708,0l2.5-2.5a.5.5,0,0,0-.708-.708L5.245,11.287,3.1,9.143a.5.5,0,0,0-.708.708l2.5,2.5Z"
+                                            transform="translate(-2.245 -8.995)" />
+                                    </svg>
+
+                                    <p class="">Weekly</p>
+
+                                </div>
+                                <div class="widget_dd_item_container">
+                                    <div class="widget_dd_item">Weekly</div>
+                                    <div class="widget_dd_item">Monthly</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget_chart_cont">
+                            <div class="widget_chart">
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Second chart -->
+                    <div class="wdiget_cont">
+                        <div class="widget_title_block">
+                            <h4 class="widget_title">Weight</h4>
+                            <div class="widget_setting_dd">
+                                <!-- <div class="widget_setting_dd_preview">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="6" height="3.499">
+                                    <path id="Icon_fa-solid-angle-down" data-name="Icon fa-solid-angle-down" d="M4.892,12.348a.5.5,0,0,0,.708,0l2.5-2.5a.5.5,0,0,0-.708-.708L5.245,11.287,3.1,9.143a.5.5,0,0,0-.708.708l2.5,2.5Z" transform="translate(-2.245 -8.995)"/>
+                                  </svg>
+
+                                <p class="">Weekly</p>
+                                
+                            </div> -->
+                                <div class="widget_dd_item_container">
+                                    <div class="widget_dd_item">Weekly</div>
+                                    <div class="widget_dd_item">Monthly</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget_chart_cont">
+                            <div class="widget_chart">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- menu control -->
+        <!-- Footer menu control -->
         <div class="footer_menu">
             <div class="footer_menu_item left">
-                <div class="footer_menu_btn" id="view_all_data_btn"></div>
-                <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 20 14.074">
-                    <path id="Icon_core-playlist-add" data-name="Icon core-playlist-add"
-                        d="M12.62,9.15h9.63v1.481H12.62Zm-3.7,4.815H22.25v1.481H8.917Zm0,4.815H22.25v1.481H8.917Zm.741-9.63H6.694V6.188H5.213V9.15H2.25v1.481H5.213v2.963H6.694V10.632H9.657Z"
-                        transform="translate(-2.25 -6.188)"  />
+                <div class="footer_menu_btn" id="add_data_btn"></div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 21.719">
+                    <path id="Icon_simple-databricks" data-name="Icon simple-databricks"
+                        d="M1.425,12.836l10,5.628L20.4,13.442v2l-8.976,5.067L1.937,15.115l-.511.279v.7l10,5.629,10-5.627V12.186l-.466-.28-9.534,5.4L2.5,12.186v-2l8.929,5.023,10-5.627V5.719l-.466-.279-9.534,5.4L2.961,6.046l8.464-4.79,7.023,3.953.6-.372V4.325L11.425,0l-10,5.674v.652l10,5.626L20.4,6.929V8.975l-8.976,5.071L1.937,8.652l-.511.279Z"
+                        transform="translate(-1.425)" />
                 </svg>
             </div>
+
             <div class="footer_menu_item active center">
                 <div class="footer_menu_btn" id="home_btn"></div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                     <g id="Icon_core-bar-chart" data-name="Icon core-bar-chart" transform="translate(-1.125 -1.125)">
                         <path id="Path_1" data-name="Path 1"
                             d="M8.875,17.792h3.667a1,1,0,0,0,1-1V8.125a1,1,0,0,0-1-1H8.875a1,1,0,0,0-1,1v8.667A1,1,0,0,0,8.875,17.792Zm.333-9.333h3v8h-3ZM20.875,1.125H17.208a1,1,0,0,0-1,1V16.792a1,1,0,0,0,1,1h3.667a1,1,0,0,0,1-1V2.125a1,1,0,0,0-1-1Zm-.333,15.333h-3v-14h3Z"
-                            transform="translate(-2.75)"  />
+                            transform="translate(-2.75)" />
                         <path id="Path_2" data-name="Path 2" d="M2.458,1.125H1.125v20h20V19.792H2.458Z"
-                            transform="translate(0 0)"  />
+                            transform="translate(0 0)" />
                     </g>
                 </svg>
             </div>
+
             <div class="footer_menu_item right">
-                <div class="footer_menu_btn" id="add_data_btn"></div>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 21.719">
-                    <path id="Icon_simple-databricks" data-name="Icon simple-databricks"
-                        d="M1.425,12.836l10,5.628L20.4,13.442v2l-8.976,5.067L1.937,15.115l-.511.279v.7l10,5.629,10-5.627V12.186l-.466-.28-9.534,5.4L2.5,12.186v-2l8.929,5.023,10-5.627V5.719l-.466-.279-9.534,5.4L2.961,6.046l8.464-4.79,7.023,3.953.6-.372V4.325L11.425,0l-10,5.674v.652l10,5.626L20.4,6.929V8.975l-8.976,5.071L1.937,8.652l-.511.279Z"
-                        transform="translate(-1.425)"  />
+                <div class="footer_menu_btn" id="view_all_data_btn"></div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 14.074">
+                    <path id="Icon_core-playlist-add" data-name="Icon core-playlist-add"
+                        d="M12.62,9.15h9.63v1.481H12.62Zm-3.7,4.815H22.25v1.481H8.917Zm0,4.815H22.25v1.481H8.917Zm.741-9.63H6.694V6.188H5.213V9.15H2.25v1.481H5.213v2.963H6.694V10.632H9.657Z"
+                        transform="translate(-2.25 -6.188)" />
                 </svg>
             </div>
         </div>
