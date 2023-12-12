@@ -54,6 +54,8 @@ body {
     color: var(--text-color);
     position: relative;
     padding: 0 20px;
+    max-width: 391px;
+    margin: auto;
 }
 svg{
     fill: var(--text-color);
@@ -81,6 +83,7 @@ label {
     border: none;
     outline: none;
     border-radius: 7px;
+    cursor: pointer;
 }
 
 .main_cont {
@@ -200,6 +203,7 @@ select {
     height: 100%;
     border-radius: 10pc;
     z-index: 9;
+    cursor: pointer;
 }
 /* content styles */
 .content_cont{
@@ -216,17 +220,20 @@ select {
     right: 0;
     top: 0;
     padding-bottom: 10px;
+    cursor: pointer;
 }
 #baby_settings_button>svg{
     fill: var(--secondary-background);
 }
-.baby_name_title{
+#baby_name_title{
     font-size: 35px;
 }
 /* Content container styles */
 .widget_main_cont{
     max-height: 80vh;
     overflow-y: scroll;
+    padding-bottom: 100px;
+    scroll-behavior: smooth;
 }
 .widget_main_cont::-webkit-scrollbar{
    display: none;
@@ -236,6 +243,7 @@ select {
     display: flex;
     flex-direction: column;
     height: min-content;
+    border: 1px solid var(--secondary-background);
 }
 .widget_setting_dd_preview{
     padding: 7px;
