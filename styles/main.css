@@ -29,6 +29,7 @@
     --secondary-background: #ffffff;
     --text-color: #333333;
     --accent-color: #ff80ab;
+    --modal-bkg:#ff80aa4d;
 }
 
 :root:has(#theme_raadio_dark:checked) {
@@ -37,6 +38,7 @@
     --secondary-background: #1e1e1e;
     --text-color: #ffffff;
     --accent-color: #64b5f6;
+    --modal-bkg:#64b4f658;
 }
 
 #theme_raadio_light,
@@ -92,6 +94,7 @@ label {
 
 .modal_cont {
     position: fixed;
+    z-index: 9999;
     top: 0;
     left: 0;
     width: 100%;
@@ -117,6 +120,31 @@ label {
     background-color: var(--secondary-background);
 }
 
+.modal_heading{
+    position: relative;
+    display: flex;
+justify-content: space-between;
+width: 100%;
+}
+.modal_heading>h1{
+    text-align: left;
+    width: 85%;
+}
+.close_button{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    background-color: var(--primary-background);
+}
+.blur_bkg{
+    background-color: var(--modal-bkg);
+    backdrop-filter: blur(8px);
+}
+
 .logo_img {
     max-width: 200px;
     margin-bottom: 15px;
@@ -128,12 +156,17 @@ label {
     padding: 10px 0;
     text-align: left;
 }
-
+.add_baby_form{
+    padding-top: 15px;
+    text-align: left;
+}
 .form_section_cont>input,
 .form_section_cont>select {
     margin-top: 10px;
 }
-
+.main_form_cont{
+    width: 100%;
+}
 input,
 select {
     font-size: 16px;
