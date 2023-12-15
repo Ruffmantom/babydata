@@ -172,6 +172,23 @@ label {
     padding-top: 15px;
     text-align: left;
 }
+/* for building purposes */
+/* #welcome_section,
+#signup_section{
+    display: none;
+} */
+/* for building purposes */
+
+
+/* hide data forms */
+#add_bm_data_form,
+#add_weight_data_form,
+#add_feeding_data_form,
+#baby_add_data_modal,
+#baby_settings_modal{
+    display: none;
+}
+
 
 .form_section_cont>input,
 .form_section_cont>select,
@@ -179,7 +196,7 @@ label {
     margin-top: 10px;
 }
 
-.main_form_cont {
+.main_form_cont,.modal_overflow_cont {
     width: 100%;
 }
 
@@ -392,5 +409,8 @@ select,textarea {
 }
 
 .widget_cont:not(:last-child) {
+    margin-bottom: 15px;
+}
+.wdiget_cont{
     margin-bottom: 15px;
 }

@@ -11,16 +11,8 @@
 
 <body>
 
-
-    <!-- Div Button -->
-    <!-- <div class="btn_elm btn_lg div_btn">
-                <div class="button_elm_trigger"></div>
-                <p class="btn_text">Let's Go!</p>
-            </div> -->
-
-
     <!-- Start Screen If no user found -->
-    <!-- <div class="modal_cont first_section">
+    <div id="welcome_section" class="modal_cont ">
         <div class="modal_inner first_section_inner_modal">
             <img src="./assets/images/MYBABYLogo.png" alt="" class="logo_img">
             <h1>Welcome!</h1>
@@ -28,14 +20,12 @@
                 weight, and more!</p>
             <h3>Ready to get started?</h3>
 
-            <button class="btn_elm" id="">Let's Go!</button>
+            <button class="btn_elm" id="get_started_btn">Let's Go!</button>
         </div>
-    </div>  -->
-
-
+    </div> 
 
     <!-- Sign up modal -->
-    <!-- <div class="modal_cont first_section">
+    <div id="signup_section" class="modal_cont ">
         <div class="modal_inner first_section_inner_modal">
             <h1>Sign Up</h1>
             <p class="info_text">The information and the data you provide this app will only be stored on your phone. It
@@ -44,12 +34,12 @@
             <div class="main_form_cont">
                 <div class="form_section_cont">
                     <label for="fullname">Baby’s First and Last Name</label>
-                    <input type="text" name="fullname" placeholder="John Doe" class="">
+                    <input id="full_name_input" type="text" name="fullname" placeholder="John Doe" class="">
                 </div>
                 
                 <div class="form_section_cont">
                     <label for="birthday">Baby’s Birthday</label>
-                    <input type="date" class="" name="birthday">
+                    <input id="birthday_input" type="date" class="" name="birthday">
                 </div>
 
                 <div class="form_section_cont">
@@ -64,7 +54,7 @@
             <button class="btn_elm">Sign Baby Up</button>
 
         </div>
-    </div>-->
+    </div>
 
     <!-- baby settings modal -->
     <div id="baby_settings_modal" class="modal_cont  blur_bkg">
@@ -145,7 +135,7 @@
 
 
     <!-- add data modal -->
-    <div id="baby_settings_modal" class="modal_cont  blur_bkg">
+    <div id="baby_add_data_modal" class="modal_cont  blur_bkg">
 
         <div class="modal_inner first_section_inner_modal">
 
@@ -169,11 +159,12 @@
 
                 <div class="main_form_cont">
                     <div class="form_section_cont">
-                        <label for="datatype">Add</label>
+                        <label for="datatype">Type</label>
                         <select name="datatype" id="">
                             <option value="null">Select</option>
                             <option value="bm">Bowel Movement</option>
                             <option value="weight">Weight</option>
+                            <option value="feeding">Feeding</option>
                         </select>
                     </div>
                 </div>
@@ -193,11 +184,11 @@
                             <input class="radio" type="radio" id="bm_data_radio_elm_enter">
                             <p>Two For One</p>
                         </div>
-                      
+
 
                         <div class="form_section_cont">
                             <label for="note">Enter Note</label>
-                           <textarea name="note" id="" cols="30" rows="4" placeholder="Enter notes ..."></textarea>
+                            <textarea name="note" id="" cols="30" rows="4" placeholder="..."></textarea>
                         </div>
 
                         <div class="form_section_cont">
@@ -212,7 +203,8 @@
                             </div>
                             <div id="enter_time_for_bm_data_cont" class="form_section_cont">
                                 <label for="ounces">When:</label>
-                                <input type="time" id="recorded_time_weight_data" value="0" name="ounces">
+                                <input type="datetime-local" id="meeting-time" name="meeting-time"
+                                     max="2028-06-14T00:00" />
                             </div>
 
                         </div>
@@ -223,8 +215,8 @@
                         <div class="flex_form_cont">
 
                             <div class="form_section_cont">
-                                <label for="punds">Pounds</label>
-                                <input type="text" id="add_data_pounds_input_elm" value="0" name="punds">
+                                <label for="pounds">Pounds</label>
+                                <input type="text" id="add_data_pounds_input_elm" value="0" name="pounds">
                             </div>
 
                             <div class="form_section_cont">
@@ -245,7 +237,48 @@
                             </div>
                             <div id="enter_time_for_weight_data_cont" class="form_section_cont">
                                 <label for="ounces">When:</label>
-                                <input type="time" id="recorded_time_weight_data" value="0" name="ounces">
+                                <input type="datetime-local" id="meeting-time" name="meeting-time"
+                                  max="2018-06-14T00:00" />
+                            </div>
+
+                        </div>
+                        <button id="add_data_weight_btn" class="btn_elm">Add Data</button>
+                    </div>
+
+                    <!-- Feeding data -->
+                    <div id="add_feeding_data_form" class="main_form_cont add_baby_form">
+                        <div class="form_section_cont">
+                            <label for="ounces">Ounces</label>
+                            <input type="number" min="0" max="250" id="add_data_feed_ounce_input_elm" value="0" name="ounces">
+                        </div>
+                        <p>Duration</p>
+                        <div class="flex_form_cont">
+                            <div class="form_section_cont">
+                                <label for="time">Hr</label>
+                                <input type="number" id="add_data_feed_hr_input_elm" min="0" max="200" value="0" name="time">
+
+                            </div>
+                            <div class="form_section_cont">
+                                <label for="time">Min</label>
+                                <input type="number" id="add_data_feed_min_input_elm" min="0" max="200" value="0" name="time">
+
+                            </div>
+                        </div>
+
+                        <div class="form_section_cont">
+                            <label>Time Recorded</label>
+                            <div class="radio_group">
+                                <input class="radio" checked type="radio" id="weight_data_radio_elm_now">
+                                <p>Now</p>
+                            </div>
+                            <div class="radio_group">
+                                <input class="radio" type="radio" id="weight_data_radio_elm_enter">
+                                <p>Enter Time</p>
+                            </div>
+                            <div id="enter_time_for_weight_data_cont" class="form_section_cont">
+                                <label for="ounces">When:</label>
+                                <input type="datetime-local" id="meeting-time" name="meeting-time"
+                                  max="2018-06-14T00:00" />
                             </div>
 
                         </div>
@@ -327,6 +360,30 @@
                                 <p class="">Weekly</p>
                                 
                             </div> -->
+                            <div class="widget_dd_item_container">
+                                <div class="widget_dd_item">Weekly</div>
+                                <div class="widget_dd_item">Monthly</div>
+                            </div>
+                        </div>
+                        <div class="widget_chart_cont">
+                            <div class="widget_chart">
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wdiget_cont">
+                        <div class="widget_title_block">
+                            <h4 class="widget_title">Feeding</h4>
+                            <div class="widget_setting_dd">
+                                 <div class="widget_setting_dd_preview">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="6" height="3.499">
+                                    <path id="Icon_fa-solid-angle-down" data-name="Icon fa-solid-angle-down" d="M4.892,12.348a.5.5,0,0,0,.708,0l2.5-2.5a.5.5,0,0,0-.708-.708L5.245,11.287,3.1,9.143a.5.5,0,0,0-.708.708l2.5,2.5Z" transform="translate(-2.245 -8.995)"/>
+                                  </svg>
+
+                                <p class="">Weekly</p>
+                                
+                            </div>
                             <div class="widget_dd_item_container">
                                 <div class="widget_dd_item">Weekly</div>
                                 <div class="widget_dd_item">Monthly</div>
