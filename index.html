@@ -10,8 +10,7 @@
 </head>
 
 <body>
-    <input type="radio" checked id="theme_raadio_light">
-    <input type="radio" id="theme_raadio_dark">
+
 
     <!-- Div Button -->
     <!-- <div class="btn_elm btn_lg div_btn">
@@ -75,6 +74,7 @@
             <div class="modal_heading">
 
                 <h1>Settings</h1>
+
                 <div class="close_button">
                     <div class="button_elm_trigger"></div>
 
@@ -87,43 +87,177 @@
                 </div>
             </div>
 
+            <div class="modal_overflow_cont">
 
-            <div class="main_form_cont">
-                <div class="form_section_cont">
-                    <label for="gender">Current Baby</label>
-                    <select name="gender" id="">
-                        <option value="Lizzy Ruff">Lizzy Ruff</option>
-                    </select>
+                <div class="main_form_cont">
+                    <div class="form_section_cont">
+                        <label>Theme</label>
+                        <input type="radio" checked id="theme_raadio_light">
+                        <input type="radio" id="theme_raadio_dark">
+                        <div class="custom_toggle">
+                            <div class="toggle"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main_form_cont">
+                    <div class="form_section_cont">
+                        <label for="gender">Current Baby</label>
+                        <select name="gender" id="">
+                            <option value="Lizzy Ruff">Lizzy Ruff</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button id="add_new_baby_btn" class="btn_elm">Add Baby</button>
+                <div class="main_form_cont add_baby_form">
+                    <h4>Add New Baby</h4>
+
+                    <div class="form_section_cont">
+                        <label for="fullname">Baby’s First and Last Name</label>
+                        <input type="text" name="fullname" placeholder="John Doe" class="">
+                    </div>
+
+                    <div class="form_section_cont">
+                        <label for="birthday">Baby’s Birthday</label>
+                        <input type="date" class="" name="birthday">
+                    </div>
+
+                    <div class="form_section_cont">
+                        <label for="gender">Baby's Gender</label>
+                        <select name="gender" id="">
+                            <option value="male">Select..</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn_elm">Add</button>
+
+                <div class="main_form_cont">
+                    <div class="form_section_cont">
+                        <label>App Version</label>
+                        <p>0.0.1</p>
+                    </div>
                 </div>
             </div>
-
-            <button id="add_new_baby_btn" class="btn_elm">Add Baby</button>
-            <div class="main_form_cont add_baby_form">
-                <h4>Add New Baby</h4>
-
-                <div class="form_section_cont">
-                    <label for="fullname">Baby’s First and Last Name</label>
-                    <input type="text" name="fullname" placeholder="John Doe" class="">
-                </div>
-
-                <div class="form_section_cont">
-                    <label for="birthday">Baby’s Birthday</label>
-                    <input type="date" class="" name="birthday">
-                </div>
-
-                <div class="form_section_cont">
-                    <label for="gender">Baby's Gender</label>
-                    <select name="gender" id="">
-                        <option value="male">Select..</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-                </div>
-            </div>
-            <button class="btn_elm">Add</button>
-
         </div>
     </div>
+
+
+    <!-- add data modal -->
+    <div id="baby_settings_modal" class="modal_cont  blur_bkg">
+
+        <div class="modal_inner first_section_inner_modal">
+
+            <div class="modal_heading">
+
+                <h1>Add Data</h1>
+
+                <div class="close_button">
+                    <div class="button_elm_trigger"></div>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                        <path id="Icon_ion-close" data-name="Icon ion-close"
+                            d="M15.931,14.435l4.19-4.19a1.059,1.059,0,1,0-1.5-1.5l-4.19,4.19-4.19-4.19a1.06,1.06,0,0,0-1.5,1.5l4.19,4.19-4.19,4.19a1.06,1.06,0,0,0,1.5,1.5l4.19-4.19,4.19,4.19a1.06,1.06,0,0,0,1.5-1.5Z"
+                            transform="translate(-8.435 -8.435)" />
+                    </svg>
+
+                </div>
+            </div>
+
+            <div class="modal_overflow_cont">
+
+                <div class="main_form_cont">
+                    <div class="form_section_cont">
+                        <label for="datatype">Add</label>
+                        <select name="datatype" id="">
+                            <option value="null">Select</option>
+                            <option value="bm">Bowel Movement</option>
+                            <option value="weight">Weight</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="add_data_forms_cont">
+                    <!-- bm form -->
+                    <div id="add_bm_data_form" class="main_form_cont add_baby_form">
+                        <div class="radio_group">
+                            <input class="radio" checked type="radio" id="bm_data_radio_elm_now">
+                            <p>Potty</p>
+                        </div>
+                        <div class="radio_group">
+                            <input class="radio" type="radio" id="bm_data_radio_elm_enter">
+                            <p>Poopy</p>
+                        </div>
+                        <div class="radio_group">
+                            <input class="radio" type="radio" id="bm_data_radio_elm_enter">
+                            <p>Two For One</p>
+                        </div>
+                      
+
+                        <div class="form_section_cont">
+                            <label for="note">Enter Note</label>
+                           <textarea name="note" id="" cols="30" rows="4" placeholder="Enter notes ..."></textarea>
+                        </div>
+
+                        <div class="form_section_cont">
+                            <label>Time Recorded</label>
+                            <div class="radio_group">
+                                <input class="radio" checked type="radio" id="bm_data_radio_elm_now">
+                                <p>Now</p>
+                            </div>
+                            <div class="radio_group">
+                                <input class="radio" type="radio" id="bm_data_radio_elm_enter">
+                                <p>Enter Time</p>
+                            </div>
+                            <div id="enter_time_for_bm_data_cont" class="form_section_cont">
+                                <label for="ounces">When:</label>
+                                <input type="time" id="recorded_time_weight_data" value="0" name="ounces">
+                            </div>
+
+                        </div>
+                        <button id="add_data_bm_btn" class="btn_elm">Add Data</button>
+                    </div>
+                    <!-- add weight form -->
+                    <div id="add_weight_data_form" class="main_form_cont add_baby_form">
+                        <div class="flex_form_cont">
+
+                            <div class="form_section_cont">
+                                <label for="punds">Pounds</label>
+                                <input type="text" id="add_data_pounds_input_elm" value="0" name="punds">
+                            </div>
+
+                            <div class="form_section_cont">
+                                <label for="ounces">Ounces</label>
+                                <input type="text" id="add_data_ounces_input_elm" value="0" name="ounces">
+
+                            </div>
+                        </div>
+                        <div class="form_section_cont">
+                            <label>Time Recorded</label>
+                            <div class="radio_group">
+                                <input class="radio" checked type="radio" id="weight_data_radio_elm_now">
+                                <p>Now</p>
+                            </div>
+                            <div class="radio_group">
+                                <input class="radio" type="radio" id="weight_data_radio_elm_enter">
+                                <p>Enter Time</p>
+                            </div>
+                            <div id="enter_time_for_weight_data_cont" class="form_section_cont">
+                                <label for="ounces">When:</label>
+                                <input type="time" id="recorded_time_weight_data" value="0" name="ounces">
+                            </div>
+
+                        </div>
+                        <button id="add_data_weight_btn" class="btn_elm">Add Data</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 
     <div class="main_cont">
 
