@@ -217,14 +217,21 @@ label {
 
 
 /* hide data forms */
-#add_bm_data_form,
+/* #add_bm_data_form,
 #add_weight_data_form,
 #add_feeding_data_form,
 #baby_add_data_modal,
 #baby_settings_modal {
     display: none;
+} */
+
+.modal_cont{
+    display: none;
 }
 
+#baby_settings_modal.active{
+    display: flex ;
+}
 
 .form_section_cont>input,
 .form_section_cont>select,
@@ -369,7 +376,7 @@ textarea {
     position: relative;
 }
 
-#baby_settings_button {
+#baby_settings_button_cont {
     width: max-content;
     position: absolute;
     right: 0;
@@ -378,9 +385,18 @@ textarea {
     cursor: pointer;
 }
 
-#baby_settings_button>svg {
+#baby_settings_button_cont>svg {
     fill: var(--secondary-background);
 }
+.button_elm_trigger{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+}
+
 
 #baby_name_title {
     font-size: 35px;
@@ -402,7 +418,8 @@ textarea {
     display: flex;
     flex-direction: column;
     height: min-content;
-    border: 1px solid var(--secondary-background);
+    border-radius: 4px;
+    background-color: var(--secondary-background);
 }
 
 .widget_setting_dd_preview {

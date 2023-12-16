@@ -56,19 +56,6 @@ function getTimeOfDay() {
     }
   }
 
-  function getDaysOld(dateString) {
-    const currentDate = new Date();
-    const inputDate = new Date(dateString);
-  
-    // Calculate the time difference in milliseconds
-    const timeDifference = currentDate - inputDate;
-  
-    // Convert milliseconds to days
-    const daysDifference = Math.floor(timeDifference / (1000 * 3600 * 24));
-  
-    return daysDifference;
-  }
-
 
   function getAgeDescription(dateString) {
     const currentDate = new Date();

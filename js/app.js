@@ -67,20 +67,26 @@ const saveToLocalStorage = () => {
     localStorage.setItem("BBD", JSON.stringify(globalBabyData))
 }
 
+// html setting functions
 const setHomeTitle = () => {
     let baby = getCurrentBaby()
     $("#baby_name_title").text(baby.name)
 }
-const setHomeSubTitle = () => {
+const setHomeGreeting = () => {
     let baby = getCurrentBaby()
     let babyName = baby.name.split(' ')[0]
     $("#home_message").text(`Good ${getTimeOfDay()}, ${babyName}! You are ${getAgeDescription(baby.birthday)} old today!`)
 }
 
+
+
+
+
+// load html function
 const loadHtml = () => {
     // set titles and names
     setHomeTitle()
-    setHomeSubTitle()
+    setHomeGreeting()
     // set data into charts
 }
 

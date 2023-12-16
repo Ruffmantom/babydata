@@ -8,6 +8,7 @@ const gender_select = $("#gender_select")
 // buttons
 const get_started_btn = $("#get_started_btn")
 const sign_first_baby_up_btn = $("#sign_first_baby_up_btn")
+const baby_settings_button = $("#baby_settings_button")
 
 
 
@@ -89,5 +90,18 @@ $(() => {
     })
 
 
+    $(baby_settings_button).on("click",(e)=>{
+        e.preventDefault()
+        // open up settings
+        $(baby_settings_modal_elm).fadeIn()
+        $(baby_settings_modal_elm).addClass('active')
+    })
+    
+    $('#settings_close').on("click",(e)=>{
+        e.preventDefault()
+        // open up settings
+        $(baby_settings_modal_elm).fadeOut()
+        $(baby_settings_modal_elm).removeClass('active')
+    })
 
 })
