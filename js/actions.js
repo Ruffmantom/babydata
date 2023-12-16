@@ -9,6 +9,7 @@ const gender_select = $("#gender_select")
 const get_started_btn = $("#get_started_btn")
 const sign_first_baby_up_btn = $("#sign_first_baby_up_btn")
 const baby_settings_button = $("#baby_settings_button")
+const add_new_baby_btn = $("#add_new_baby_btn")
 
 
 
@@ -38,6 +39,9 @@ const createBabyUser = (values) => {
 
 }
 
+
+
+
 let babyName = ""
 let babyBirthday = ""
 let babyGender = ""
@@ -45,7 +49,7 @@ let babyGender = ""
 
 
 $(() => {
-
+    // confirming the welcome 
     $(get_started_btn).on("click", (e) => {
         e.preventDefault()
         $("#welcome_section").fadeOut()
@@ -65,22 +69,22 @@ $(() => {
         babyGender = e.target.value
 
     })
-
+    // first sign up for baby
     $(sign_first_baby_up_btn).on("click", (e) => {
         e.preventDefault()
         let babyValues = {}
         babyValues.name = babyName
         babyValues.birthday = babyBirthday
         babyValues.gender = babyGender
-        if(babyValues.name === ""){
+        if (babyValues.name === "") {
             createNotification("Please enter Baby's first and last name.")
             return
         }
-        if(babyValues.birthday === ""){
+        if (babyValues.birthday === "") {
             createNotification("Please enter the Baby's Birthday.")
             return
         }
-        if(babyValues.gender === ""){
+        if (babyValues.gender === "") {
             createNotification("Please enter the Baby's gender.")
             return
         }
@@ -89,19 +93,27 @@ $(() => {
         createBabyUser(babyValues)
     })
 
-
-    $(baby_settings_button).on("click",(e)=>{
+    // open settings modal
+    $(baby_settings_button).on("click", (e) => {
         e.preventDefault()
         // open up settings
         $(baby_settings_modal_elm).fadeIn()
         $(baby_settings_modal_elm).addClass('active')
     })
-    
-    $('#settings_close').on("click",(e)=>{
+    // close settings modal
+    $('#settings_close').on("click", (e) => {
         e.preventDefault()
         // open up settings
         $(baby_settings_modal_elm).fadeOut()
         $(baby_settings_modal_elm).removeClass('active')
     })
+    // theme toggle
+    $("#theme_toggle_btn").on('click', () => {
+        toggleTheme()
+    })
 
+    $(add_new_baby_btn).on(click,(e)=>{
+        e.preventDefault()
+        
+    })
 })

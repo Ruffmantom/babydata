@@ -35,6 +35,7 @@ var feed_data = {
 }
 */
 let globalBabyData;
+let globalThemeData = false;
 let defaultData = []
 const welcome_section_elm = $("#welcome_section")
 const signup_section_elm = $("#signup_section")
@@ -46,25 +47,29 @@ const getCurrentBaby = () => {
     return globalBabyData.find(l => l.active === true)
 }
 
-// Load values from local storage
-// 1. Check to see if baby data is available
-const checkBabyData = () => {
-    let babyData = localStorage.getItem('BBD')
 
-    if (babyData !== null) {
-        // hide welcome messages and sign first baby up steps
-        $(welcome_section_elm).hide()
-        $(signup_section_elm).hide()
-        // save local values to global storage
-        globalBabyData = JSON.parse(babyData)
-        // load html
-        loadHtml()
+const checkThemeData = () => {
+    let theme = localStorage.getItem('BBD_T')
+
+    if (theme !== null) {
+        globalThemeData = JSON.parse(theme)
+        if (globalThemeData === true) {
+            setToDarkTheme()
+        }
+
+    } else {
+        // set local storage
+        saveThemeToLocalStorage()
     }
+
 }
 
 // function to save data to local storage
 const saveToLocalStorage = () => {
     localStorage.setItem("BBD", JSON.stringify(globalBabyData))
+}
+const saveThemeToLocalStorage = () => {
+    localStorage.setItem("BBD_T", JSON.stringify(globalThemeData))
 }
 
 // html setting functions
@@ -78,9 +83,24 @@ const setHomeGreeting = () => {
     $("#home_message").text(`Good ${getTimeOfDay()}, ${babyName}! You are ${getAgeDescription(baby.birthday)} old today!`)
 }
 
+// Load values from local storage
+// 1. Check to see if baby data is available
+const checkBabyData = () => {
+    let babyData = localStorage.getItem('BBD')
+
+    if (babyData !== null) {
+        // hide welcome messages and sign first baby up steps
+        $(welcome_section_elm).hide()
+        $(signup_section_elm).hide()
+        // save local values to global storage
+        globalBabyData = JSON.parse(babyData)
+        checkThemeData()
+        // load html
+        loadHtml()
+    }
 
 
-
+}
 
 // load html function
 const loadHtml = () => {

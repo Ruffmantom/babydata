@@ -1,4 +1,6 @@
 var idChars = "3QKXV0F8IYCA7S5T4ZGJDWB9L1N26UHOMRPVE";
+const theme_raadio_dark = $("#theme_raadio_dark")
+const theme_raadio_light = $("#theme_raadio_light")
 
 const createId = () => {
     let newId = "";
@@ -85,3 +87,29 @@ function getTimeOfDay() {
       return `${years} years`;
     }
   }
+
+  const toggleTheme = ()=>{
+    if(globalThemeData){
+        globalThemeData = false
+        // set to light theme
+        $(theme_raadio_dark).prop('checked', false);
+        $(theme_raadio_light).prop('checked', true);
+        $(".custom_toggle").removeClass('dark')
+        saveThemeToLocalStorage()
+    }else{
+        globalThemeData = true
+        // set to dark theme
+        $(theme_raadio_dark).prop('checked', true);
+        $(theme_raadio_light).prop('checked', false);
+        // add class to toggle
+        $(".custom_toggle").addClass('dark')
+        saveThemeToLocalStorage()
+    }
+}
+
+const setToDarkTheme=()=>{
+  $(theme_raadio_dark).prop('checked', true);
+  $(theme_raadio_light).prop('checked', false);
+  // add class to toggle
+  $(".custom_toggle").addClass('dark')
+}
