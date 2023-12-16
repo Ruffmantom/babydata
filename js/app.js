@@ -1,5 +1,5 @@
 // example data
-
+/*
 var babies = [
 
     {
@@ -33,24 +33,57 @@ var feed_data = {
     duration_min:"",
     captured:"",
 }
-
-
+*/
+let globalBabyData;
+let defaultData = []
+const welcome_section_elm = $("#welcome_section")
+const signup_section_elm = $("#signup_section")
 
 // on load
 // Need to create baby user
-const createBabyUser = () => {
 
+const getCurrentBaby = () => {
+    return globalBabyData.find(l => l.active === true)
 }
 
+// Load values from local storage
+// 1. Check to see if baby data is available
+const checkBabyData = () => {
+    let babyData = localStorage.getItem('BBD')
 
+    if (babyData !== null) {
+        // hide welcome messages and sign first baby up steps
+        $(welcome_section_elm).hide()
+        $(signup_section_elm).hide()
+        // save local values to global storage
+        globalBabyData = JSON.parse(babyData)
+        // load html
+        loadHtml()
+    }
+}
 
+// function to save data to local storage
+const saveToLocalStorage = () => {
+    localStorage.setItem("BBD", JSON.stringify(globalBabyData))
+}
 
+const setHomeTitle = () => {
+    let baby = getCurrentBaby()
+    $("#baby_name_title").text(baby.name)
+}
+const setHomeSubTitle = () => {
+    let baby = getCurrentBaby()
+    let babyName = baby.name.split(' ')[0]
+    $("#home_message").text(`Good ${getTimeOfDay()}, ${babyName}! You are ${getAgeDescription(baby.birthday)} old today!`)
+}
 
-
-
-
-
+const loadHtml = () => {
+    // set titles and names
+    setHomeTitle()
+    setHomeSubTitle()
+    // set data into charts
+}
 
 $(() => {
-
+    checkBabyData()
 })

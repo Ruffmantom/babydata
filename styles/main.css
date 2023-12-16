@@ -133,13 +133,16 @@ label {
     text-align: left;
     width: 85%;
 }
-.modal_overflow_cont{
+
+.modal_overflow_cont {
     max-height: 550px;
     overflow-y: scroll;
 }
-.modal_overflow_cont::-webkit-scrollbar{
+
+.modal_overflow_cont::-webkit-scrollbar {
     display: none;
 }
+
 .close_button {
     position: relative;
     width: 40px;
@@ -161,6 +164,33 @@ label {
     margin-bottom: 15px;
 }
 
+.notification_box {
+    max-width: 90%;
+    padding: 14px 20px;
+    border-radius: 7px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 99999999999999;
+    background-color: var(--accent-three);
+
+}
+.notification_box{
+    opacity: 0;
+    top: -40px;
+    transition: all 150ms ease-out;
+
+}
+.notification_text {
+    color: white;
+    font-weight: bold;
+    margin: 0;
+}
+.notification_box.visible{
+    opacity: 1;
+    top: 10px;
+    transition: all 150ms ease-in;
+}
 /* form */
 .form_section_cont {
     width: 100%;
@@ -172,11 +202,17 @@ label {
     padding-top: 15px;
     text-align: left;
 }
+
 /* for building purposes */
-/* #welcome_section,
-#signup_section{
-    display: none;
-} */
+
+#signup_section {
+    z-index: 99999;
+}
+
+#welcome_section {
+    z-index: 999999;
+}
+
 /* for building purposes */
 
 
@@ -185,7 +221,7 @@ label {
 #add_weight_data_form,
 #add_feeding_data_form,
 #baby_add_data_modal,
-#baby_settings_modal{
+#baby_settings_modal {
     display: none;
 }
 
@@ -196,12 +232,14 @@ label {
     margin-top: 10px;
 }
 
-.main_form_cont,.modal_overflow_cont {
+.main_form_cont,
+.modal_overflow_cont {
     width: 100%;
 }
 
 input:not(.radio),
-select,textarea {
+select,
+textarea {
     font-size: 16px;
     color: var(--text-color);
     padding: 14px;
@@ -236,16 +274,19 @@ select,textarea {
     background-color: var(--accent-color);
     border-radius: 5px;
 }
-.flex_form_cont{
+
+.flex_form_cont {
     display: flex;
     gap: 10px;
 }
-.radio_group{
+
+.radio_group {
     display: flex;
     align-items: center;
-    padding-top:10px ;
+    padding-top: 10px;
 }
-.radio_group>p{
+
+.radio_group>p {
     margin: 0;
     padding-left: 15px;
 }
@@ -411,6 +452,7 @@ select,textarea {
 .widget_cont:not(:last-child) {
     margin-bottom: 15px;
 }
-.wdiget_cont{
+
+.wdiget_cont {
     margin-bottom: 15px;
 }
