@@ -30,6 +30,8 @@
     --text-color: #333333;
     --accent-color: #ff80ab;
     --modal-bkg: #ff80aa4d;
+    --secondary-form-bkg:#00000024;
+    
 }
 
 :root:has(#theme_raadio_dark:checked) {
@@ -39,6 +41,7 @@
     --text-color: #ffffff;
     --accent-color: #64b5f6;
     --modal-bkg: #64b4f658;
+    --secondary-form-bkg:#b3b3b324;
 }
 
 #theme_raadio_light,
@@ -90,7 +93,9 @@ label {
     cursor: pointer;
     margin-top: 10px;
 }
-
+.cancel_btn{
+    background-color: var(--accent-danger);
+}
 .main_cont {
     position: relative;
 }
@@ -200,12 +205,16 @@ label {
 }
 
 #add_baby_form {
-    padding-top: 15px;
     text-align: left;
     display: none;
+    padding: 15px;
+    border: 3px solid var(--accent-color);
+    border-radius: 7px;
+    
 }
 #add_baby_form.active{
     display: block;
+   
     
 }
 
@@ -388,6 +397,7 @@ textarea {
     right: 0;
     top: 0;
     padding-bottom: 10px;
+    margin: 0;
     cursor: pointer;
 }
 
