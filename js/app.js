@@ -83,6 +83,25 @@ const setHomeGreeting = () => {
     $("#home_message").text(`Good ${getTimeOfDay()}, ${babyName}! You are ${getAgeDescription(baby.birthday)} old today!`)
 }
 
+const setSelectBabyDropDown = () => {
+    const selectBaby = $("#select_baby");
+    $(selectBaby).empty()
+    if (globalBabyData !== null && globalBabyData.length >= 1) {
+        globalBabyData.forEach(baby => {
+            const option = $("<option></option>")
+                .attr("value", baby._id) 
+                .text(baby.name); 
+            
+            if (baby.active) {
+                option.attr("selected", "selected"); 
+            }
+            
+            selectBaby.append(option); 
+        });
+    }
+}
+
+
 // Load values from local storage
 // 1. Check to see if baby data is available
 const checkBabyData = () => {
@@ -107,6 +126,7 @@ const loadHtml = () => {
     // set titles and names
     setHomeTitle()
     setHomeGreeting()
+    setSelectBabyDropDown()
     // set data into charts
 }
 

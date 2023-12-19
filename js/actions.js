@@ -1,6 +1,10 @@
 // containers
 const baby_settings_modal_elm = $("#baby_settings_modal")
 const baby_add_data_modal_elm = $("#baby_add_data_modal")
+const baby_add_data_modal = $("#baby_add_data_modal")
+const add_bm_data_form = $("#add_bm_data_form")
+const add_weight_data_form = $("#add_weight_data_form")
+const add_feeding_data_form = $("#add_feeding_data_form")
 // inputs
 const full_name_input = $("#full_name_input")
 const birthday_input = $("#birthday_input")
@@ -8,11 +12,34 @@ const gender_select = $("#gender_select")
 const add_new_baby_input_name = $("#add_new_baby_input_name")
 const add_new_baby_input_birthday = $("#add_new_baby_input_birthday")
 const add_new_baby_input_gender = $("#add_new_baby_input_gender")
+const data_type_select = $("#data_type_select")
+// bm
+const bm_data_radio_elm_now = $("#bm_data_radio_elm_now")
+const bm_data_radio_elm_enter = $("#bm_data_radio_elm_enter")
+const enter_time_for_bm_data_cont = $("#enter_time_for_bm_data_cont")
+// weight
+const weight_data_radio_elm_now = $("#weight_data_radio_elm_now")
+const weight_data_radio_elm_enter = $("#weight_data_radio_elm_enter")
+const enter_time_for_weight_data_cont = $("#enter_time_for_weight_data_cont")
+// Feed
+const add_data_feed_ounce_input_elm = $("#add_data_feed_ounce_input_elm")
+const add_data_feed_hr_input_elm = $("#add_data_feed_hr_input_elm")
+const add_data_feed_min_input_elm = $("#add_data_feed_min_input_elm")
+const feed_data_radio_elm_now = $("#feed_data_radio_elm_now")
+const feed_data_radio_elm_enter = $("#feed_data_radio_elm_enter")
+const enter_time_for_feed_data_cont = $("#enter_time_for_feed_data_cont")
 // buttons
 const get_started_btn = $("#get_started_btn")
 const sign_first_baby_up_btn = $("#sign_first_baby_up_btn")
 const baby_settings_button = $("#baby_settings_button")
 const add_new_baby_btn = $("#add_new_baby_btn")
+const add_data_btn = $("#add_data_btn")
+const home_btn = $("#home_btn")
+const view_all_data_btn = $("#view_all_data_btn")
+// data form buttons
+const add_data_feed_btn = $("#add_data_feed_btn")
+const add_data_weight_btn = $("#add_data_weight_btn")
+const add_data_bm_btn = $("#add_data_bm_btn")
 
 
 
@@ -54,8 +81,6 @@ const createBabyUser = (newBaby, values) => {
     // set state to true
     babyHasBeenAdded = true
 }
-
-
 
 
 let babyName = ""
@@ -190,5 +215,48 @@ $(() => {
         }
 
     })
+
+    // change baby
+    $("#select_baby").on('keyup change', (e) => {
+        let babyId = e.target.value;
+        console.log(e.target.value)
+        globalBabyData.forEach(b => {
+            b.active = false
+            if (b._id === babyId) {
+                b.active = true
+            }
+        })
+        // save local
+        saveToLocalStorage()
+        // load html
+        loadHtml()
+    })
+
+
+    // add data
+    $(add_data_btn).on("click", () => {
+        $(baby_add_data_modal).fadeIn()
+        // remove active classes if any
+        changeActiveFooterButton('add')
+    })
+
+    $("#close_data_btn").on("click", (e) => {
+        $(baby_add_data_modal).fadeOut()
+        // remove active classes if any
+        changeActiveFooterButton('home')
+    })
+
+
+
+
+
+    // selecting the data type
+    $(data_type_select).on("keyup change", (e) => {
+        console.log(e.target.value)
+        let formType = e.target.value
+        changeAddDataForm(formType)
+    })
+
+
 
 })

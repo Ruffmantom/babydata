@@ -3,113 +3,158 @@ const theme_raadio_dark = $("#theme_raadio_dark")
 const theme_raadio_light = $("#theme_raadio_light")
 
 const createId = () => {
-    let newId = "";
-    for (var i = 0; i < 6; i++) {
-        newId += idChars[Math.floor(Math.random() * idChars.length)];
-    }
-    newId += "-"
-    for (var i = 0; i < 6; i++) {
-        newId += idChars[Math.floor(Math.random() * idChars.length)];
-    }
-    newId += "-"
-    for (var i = 0; i < 6; i++) {
-        newId += idChars[Math.floor(Math.random() * idChars.length)];
-    }
-    return newId;
+  let newId = "";
+  for (var i = 0; i < 6; i++) {
+    newId += idChars[Math.floor(Math.random() * idChars.length)];
+  }
+  newId += "-"
+  for (var i = 0; i < 6; i++) {
+    newId += idChars[Math.floor(Math.random() * idChars.length)];
+  }
+  newId += "-"
+  for (var i = 0; i < 6; i++) {
+    newId += idChars[Math.floor(Math.random() * idChars.length)];
+  }
+  return newId;
 };
 
 
 //helper to format date
 function formatDate(inputDate) {
-    // Parse the input date string into a Date object
-    const dateObject = new Date(inputDate);
+  // Parse the input date string into a Date object
+  const dateObject = new Date(inputDate);
 
-    // Extract year, month, and day
-    const year = dateObject.getFullYear();
-    const month = (dateObject.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
-    const day = dateObject.getDate().toString().padStart(2, '0');
+  // Extract year, month, and day
+  const year = dateObject.getFullYear();
+  const month = (dateObject.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
+  const day = dateObject.getDate().toString().padStart(2, '0');
 
-    // Format the date as "month/day/year"
-    const formattedDate = `${month}/${parseInt(day) + 1}/${year}`;
+  // Format the date as "month/day/year"
+  const formattedDate = `${month}/${parseInt(day) + 1}/${year}`;
 
-    return formattedDate;
+  return formattedDate;
 }
 
 const createNotification = (text) => {
-    $(".notification_text").text('')
-    $(".notification_text").text(text)
-    $(".notification_box").addClass("visible")
-    let notificationTimer = setTimeout(()=>{
-        $(".notification_box").removeClass("visible")
-        clearTimeout(notificationTimer)
-    },3000)
+  $(".notification_text").text('')
+  $(".notification_text").text(text)
+  $(".notification_box").addClass("visible")
+  let notificationTimer = setTimeout(() => {
+    $(".notification_box").removeClass("visible")
+    clearTimeout(notificationTimer)
+  }, 3000)
 }
 
 function getTimeOfDay() {
-    const currentTime = new Date();
-    const currentHour = currentTime.getHours();
-  
-    if (currentHour >= 5 && currentHour < 12) {
-      return "morning";
-    } else if (currentHour >= 12 && currentHour < 18) {
-      return "afternoon";
-    } else {
-      return "evening";
-    }
+  const currentTime = new Date();
+  const currentHour = currentTime.getHours();
+
+  if (currentHour >= 5 && currentHour < 12) {
+    return "morning";
+  } else if (currentHour >= 12 && currentHour < 18) {
+    return "afternoon";
+  } else {
+    return "evening";
   }
-
-
-  function getAgeDescription(dateString) {
-    const currentDate = new Date();
-    const inputDate = new Date(dateString);
-  
-    // Calculate the time difference in milliseconds
-    const timeDifference = currentDate - inputDate;
-  
-    // Convert milliseconds to days
-    const days = Math.floor(timeDifference / (1000 * 3600 * 24));
-  
-    // Calculate months and years
-    const years = currentDate.getFullYear() - inputDate.getFullYear();
-    const months = (years * 12) + (currentDate.getMonth() - inputDate.getMonth());
-  
-    if (months === 0) {
-      if (days === 1) {
-        return `${days} day`;
-      } else {
-        return `${days} days`;
-      }
-    } else if (months === 1) {
-      return `1 month and ${days} days`;
-    } else if (months > 1 && months < 12) {
-      return `${months} months and ${days} days`;
-    } else {
-      return `${years} years`;
-    }
-  }
-
-  const toggleTheme = ()=>{
-    if(globalThemeData){
-        globalThemeData = false
-        // set to light theme
-        $(theme_raadio_dark).prop('checked', false);
-        $(theme_raadio_light).prop('checked', true);
-        $(".custom_toggle").removeClass('dark')
-        saveThemeToLocalStorage()
-    }else{
-        globalThemeData = true
-        // set to dark theme
-        $(theme_raadio_dark).prop('checked', true);
-        $(theme_raadio_light).prop('checked', false);
-        // add class to toggle
-        $(".custom_toggle").addClass('dark')
-        saveThemeToLocalStorage()
-    }
 }
 
-const setToDarkTheme=()=>{
+
+function getAgeDescription(dateString) {
+  const currentDate = new Date();
+  const inputDate = new Date(dateString);
+
+  // Calculate the time difference in milliseconds
+  const timeDifference = currentDate - inputDate;
+
+  // Convert milliseconds to days
+  const days = Math.floor(timeDifference / (1000 * 3600 * 24));
+
+  // Calculate months and years
+  const years = currentDate.getFullYear() - inputDate.getFullYear();
+  const months = (years * 12) + (currentDate.getMonth() - inputDate.getMonth());
+
+  if (months === 0) {
+    if (days === 1) {
+      return `${days} day`;
+    } else {
+      return `${days} days`;
+    }
+  } else if (months === 1) {
+    return `1 month and ${days} days`;
+  } else if (months > 1 && months < 12) {
+    return `${months} months and ${days} days`;
+  } else {
+    return `${years} years`;
+  }
+}
+
+const toggleTheme = () => {
+  if (globalThemeData) {
+    globalThemeData = false
+    // set to light theme
+    $(theme_raadio_dark).prop('checked', false);
+    $(theme_raadio_light).prop('checked', true);
+    $(".custom_toggle").removeClass('dark')
+    saveThemeToLocalStorage()
+  } else {
+    globalThemeData = true
+    // set to dark theme
+    $(theme_raadio_dark).prop('checked', true);
+    $(theme_raadio_light).prop('checked', false);
+    // add class to toggle
+    $(".custom_toggle").addClass('dark')
+    saveThemeToLocalStorage()
+  }
+}
+
+const setToDarkTheme = () => {
   $(theme_raadio_dark).prop('checked', true);
   $(theme_raadio_light).prop('checked', false);
   // add class to toggle
   $(".custom_toggle").addClass('dark')
+}
+
+const changeActiveFooterButton = (btn) => {
+  if (btn === "add") {
+    $("#footer_menu_all_data").removeClass('active')
+    $("#footer_menu_home").removeClass('active')
+    $("#footer_menu_add_data").addClass('active')
+  } else if (btn === "data") {
+    $("#footer_menu_home").removeClass('active')
+    $("#footer_menu_add_data").removeClass('active')
+    $("#footer_menu_all_data").addClass('active')
+  } else {
+    $("#footer_menu_add_data").removeClass('active')
+    $("#footer_menu_all_data").removeClass('active')
+    $("#footer_menu_home").addClass('active')
+  }
+}
+
+const changeAddDataForm = (formType) => {
+  if (formType === 'bm') {
+    // hide other forms
+    add_weight_data_form.hide()
+    add_feeding_data_form.hide()
+    add_bm_data_form.fadeIn()
+  } else if (formType === "weight") {
+    add_bm_data_form.hide()
+    add_feeding_data_form.hide()
+    add_weight_data_form.fadeIn()
+
+  } else if (formType === "feeding") {
+    add_bm_data_form.hide()
+    add_weight_data_form.hide()
+    add_feeding_data_form.fadeIn()
+
+  } else {
+    add_bm_data_form.hide()
+    add_weight_data_form.hide()
+    add_feeding_data_form.hide()
+
+  }
+}
+
+
+const switchBmRadios = () => {
+
 }
