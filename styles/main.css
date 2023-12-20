@@ -30,8 +30,8 @@
     --text-color: #333333;
     --accent-color: #ff80ab;
     --modal-bkg: #ff80aa4d;
-    --secondary-form-bkg:#00000024;
-    
+    --secondary-form-bkg: #00000024;
+
 }
 
 :root:has(#theme_raadio_dark:checked) {
@@ -41,7 +41,7 @@
     --text-color: #ffffff;
     --accent-color: #64b5f6;
     --modal-bkg: #64b4f658;
-    --secondary-form-bkg:#b3b3b324;
+    --secondary-form-bkg: #b3b3b324;
 }
 
 #theme_raadio_light,
@@ -93,9 +93,11 @@ label {
     cursor: pointer;
     margin-top: 10px;
 }
-.cancel_btn{
+
+.cancel_btn {
     background-color: var(--accent-danger);
 }
+
 .main_cont {
     position: relative;
 }
@@ -181,22 +183,26 @@ label {
     background-color: var(--accent-three);
 
 }
-.notification_box{
+
+.notification_box {
     opacity: 0;
     top: -40px;
     transition: all 150ms ease-out;
 
 }
+
 .notification_text {
     color: white;
     font-weight: bold;
     margin: 0;
 }
-.notification_box.visible{
+
+.notification_box.visible {
     opacity: 1;
     top: 10px;
     transition: all 150ms ease-in;
 }
+
 /* form */
 .form_section_cont {
     width: 100%;
@@ -210,12 +216,13 @@ label {
     padding: 15px;
     border: 3px solid var(--accent-color);
     border-radius: 7px;
-    
+
 }
-#add_baby_form.active{
+
+#add_baby_form.active {
     display: block;
-   
-    
+
+
 }
 
 
@@ -228,9 +235,10 @@ label {
     display: none;
 } */
 
-.modal_cont{
+.modal_cont {
     display: none;
 }
+
 #signup_section {
     z-index: 99999;
     display: flex;
@@ -240,7 +248,8 @@ label {
     z-index: 999999;
     display: flex;
 }
-#baby_settings_modal.active{
+
+#baby_settings_modal.active {
     display: flex;
 }
 
@@ -285,7 +294,8 @@ textarea {
     justify-content: left;
     transition: all 150ms ease-in-out;
 }
-.custom_toggle.dark{
+
+.custom_toggle.dark {
     justify-content: right;
     transition: all 150ms ease-in-out;
 }
@@ -312,9 +322,16 @@ textarea {
     margin: 0;
     padding-left: 15px;
 }
+
+input.radio {
+    width: 20px;
+    height: 20px;
+}
+
 div#add_feeding_data_form>p {
     text-align: left;
 }
+
 /* footer controller */
 .footer_menu {
     position: fixed;
@@ -406,7 +423,8 @@ div#add_feeding_data_form>p {
 #baby_settings_button_cont>svg {
     fill: var(--secondary-background);
 }
-.button_elm_trigger{
+
+.button_elm_trigger {
     height: 100%;
     width: 100%;
     position: absolute;
@@ -437,9 +455,10 @@ div#add_feeding_data_form>p {
 #add_feeding_data_form,
 #enter_time_for_bm_data_cont,
 #enter_time_for_weight_data_cont,
-#enter_time_for_feed_data_cont{
+#enter_time_for_feed_data_cont {
     display: none;
 }
+
 .widget_setting_dd {
     display: flex;
     flex-direction: column;

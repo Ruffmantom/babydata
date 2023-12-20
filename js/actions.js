@@ -257,6 +257,28 @@ $(() => {
         changeAddDataForm(formType)
     })
 
+    bm_data_radio_elm_potty.on("keyup change",(e)=>{
+        let radioVal = $(e.target).data("bmtype")
+        console.log(radioVal)
+        switchBmRadios(radioVal)
+    })
+    bm_data_radio_elm_poopy.on("keyup change",(e)=>{
+        let radioVal = $(e.target).data("bmtype")
+        console.log(radioVal)
+        switchBmRadios(radioVal)
+    })
+    bm_data_radio_elm_two_for_one.on("keyup change",(e)=>{
+        let radioVal = $(e.target).data("bmtype")
+        switchBmRadios(radioVal)
+    })
+    
+    $("#add_data_bm_btn").on("click",(e)=>{
+        e.preventDefault()
+        console.log('about to submit BM')
+       
 
+    })
+
+    
 
 })

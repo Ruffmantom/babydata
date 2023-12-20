@@ -1,6 +1,11 @@
 var idChars = "3QKXV0F8IYCA7S5T4ZGJDWB9L1N26UHOMRPVE";
 const theme_raadio_dark = $("#theme_raadio_dark")
 const theme_raadio_light = $("#theme_raadio_light")
+const bm_data_radio_elm_potty = $("#bm_data_radio_elm_potty")
+const bm_data_radio_elm_poopy = $("#bm_data_radio_elm_poopy")
+const bm_data_radio_elm_two_for_one = $("#bm_data_radio_elm_two_for_one")
+
+
 
 const createId = () => {
   let newId = "";
@@ -154,7 +159,29 @@ const changeAddDataForm = (formType) => {
   }
 }
 
+// BM radio buttons
+const switchBmRadios = (value) => {
+  if (value === "potty") {
+    $(bm_data_radio_elm_poopy).prop('checked', false)
+    $(bm_data_radio_elm_two_for_one).prop('checked', false)
+  } else if (value === "poopy") {
+    $(bm_data_radio_elm_potty).prop('checked', false)
+    $(bm_data_radio_elm_two_for_one).prop('checked', false)
+  } else {
+    $(bm_data_radio_elm_potty).prop('checked', false)
+    $(bm_data_radio_elm_poopy).prop('checked', false)
+  }
+}
 
-const switchBmRadios = () => {
+// bm create BM data
+const createBMDataObj = () => {
+// values from form
+
+let obj = {
+  _id:"",
+  type:"",
+  note:"",
+  created_at:"",
+}
 
 }
