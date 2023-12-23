@@ -4,7 +4,8 @@ const theme_raadio_light = $("#theme_raadio_light")
 const bm_data_radio_elm_potty = $("#bm_data_radio_elm_potty")
 const bm_data_radio_elm_poopy = $("#bm_data_radio_elm_poopy")
 const bm_data_radio_elm_two_for_one = $("#bm_data_radio_elm_two_for_one")
-
+const bm_data_radio_elm_now = $("#bm_data_radio_elm_now")
+const bm_data_radio_elm_enter = $("#bm_data_radio_elm_enter")
 
 
 const createId = () => {
@@ -74,24 +75,42 @@ function getAgeDescription(dateString) {
   // Convert milliseconds to days
   const days = Math.floor(timeDifference / (1000 * 3600 * 24));
 
-  // Calculate months and years
-  const years = currentDate.getFullYear() - inputDate.getFullYear();
-  const months = (years * 12) + (currentDate.getMonth() - inputDate.getMonth());
+  // Calculate weeks and remaining days
+  const weeks = Math.floor(days / 7);
+  const remainingDays = days % 7;
 
-  if (months === 0) {
+  // Calculate months and remaining weeks
+  const months = Math.floor(days / 30);
+  const remainingWeeks = Math.floor((days % 30) / 7);
+
+  if (days < 7) {
     if (days === 1) {
-      return `${days} day`;
+      return `${days} day old`;
     } else {
-      return `${days} days`;
+      return `${days} days old`;
     }
-  } else if (months === 1) {
-    return `1 month and ${days} days`;
-  } else if (months > 1 && months < 12) {
-    return `${months} months and ${days} days`;
+  } else if (days >= 7 && days < 30) {
+    if (days === 7) {
+      return `1 week old`;
+    } else {
+      return `${weeks} weeks and ${remainingDays} days old`;
+    }
+  } else if (days >= 30 && days < 365) {
+    if (days === 30) {
+      return `1 month old`;
+    } else {
+      return `${months} months and ${remainingWeeks} weeks old`;
+    }
   } else {
-    return `${years} years`;
+    const years = Math.floor(days / 365);
+    if (years === 1) {
+      return `1 year old`;
+    } else {
+      return `${years} years old`;
+    }
   }
 }
+
 
 const toggleTheme = () => {
   if (globalThemeData) {
@@ -159,29 +178,154 @@ const changeAddDataForm = (formType) => {
   }
 }
 
-// BM radio buttons
-const switchBmRadios = (value) => {
-  if (value === "potty") {
-    $(bm_data_radio_elm_poopy).prop('checked', false)
-    $(bm_data_radio_elm_two_for_one).prop('checked', false)
-  } else if (value === "poopy") {
-    $(bm_data_radio_elm_potty).prop('checked', false)
-    $(bm_data_radio_elm_two_for_one).prop('checked', false)
-  } else {
-    $(bm_data_radio_elm_potty).prop('checked', false)
-    $(bm_data_radio_elm_poopy).prop('checked', false)
-  }
-}
-
-// bm create BM data
+// create BM data
 const createBMDataObj = () => {
-// values from form
+  // Get selected radio button value
+  var bmType = $("input[name='bm_type']:checked").data("bmtype");
 
-let obj = {
-  _id:"",
-  type:"",
-  note:"",
-  created_at:"",
+  // Get entered note value
+  var note = $("textarea[name='note']").val();
+
+  // Get selected time option
+  var isNow = $("#bm_data_radio_elm_now").is(":checked");
+
+  var isEnterTime = $("#bm_data_radio_elm_enter").is(":checked");
+
+  // Get entered time value if "Enter Time" is selected
+  var enteredTime = isEnterTime ? $("#input-time").val() : null;
+
+  // Helper function to format date and time
+  function formatDateTime(date) {
+    return date.toISOString().slice(0, 16);
+  }
+
+  let createdAt = "";
+
+  if (isNow) {
+    // Set createdAt to current time and date
+    createdAt = formatDateTime(new Date());
+  } else {
+    // Set createdAt to entered date
+    createdAt = enteredTime;
+  }
+
+  // Now you can use these variables (bmType, note, isNow, enteredTime) as needed
+  // For example, you can console.log them or send them to the server
+  let bmData = {
+    _id: createId(),
+    type: bmType,
+    note: note,
+    created_at: createdAt
+  }
+  // console.log("BM Data:", bmData);
+  console.log("Global Data BEFORE add BM data: ",globalBabyData)
+  let currentBaby = getCurrentBaby()
+  currentBaby.bm_data.push(bmData)
+  console.log("Global Data AFTER add BM data: ",globalBabyData)
+  saveToLocalStorage()
+};
+
+const createWeightData = () => {
+  // Get pounds and ounces values
+  var pounds = $("#add_data_pounds_input_elm").val();
+  var ounces = $("#add_data_ounces_input_elm").val();
+
+  // Get selected time option
+  var isNow = $("#weight_data_radio_elm_now").is(":checked");
+  var isEnterTime = $("#weight_data_radio_elm_enter").is(":checked");
+
+  // Get entered time value if "Enter Time" is selected
+  var enteredTime = isEnterTime ? $("#input_time_weight").val() : null;
+
+  function formatDateTime(date) {
+    return date.toISOString().slice(0, 16);
+  }
+
+  let createdAt = "";
+
+  if (isNow) {
+    // Set createdAt to current time and date
+    createdAt = formatDateTime(new Date());
+  } else {
+    // Set createdAt to entered date
+    createdAt = enteredTime;
+  }
+  // Create weightData object
+  var weightData = {
+    _id: createId(),
+    pounds: pounds,
+    ounces: ounces,
+    createdAt: createdAt
+  };
+
+  // Log the weightData object to the console
+  // console.log("Weight Data:", weightData)
+  let currentBaby = getCurrentBaby()
+  currentBaby.weight_data.push(weightData)
+  saveToLocalStorage()
+};
+
+const createFeedData = () => {
+  // Retrieve values from the form
+  var ounces = $('#add_data_feed_ounce_input_elm').val();
+  var hours = $('#add_data_feed_hr_input_elm').val();
+  var minutes = $('#add_data_feed_min_input_elm').val();
+
+  var isNow = $("#feed_data_radio_elm_now").is(":checked");
+  var isEnterTime = $("#feed_data_radio_elm_enter").is(":checked");
+
+  // Get entered time value if "Enter Time" is selected
+  var enteredTime = isEnterTime ? $("#input_time_feed").val() : null;
+
+  function formatDateTime(date) {
+    return date.toISOString().slice(0, 16);
+  }
+
+  let createdAt = "";
+
+  if (isNow) {
+    // Set createdAt to current time and date
+    createdAt = formatDateTime(new Date());
+  } else {
+    // Set createdAt to entered date
+    createdAt = enteredTime;
+  }
+
+  // Do something with the retrieved values (for example, log them)
+  // Create weightData object
+  var feedData = {
+    _id: createId(),
+    ounces: ounces,
+    hours: hours,
+    minutes: minutes,
+    createdAt: createdAt
+  };
+  // console.log("Weight Data: ",feedData)
+  // You can perform other actions with these values as needed
+  // save to global
+  let currentBaby = getCurrentBaby()
+  currentBaby.feed_data.push(feedData)
+  saveToLocalStorage()
 }
+// clear inputs and close add data
+const clearInputsAndCloseAddData = () => {
+  //feed
+  $('#add_data_feed_ounce_input_elm').val('0');
+  $('#add_data_feed_hr_input_elm').val('0');
+  $('#add_data_feed_min_input_elm').val('0');
+  $("#feed_data_radio_elm_now").prop('checked', true);
+  // .prop('checked', true);
+  // weight
+  $("#add_data_pounds_input_elm").val("0");
+  $("#add_data_ounces_input_elm").val("0");
+  $("#weight_data_radio_elm_now").prop('checked', true);
+  // bm
+  $("textarea[name='note']").val("");
+  $("#bm_data_radio_elm_potty").prop('checked', true);
+  $("#bm_data_radio_elm_now").prop('checked', true);
 
+  // hide all forms
+  add_weight_data_form.hide()
+  add_feeding_data_form.hide()
+  add_bm_data_form.hide()
 }

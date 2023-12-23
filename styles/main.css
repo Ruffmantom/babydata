@@ -318,7 +318,7 @@ textarea {
     padding-top: 10px;
 }
 
-.radio_group>p {
+.radio_group>label {
     margin: 0;
     padding-left: 15px;
 }

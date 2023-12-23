@@ -14,8 +14,8 @@ const add_new_baby_input_birthday = $("#add_new_baby_input_birthday")
 const add_new_baby_input_gender = $("#add_new_baby_input_gender")
 const data_type_select = $("#data_type_select")
 // bm
-const bm_data_radio_elm_now = $("#bm_data_radio_elm_now")
-const bm_data_radio_elm_enter = $("#bm_data_radio_elm_enter")
+// const bm_data_radio_elm_now = $("#bm_data_radio_elm_now")
+// const bm_data_radio_elm_enter = $("#bm_data_radio_elm_enter")
 const enter_time_for_bm_data_cont = $("#enter_time_for_bm_data_cont")
 // weight
 const weight_data_radio_elm_now = $("#weight_data_radio_elm_now")
@@ -55,7 +55,46 @@ const createBabyUser = (newBaby, values) => {
         bm_data: [],
         weight_data: [],
         feed_data: [],
+        achievements: [
+            {
+                achievement: "Cluster Feeding!", // name
+                completed: false, // if baby has completed 
+                achieved_at: "", // date
+            },
+            {
+                achievement: "Most Active Poops!", // name
+                completed: false, // if baby has completed 
+                achieved_at: "", // date
+            },
+            {
+                achievement: "First Recorded Poop!", // name
+                completed: false, // if baby has completed 
+                achieved_at: "", // date
+            },
+            {
+                achievement: "First Recorded Weight!", // name
+                completed: false, // if baby has completed 
+                achieved_at: "", // date
+            },
+            {
+                achievement: "First Recorded Feeding!", // name
+                completed: false, // if baby has completed 
+                achieved_at: "", // date
+            },
+        ],
+        milestones: [
+            {
+                milestone: "4-6 Month Doubled Birth Weight", // name
+                completed: false, // if baby has completed 
+                achieved_at: "", // date
+                badge: "", // path to badge
+            },
+
+
+        ]
     }
+    // achievements will have badges
+    // milestones will have notifications
     // save global baby data
     if (newBaby) {
         //if this is the start of adding a baby, initialize the global data
@@ -88,6 +127,15 @@ let babyBirthday = ""
 let babyGender = ""
 let babyHasBeenAdded = false;
 
+const closeAddData = (dataType) => {
+    createNotification(`Data for ${dataType} has been created!`)
+    clearInputsAndCloseAddData()
+    var timer = setTimeout(() => {
+        $(baby_add_data_modal).fadeOut()
+        changeActiveFooterButton('home')
+        clearTimeout(timer)
+    }, 1000);
+}
 
 $(() => {
     // confirming the welcome 
@@ -232,7 +280,6 @@ $(() => {
         loadHtml()
     })
 
-
     // add data
     $(add_data_btn).on("click", () => {
         $(baby_add_data_modal).fadeIn()
@@ -246,10 +293,6 @@ $(() => {
         changeActiveFooterButton('home')
     })
 
-
-
-
-
     // selecting the data type
     $(data_type_select).on("keyup change", (e) => {
         console.log(e.target.value)
@@ -257,28 +300,55 @@ $(() => {
         changeAddDataForm(formType)
     })
 
-    bm_data_radio_elm_potty.on("keyup change",(e)=>{
-        let radioVal = $(e.target).data("bmtype")
-        console.log(radioVal)
-        switchBmRadios(radioVal)
-    })
-    bm_data_radio_elm_poopy.on("keyup change",(e)=>{
-        let radioVal = $(e.target).data("bmtype")
-        console.log(radioVal)
-        switchBmRadios(radioVal)
-    })
-    bm_data_radio_elm_two_for_one.on("keyup change",(e)=>{
-        let radioVal = $(e.target).data("bmtype")
-        switchBmRadios(radioVal)
-    })
-    
-    $("#add_data_bm_btn").on("click",(e)=>{
+    // bm time radios
+    $("input[name='bm_time']").change(function () {
+        // Toggle visibility of enter_time_for_bm_data_cont based on selected radio button
+        if ($(this).data("bmtime") === "choose") {
+            $("#enter_time_for_bm_data_cont").slideDown();
+        } else {
+            $("#enter_time_for_bm_data_cont").hide();
+        }
+    });
+
+    $("input[name='weight_time']").change(function () {
+        // Toggle visibility of enter_time_for_bm_data_cont based on selected radio button
+        if ($(this).data("weighttime") === "choose") {
+            $("#enter_time_for_weight_data_cont").slideDown();
+        } else {
+            $("#enter_time_for_weight_data_cont").hide();
+        }
+    });
+
+    $("input[name='feed_time']").change(function () {
+        if ($(this).data("feedtime") === "choose") {
+            $("#enter_time_for_feed_data_cont").slideDown();
+        } else {
+            $("#enter_time_for_feed_data_cont").hide();
+        }
+    });
+
+    // create and add baby data
+    $("#add_data_bm_btn").on("click", (e) => {
         e.preventDefault()
-        console.log('about to submit BM')
-       
-
+        createBMDataObj()
+        // close and notify user
+        closeAddData("Baby's Bowel Movement")
     })
 
-    
+    // create weight Data
+    $("#add_data_weight_btn").on("click", (e) => {
+        e.preventDefault()
+        createWeightData()
+        // close and notify user
+        closeAddData("Baby's Weight")
+    })
+
+    // create feed Data
+    $("#add_data_feed_btn").on("click", (e) => {
+        e.preventDefault()
+        createFeedData()
+        // close and notify user
+        closeAddData("Baby's Feeding")
+    })
 
 })

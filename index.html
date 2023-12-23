@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/main.css">
     <script src="./js/jquery.js"></script>
-    <title>Document</title>
+    <title>MYBABY</title>
 </head>
 
 <body>
@@ -176,16 +176,20 @@
                     <!-- bm form -->
                     <div id="add_bm_data_form" class="main_form_cont add_baby_form">
                         <div class="radio_group">
-                            <input class="radio" checked type="radio" data-bmtype="potty" id="bm_data_radio_elm_potty">
-                            <p>Potty</p>
+                            <input class="radio" checked type="radio" data-bmtype="potty" id="bm_data_radio_elm_potty"
+                                name="bm_type">
+                            <label for="bm_data_radio_elm_potty">Potty</label>
                         </div>
                         <div class="radio_group">
-                            <input class="radio" type="radio" data-bmtype="poopy" id="bm_data_radio_elm_poopy">
-                            <p>Poopy</p>
+                            <input class="radio" checked type="radio" data-bmtype="poopy" id="bm_data_radio_elm_poopy"
+                                name="bm_type">
+                            <label for="bm_data_radio_elm_poopy">Poopy</label>
+
                         </div>
                         <div class="radio_group">
-                            <input class="radio" type="radio" data-bmtype="twoforone" id="bm_data_radio_elm_two_for_one">
-                            <p>Two For One</p>
+                            <input class="radio" checked type="radio" data-bmtype="twoforone"
+                                id="bm_data_radio_elm_two_for_one" name="bm_type">
+                            <label for="bm_data_radio_elm_two_for_one">Two For One</label>
                         </div>
 
                         <div class="form_section_cont">
@@ -196,56 +200,58 @@
                         <div class="form_section_cont">
                             <label>Time Recorded</label>
                             <div class="radio_group">
-                                <input class="radio" checked type="radio" id="bm_data_radio_elm_now">
-                                <p>Now</p>
+                                <input class="radio" checked type="radio" data-bmtime="now" id="bm_data_radio_elm_now"
+                                    name="bm_time">
+                                <label for="bm_data_radio_elm_now">Now</label>
                             </div>
                             <div class="radio_group">
-                                <input class="radio" type="radio" id="bm_data_radio_elm_enter">
-                                <p>Enter Time</p>
+                                <input class="radio" type="radio" data-bmtime="choose" id="bm_data_radio_elm_enter"
+                                    name="bm_time">
+                                <label for="bm_data_radio_elm_enter">Enter Time</label>
                             </div>
                             <div id="enter_time_for_bm_data_cont" class="form_section_cont">
-                                <label for="ounces">When:</label>
-                                <input type="datetime-local" id="meeting-time" name="meeting-time"
-                                    max="2028-06-14T00:00" />
+                                <label for="input-time">When:</label>
+                                <input type="datetime-local" id="input-time" name="input-time" max="2028-06-14T00:00" />
                             </div>
-
                         </div>
                         <button id="add_data_bm_btn" class="btn_elm">Add Data</button>
                     </div>
+
                     <!-- add weight form -->
                     <div id="add_weight_data_form" class="main_form_cont add_baby_form">
                         <div class="flex_form_cont">
-
                             <div class="form_section_cont">
-                                <label for="pounds">Pounds</label>
+                                <label for="add_data_pounds_input_elm">Pounds</label>
                                 <input type="text" id="add_data_pounds_input_elm" value="0" name="pounds">
                             </div>
 
                             <div class="form_section_cont">
-                                <label for="ounces">Ounces</label>
+                                <label for="add_data_ounces_input_elm">Ounces</label>
                                 <input type="text" id="add_data_ounces_input_elm" value="0" name="ounces">
-
                             </div>
                         </div>
+                        <!-- Time record -->
                         <div class="form_section_cont">
                             <label>Time Recorded</label>
                             <div class="radio_group">
-                                <input class="radio" checked type="radio" id="weight_data_radio_elm_now">
-                                <p>Now</p>
+                                <input class="radio" checked type="radio" data-weighttime="now"
+                                    id="weight_data_radio_elm_now" name="weight_time">
+                                <label for="weight_data_radio_elm_now">Now</label>
                             </div>
                             <div class="radio_group">
-                                <input class="radio" type="radio" id="weight_data_radio_elm_enter">
-                                <p>Enter Time</p>
+                                <input class="radio" type="radio" data-weighttime="choose"
+                                    id="weight_data_radio_elm_enter" name="weight_time">
+                                <label for="weight_data_radio_elm_enter">Enter Time</label>
                             </div>
                             <div id="enter_time_for_weight_data_cont" class="form_section_cont">
-                                <label for="ounces">When:</label>
-                                <input type="datetime-local" id="meeting-time" name="meeting-time"
+                                <label for="input_time_weight">When:</label>
+                                <input type="datetime-local" id="input_time_weight" name="input_time_weight"
                                     max="2018-06-14T00:00" />
                             </div>
-
                         </div>
                         <button id="add_data_weight_btn" class="btn_elm">Add Data</button>
                     </div>
+
 
                     <!-- Feeding data -->
                     <div id="add_feeding_data_form" class="main_form_cont add_baby_form">
@@ -273,17 +279,19 @@
                         <div class="form_section_cont">
                             <label>Time Recorded</label>
                             <div class="radio_group">
-                                <input class="radio" checked type="radio" id="feed_data_radio_elm_now">
-                                <p>Now</p>
+                                <input class="radio" checked data-feedtime="now" type="radio"
+                                    id="feed_data_radio_elm_now" name="feed_time">
+                                <label for="feed_data_radio_elm_now">Now</label>
                             </div>
                             <div class="radio_group">
-                                <input class="radio" type="radio" id="feed_data_radio_elm_enter">
-                                <p>Enter Time</p>
+                                <input class="radio" type="radio" data-feedtime="choose" id="feed_data_radio_elm_enter"
+                                    name="feed_time">
+                                <label for="feed_data_radio_elm_enter">Enter Time</label>
                             </div>
                             <div id="enter_time_for_feed_data_cont" class="form_section_cont">
                                 <label for="ounces">When:</label>
-                                <input type="datetime-local" id="meeting-time" name="meeting-time"
-                                    max="2018-06-14T00:00" />
+                                <input type="datetime-local" data-feedtime="choose" id="input_time_feed"
+                                    name="meeting-time" max="2018-06-14T00:00" />
                             </div>
 
                         </div>
@@ -301,7 +309,7 @@
 
         <div class="content_cont">
             <!-- these containers will be swapped out and re rendered when actions happen -->
-            <div class="home_container">
+            <div class="content_block_container" id="home_data">
                 <div id="title_block">
                     <div id="baby_settings_button_cont" class="btn_elm btn_lg div_btn">
                         <div id="baby_settings_button" class="button_elm_trigger"></div>
@@ -405,7 +413,33 @@
                     </div>
                 </div>
             </div>
+
+
+            <!-- all data page -->
+            <div class="content_block_container" id="all_data">
+                <div id="title_block">
+                    <div id="baby_settings_button_cont" class="btn_elm btn_lg div_btn">
+                        <div id="baby_settings_button" class="button_elm_trigger"></div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17.587" viewBox="0 0 20 17.587">
+                            <g id="Icon_core-baby" data-name="Icon core-baby" transform="translate(-1.029 -2.216)">
+                                <path id="Path_3" data-name="Path 3"
+                                    d="M18.047,9.2a7.636,7.636,0,0,0-5.576-4.505L13.58,2.919l-1.124-.7-1.463,2.34A7.625,7.625,0,0,0,4.011,9.2a2.982,2.982,0,1,0,0,5.964,7.626,7.626,0,0,0,14.036,0,2.982,2.982,0,1,0,0-5.964Zm1.125,4.142a1.648,1.648,0,0,1-1.15.5l-.859.016-.336.79a6.3,6.3,0,0,1-11.6,0l-.336-.79-.859-.016a1.656,1.656,0,1,1,0-3.312l.859-.016.336-.79a6.3,6.3,0,0,1,11.6,0l.336.79.859.016a1.656,1.656,0,0,1,1.15,2.816Z"
+                                    transform="translate(0 0)" />
+                                <path id="Path_4" data-name="Path 4"
+                                    d="M11.813,16.313H13.47V17.97H11.813Zm5.635,0H19.1V17.97H17.447Zm-1.989,6.3A3.314,3.314,0,0,0,18.773,19.3H12.144a3.314,3.314,0,0,0,3.314,3.314Z"
+                                    transform="translate(-4.43 -5.79)" />
+                            </g>
+                        </svg>
+
+                    </div>
+                    <p id="baby_name_title"></p>
+                    <p>All Baby Data</p>
+
+                </div>
+
+            </div>
         </div>
+
 
         <!-- Footer menu control -->
         <div class="footer_menu">
