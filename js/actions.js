@@ -1,3 +1,6 @@
+// Pages
+const home_data_page = $("#home_data_page")
+const all_data_page = $("#all_data_page")
 // containers
 const baby_settings_modal_elm = $("#baby_settings_modal")
 const baby_add_data_modal_elm = $("#baby_add_data_modal")
@@ -279,6 +282,20 @@ $(() => {
         // load html
         loadHtml()
     })
+
+    // change pages
+    $(view_all_data_btn).on('click', (e) => {
+        $(home_data_page).hide()
+        $(all_data_page).fadeIn()
+        changeActiveFooterButton('data')
+    })
+    
+    $(home_btn).on('click', (e) => {
+        $(all_data_page).hide()
+        $(home_data_page).fadeIn()
+        changeActiveFooterButton('home')
+    })
+    
 
     // add data
     $(add_data_btn).on("click", () => {

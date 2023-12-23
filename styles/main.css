@@ -74,12 +74,15 @@ h4,
 h5 {
     margin-bottom: 15px;
 }
-
 p,
 label {
     margin-bottom: 10px;
 }
-
+/* pages */
+#all_data_page{
+    display: none;
+}
+/* END pages */
 .btn_elm {
     background-color: var(--accent-color);
     color: var(--btn-color);
