@@ -31,7 +31,7 @@
     --accent-color: #ff80ab;
     --modal-bkg: #ff80aa4d;
     --secondary-form-bkg: #00000024;
-
+    --chart-bkg-stroke: #efefef;
 }
 
 :root:has(#theme_raadio_dark:checked) {
@@ -42,6 +42,7 @@
     --accent-color: #64b5f6;
     --modal-bkg: #64b4f658;
     --secondary-form-bkg: #b3b3b324;
+    --chart-bkg-stroke: #434343;
 }
 
 #theme_raadio_light,
@@ -74,14 +75,17 @@ h4,
 h5 {
     margin-bottom: 15px;
 }
+
 p,
 label {
     margin-bottom: 10px;
 }
+
 /* pages */
-#all_data_page{
+#all_data_page {
     display: none;
 }
+
 /* END pages */
 .btn_elm {
     background-color: var(--accent-color);

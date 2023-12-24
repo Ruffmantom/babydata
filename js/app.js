@@ -80,7 +80,7 @@ const setHomeTitle = () => {
 const setHomeGreeting = () => {
     let baby = getCurrentBaby()
     let babyName = baby.name.split(' ')[0]
-    $("#home_message").text(`Good ${getTimeOfDay()}, ${babyName}! You are ${getAgeDescription(baby.birthday)} old today!`)
+    $("#home_message").text(`Good ${getTimeOfDay()}, ${babyName}! You are ${getAgeDescription(baby.birthday)} today!`)
 }
 
 const setSelectBabyDropDown = () => {
