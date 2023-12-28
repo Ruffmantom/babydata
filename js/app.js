@@ -39,6 +39,7 @@ let globalThemeData = false;
 let defaultData = []
 const welcome_section_elm = $("#welcome_section")
 const signup_section_elm = $("#signup_section")
+const bm_chart_cont_elm = $("#bm_chart")
 
 // on load
 // Need to create baby user
@@ -120,6 +121,10 @@ const checkBabyData = () => {
 
 
 }
+const setBMChart = ()=>{
+    let baby = getCurrentBaby()
+    $(bm_chart_cont_elm).append(create_BM_chart_HTML(baby))
+}
 
 // load html function
 const loadHtml = () => {
@@ -128,6 +133,7 @@ const loadHtml = () => {
     setHomeGreeting()
     setSelectBabyDropDown()
     // set data into charts
+    setBMChart()
 }
 
 $(() => {
