@@ -1,35 +1,105 @@
-const createPottyDot = () => {
-    // these x coordinates are where the outer circle lands in the middle of the text.
-    let sunX = -1605
-    let monX = -1554
-    let tueX = -1501
-    let wedX = -1448
-    let thurX = -1394
-    let friX = -1346
-    let satX = -1303
+const dayCoordinates = {
+    sunday: -1605,
+    monday: -1554,
+    tuesday: -1501,
+    wednesday: -1448,
+    thursday: -1394,
+    friday: -1346,
+    saturday: -1303,
+}
+// min and max coordinates
+const minAndMaxCoordinates = {
+    yMinHeight: 1372,
+    yMaxHeight: 1093,
+}
 
-    let yMinHeight = 1372
-    let yMaxHeight = 1093
-
-    const returnCircleCoordinates = ()=>{
-        // return a obj that has the outer circle and inner circle coordinates
-        let coordinatesObj = {
-            outerX:'',
-            outerY:'',
-            // innerX = this.outerX - (how ever much)
-            innerX:'',
-            innerY:''
-        }
-
+const returnDayOfWeekCoordinate = (dateAndTime) => {
+    const date = new Date(dateAndTime);
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    let dayOfWeek = daysOfWeek[date.getDay()]
+    let coordinate;
+    switch (dayOfWeek) {
+        case "Sunday":
+            coordinate = dayCoordinates.sunday
+            break;
+        case "Monday":
+            coordinate = dayCoordinates.monday
+            break;
+        case "Tuesday":
+            coordinate = dayCoordinates.tuesday
+            break;
+        case "Wednesday":
+            coordinate = dayCoordinates.wednesday
+            break;
+        case "Thursday":
+            coordinate = dayCoordinates.thursday
+            break;
+        case "Friday":
+            coordinate = dayCoordinates.friday
+            break;
+        default:
+            coordinate = dayCoordinates.saturday
     }
-        
+    return coordinate;
+}
 
-    return`
+function returnTimeOfDayCoordinate(timeString) {
+    const [hours, minutes] = timeString.split(':').map(Number);
+    const totalMinutes = hours * 60 + minutes;
+
+    const minutesInRange = minAndMaxCoordinates.yMaxHeight - minAndMaxCoordinates.yMinHeight;
+    const minutesPerDay = 24 * 60;
+
+    // Calculate the proportion of total minutes and map it to the range
+    const mappedValue = ((totalMinutes / minutesPerDay) * minutesInRange) + minAndMaxCoordinates.yMinHeight;
+
+    return mappedValue;
+}
+
+// return a data dot
+const returnCircleCoordinates = (data) => {
+    // dateTime will come in this format: 2023-12-23T17:15
+    // return a obj that has the outer circle and inner circle coordinates
+    // take in the date grab what day of the week it is
+    let time = data.split("T")[1]
+    // coordinates object
+    let coordinatesObj = {
+        outerX: returnDayOfWeekCoordinate(data),
+        outerY: returnTimeOfDayCoordinate(time),
+        innerX: this.outerX - 2,
+        innerY: this.outerY - 2,
+        outerCoor: `${this.outerX} ${this.outerY}`,
+        innerCoor: `${this.innerX} ${this.innerY}`,
+    }
+    return coordinatesObj;
+}
+
+const returnPottyDotColor = (type) => {
+    let color;
+    switch (type) {
+        case "potty":
+            color = "#fd80ab"
+            break;
+        case "poopy":
+            color = "#64b5f6"
+            break;
+
+        default:
+            color = "#b364f6"
+    }
+    return color;
+}
+
+const createPottyDot = (data) => {
+    // these x coordinates are where the outer circle lands in the middle of the text.
+    let coordinates = returnCircleCoordinates(data.created_at)
+    let typeColor = returnPottyDotColor(data.type)
+    return `
         <g id="potty-dot">
             <circle id="Ellipse_9" data-name="Ellipse 9" cx="4" cy="4" r="4"
-                transform="translate(0 0)" fill="#fd80ab" />
+                transform="translate(${coordinates.outerCoor})" fill="${typeColor}" />
             <circle id="Ellipse_10" data-name="Ellipse 10" cx="6" cy="6" r="6"
-                transform="translate(0 0)" fill="none" stroke="#fd80ab"
+                transform="translate(${coordinates.innerCoor})" fill="none" stroke="${typeColor}"
                 stroke-width="1" />
         </g>
     `
@@ -37,7 +107,7 @@ const createPottyDot = () => {
 
 
 const create_BM_chart_HTML = (data) => {
-    // add functions here
+    console.log(data)
 
     return `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 390">
@@ -259,14 +329,11 @@ const create_BM_chart_HTML = (data) => {
                     transform="translate(-1614.5 1391.5)" fill="none"
                     stroke="var( --chart-bkg-stroke)" stroke-width="1" />
             </g>
-            <g id="potty-dot">
-                <circle id="Ellipse_9" data-name="Ellipse 9" cx="4" cy="4" r="4"
-                    transform="translate(0 0)" fill="#fd80ab" />
-                <circle id="Ellipse_10" data-name="Ellipse 10" cx="6" cy="6" r="6"
-                    transform="translate(0 0)" fill="none" stroke="#fd80ab"
-                    stroke-width="1" />
-            </g>
+            
         <!-- DOTS ARE MAPPED HERE -->
+        ${data.bm_data.map(d => (
+            createPottyDot(d)
+        ))}
             <g id="legend" transform="translate(0 -1)">
                 <g id="Group_118" data-name="Group 118">
                     <text id="Potty" transform="translate(-1447 1067)" font-size="10"

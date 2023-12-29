@@ -123,7 +123,7 @@ const checkBabyData = () => {
 }
 const setBMChart = ()=>{
     let baby = getCurrentBaby()
-    $(bm_chart_cont_elm).append(create_BM_chart_HTML(baby))
+    $(bm_chart_cont_elm).append(create_BM_chart_HTML(baby.bm_data))
 }
 
 // load html function
