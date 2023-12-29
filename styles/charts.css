@@ -1,0 +1,172 @@
+:root {
+    /* Common */
+    --border-color: #e0e0e0;
+    --btn-color: #ffffff;
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --accent-danger: #E51A49;
+    --accent-two: #B364F6;
+    --accent-three: #3ca2f4;
+
+}
+
+:root:has(#theme_raadio_light:checked) {
+    /* Light Theme */
+    --primary-background: #f5f5f5;
+    --secondary-background: #ffffff;
+    --text-color: #333333;
+    --accent-color: #ff80ab;
+    --modal-bkg: #ff80aa4d;
+    --secondary-form-bkg: #00000024;
+    --chart-bkg-stroke: #efefef;
+}
+
+:root:has(#theme_raadio_dark:checked) {
+    /* Dark Theme */
+    --primary-background: #121212;
+    --secondary-background: #1e1e1e;
+    --text-color: #ffffff;
+    --accent-color: #64b5f6;
+    --modal-bkg: #64b4f658;
+    --secondary-form-bkg: #b3b3b324;
+    --chart-bkg-stroke: #434343;
+}
+
+.widget_chart {
+    position: relative;
+}
+
+/* bm chart */
+.bm_chart_cont {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.chart_title_group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.chart_title {
+    font-size: .9rem;
+    margin: 0;
+}
+
+.chart_legend {
+    display: flex;
+    gap: 7px;
+}
+
+.chart_legend_group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.chart_legend_group_text {
+    font-size: .6rem;
+    margin: 0;
+}
+
+.bm_dot_outer {
+    width: 15px;
+    height: 15px;
+    border-radius: 1pc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.bm_dot_inner {
+    width: 7px;
+    height: 7px;
+    border-radius: 1pc;
+    position: absolute;
+}
+
+
+.bm_dot_outer.potty_dot {
+    border: 1px solid #ff80ab;
+}
+
+.bm_dot_inner.potty_dot {
+    background-color: #ff80ab;
+}
+
+.bm_dot_outer.poopy_dot {
+    border: 1px solid var(--accent-three);
+}
+
+.bm_dot_inner.poopy_dot {
+    background-color: var(--accent-three);
+}
+
+.bm_dot_outer.two_for_one_dot {
+    border: 1px solid var(--accent-two);
+}
+
+.bm_dot_inner.two_for_one_dot {
+    background-color: var(--accent-two);
+}
+
+.chart_main_cont {
+    display: flex;
+    padding-top: 10px;
+}
+
+.chart_main_cont_col.chart_y {
+    width: 5%;
+}
+
+.chart_y_text {
+    font-size: .5rem;
+    margin: 0;
+    text-align: center;
+}
+
+.chart_main_cont_col.chart_body {
+    padding-top: 5px;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    padding-left: 5px;
+}
+
+#dot_cont {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.chart_y_line {
+    height: 1px;
+    width: 100%;
+    background-color: var(--chart-bkg-stroke);
+}
+
+.chart_footer_x {
+    display: flex;
+    padding-left: 5%;
+    padding-right: 5px;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.chart_footer_x_text {
+    font-size: .7rem;
+
+}
+.chart_dot{
+    position: absolute;
+
+}
+
+/* END bm chart */

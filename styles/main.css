@@ -512,6 +512,7 @@ div#add_feeding_data_form>p {
 
 .widget_chart_cont {
     width: 100%;
+    position: relative;
     max-width: 350px;
     height: 350px;
     background-color: var(--secondary-background);
