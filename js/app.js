@@ -90,14 +90,14 @@ const setSelectBabyDropDown = () => {
     if (globalBabyData !== null && globalBabyData.length >= 1) {
         globalBabyData.forEach(baby => {
             const option = $("<option></option>")
-                .attr("value", baby._id) 
-                .text(baby.name); 
-            
+                .attr("value", baby._id)
+                .text(baby.name);
+
             if (baby.active) {
-                option.attr("selected", "selected"); 
+                option.attr("selected", "selected");
             }
-            
-            selectBaby.append(option); 
+
+            selectBaby.append(option);
         });
     }
 }
@@ -121,9 +121,9 @@ const checkBabyData = () => {
 
 
 }
-const setBMChart = ()=>{
+const setBMChart = () => {
     let baby = getCurrentBaby()
-    $(bm_chart_cont_elm).append(create_BM_chart_HTML(baby.bm_data))
+    create_BM_chart_HTML(baby)
 }
 
 // load html function
