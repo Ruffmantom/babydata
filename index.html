@@ -182,13 +182,13 @@
                             <label for="bm_data_radio_elm_potty">Potty</label>
                         </div>
                         <div class="radio_group">
-                            <input class="radio" checked type="radio" data-bmtype="poopy" id="bm_data_radio_elm_poopy"
+                            <input class="radio" type="radio" data-bmtype="poopy" id="bm_data_radio_elm_poopy"
                                 name="bm_type">
                             <label for="bm_data_radio_elm_poopy">Poopy</label>
 
                         </div>
                         <div class="radio_group">
-                            <input class="radio" checked type="radio" data-bmtype="twoforone"
+                            <input class="radio" type="radio" data-bmtype="twoforone"
                                 id="bm_data_radio_elm_two_for_one" name="bm_type">
                             <label for="bm_data_radio_elm_two_for_one">Two For One</label>
                         </div>
@@ -309,7 +309,7 @@
         <div class="content_cont">
             <!-- these containers will be swapped out and re rendered when actions happen -->
             <div id="title_block">
-                <div id="baby_settings_button_cont" class="btn_elm btn_lg div_btn">
+                <div id="baby_settings_button_cont" class="btn_elm btn_lg">
                     <div id="baby_settings_button" class="button_elm_trigger"></div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17.587" viewBox="0 0 20 17.587">
                         <g id="Icon_core-baby" data-name="Icon core-baby" transform="translate(-1.029 -2.216)">
@@ -502,6 +502,24 @@
             <div class="content_block_container" id="all_data_page">
                 <div id="title_block">
                     <p id="baby_name_title">All Baby Data</p>
+                    <div class="title_block_footer_bar">
+                        <p id="data_page_babys_name"></p>
+                        <div class="btn_container">
+                            <p>Filter</p>
+                            <div class="btn_elm btn_lg icon_btn">
+                                <div id="filter_baby_data_by_date_btn" class="button_elm_trigger"></div>
+                                <svg id="filter_baby_data_by_date_icon" xmlns="http://www.w3.org/2000/svg"
+                                    width="20.286" height="18" viewBox="0 0 20.286 16">
+                                    <path id="Path_22" data-name="Path 22"
+                                        d="M13.124,32.371a1.142,1.142,0,0,0-1.686,0L8.3,35.8a1.143,1.143,0,1,0,1.686,1.543l1.157-1.261V46.857a1.143,1.143,0,0,0,2.286,0V36.082l1.157,1.264A1.143,1.143,0,0,0,16.267,35.8l-3.143-3.429ZM19.139,48h1.143a1.143,1.143,0,1,0,0-2.286H19.139a1.143,1.143,0,1,0,0,2.286Zm0-4.571h3.429a1.143,1.143,0,1,0,0-2.286H19.139a1.143,1.143,0,1,0,0,2.286Zm0-4.571h5.714a1.143,1.143,0,0,0,0-2.286H19.139a1.143,1.143,0,1,0,0,2.286Zm0-4.571h8a1.143,1.143,0,1,0,0-2.286h-8a1.143,1.143,0,1,0,0,2.286Z"
+                                        transform="translate(-7.996 -32)" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="all_data_cont">
+                    
                 </div>
             </div>
         </div>

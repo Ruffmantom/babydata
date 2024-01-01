@@ -101,16 +101,16 @@ const createBabyUser = (newBaby, values) => {
     // save global baby data
     if (newBaby) {
         //if this is the start of adding a baby, initialize the global data
-        globalBabyData = []
+        globalBabyData.babies = []
     }
-    if (globalBabyData.length >= 1) {
+    if (globalBabyData.babies.length >= 1) {
         // set other active babies to false
-        globalBabyData.forEach(b => {
+        globalBabyData.babies.forEach(b => {
             b.active = false
         });
     }
     // after setting other babies to not active now push new baby
-    globalBabyData.push(baby)
+    globalBabyData.babies.push(baby)
 
     //save to local storage
     saveToLocalStorage()
@@ -271,7 +271,7 @@ $(() => {
     $("#select_baby").on('keyup change', (e) => {
         let babyId = e.target.value;
         console.log(e.target.value)
-        globalBabyData.forEach(b => {
+        globalBabyData.babies.forEach(b => {
             b.active = false
             if (b._id === babyId) {
                 b.active = true
@@ -287,12 +287,18 @@ $(() => {
     $(view_all_data_btn).on('click', (e) => {
         $(home_data_page).hide()
         $(all_data_page).fadeIn()
-        changeActiveFooterButton('data')
+        // save current page 
+        globalBabyData.currentPage = "all_data"
+        saveToLocalStorage()
+        changeActiveFooterButton('all_data')
     })
     
     $(home_btn).on('click', (e) => {
         $(all_data_page).hide()
         $(home_data_page).fadeIn()
+        globalBabyData.currentPage = "home"
+        // save to local storage
+        saveToLocalStorage()
         changeActiveFooterButton('home')
     })
     
@@ -307,7 +313,7 @@ $(() => {
     $("#close_data_btn").on("click", (e) => {
         $(baby_add_data_modal).fadeOut()
         // remove active classes if any
-        changeActiveFooterButton('home')
+        changeActiveFooterButton(globalBabyData.currentPage)
     })
 
     // selecting the data type
