@@ -104,7 +104,7 @@ const loadCurrentPage = () => {
     if (globalBabyData.currentPage === "all_data") {
         $(home_data_page).hide()
         $(all_data_page).show()
-        changeActiveFooterButton('data')
+        changeActiveFooterButton('all_data')
     } else {
         $(all_data_page).hide()
         $(home_data_page).show()
