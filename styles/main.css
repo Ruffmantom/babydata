@@ -21,6 +21,12 @@
     --accent-two: #B364F6;
     --accent-three: #3ca2f4;
 
+    --data-type-potty: #ff80ab;
+    --data-type-poopy: #3ca2f4;
+    --data-type-two-for-one: #B364F6;
+    --data-card_bkg-potty: rgba(255, 128, 171, .40);
+    --data-card_bkg-poopy: rgba(60, 162, 244, .40);
+    --data-card_bkg-two-for-one: rgba(179, 100, 246, .40);
 }
 
 :root:has(#theme_raadio_light:checked) {
@@ -523,17 +529,20 @@ div#add_feeding_data_form>p {
     margin-bottom: 15px;
 }
 
-.wdiget_cont {
+.widget_cont {
     margin-bottom: 15px;
 }
-.btn_container{
+
+.btn_container {
     display: flex;
     align-items: center;
 }
-.btn_container>p{
-margin-bottom: 0;
-margin-right: 5px;
+
+.btn_container>p {
+    margin-bottom: 0;
+    margin-right: 5px;
 }
+
 .icon_btn {
     width: 50px;
     height: 50px;
@@ -544,11 +553,71 @@ margin-right: 5px;
     margin-top: 0;
     background: none;
 }
-.title_block_footer_bar{
+
+.title_block_footer_bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-#data_page_babys_name{
+
+#data_page_babys_name {
     margin-bottom: 0;
+}
+
+.all_data_cont {
+    background-color: var(--secondary-background);
+    height: 75vh;
+    max-height: 80vh;
+    padding: 10px 10px 50px 10px;
+    border-radius: 10px;
+}
+
+.all_data_header{
+    padding-bottom: 10px;
+}
+.all_data_content_cont {
+    max-height: 100%;
+    overflow-y: scroll;
+    padding-bottom: 80px;
+}
+
+.all_data_content_cont::-webkit-scrollbar {
+    display: none;
+}
+.data_card {
+    border-radius: 7px;
+    padding: 10px;
+}
+
+.data_card.potty {
+    background-color: var(--data-card_bkg-potty);
+
+}
+
+.data_card.poopy {
+    background-color: var(--data-card_bkg-poopy);
+}
+
+.data_card.two_for_one {
+    background-color: var(--data-card_bkg-two-for-one);
+}
+
+.data_card:not(:first-child) {
+    margin-top: 10px;
+}
+
+.data_card_type {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.data_card_comment {
+    font-size: 16px;
+
+}
+
+.data_card_date {
+    font-size: 10px;
+    margin-bottom: 0;
+    font-style: italic;
 }

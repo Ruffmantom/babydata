@@ -135,7 +135,7 @@ const closeAddData = (dataType) => {
     clearInputsAndCloseAddData()
     var timer = setTimeout(() => {
         $(baby_add_data_modal).fadeOut()
-        changeActiveFooterButton('home')
+        changeActiveFooterButton(globalBabyData.currentPage)
         clearTimeout(timer)
     }, 1000);
 }
