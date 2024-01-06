@@ -3,11 +3,12 @@ let defaultData = {
     currentPage: "home", //default
     theme: false,
     babies: [],
-    currentFilter:'bm_data',
+    currentFilter: 'bm_data',
 }
 const welcome_section_elm = $("#welcome_section")
 const signup_section_elm = $("#signup_section")
 const bm_chart_cont_elm = $("#bm_chart")
+const all_data_cont = $("#all_data")
 
 // on load
 // Need to create baby user
@@ -18,9 +19,9 @@ const getCurrentBaby = () => {
 
 
 const checkThemeData = () => {
-        if (globalBabyData.theme === true) {
-            setToDarkTheme()
-        }
+    if (globalBabyData.theme === true) {
+        setToDarkTheme()
+    }
 }
 
 // function to save data to local storage
@@ -90,7 +91,7 @@ const checkBabyData = () => {
         // console.log('First time on app... Loading default data');
         globalBabyData = defaultData;
         localStorage.setItem('BBD', JSON.stringify(globalBabyData));
-      
+
     }
 }
 
@@ -111,6 +112,37 @@ const loadCurrentPage = () => {
         changeActiveFooterButton('home')
     }
 }
+const loadCurrentData = () => {
+    // createDataCard()
+    let baby = getCurrentBaby()
+    if (globalBabyData.currentFilter === "bm_data") {
+        if (baby.bm_data.length >= 1) {
+            baby.bm_data.forEach(d => {
+                $(all_data_cont).append(createDataCard(d))
+            })
+        } else {
+            $(all_data_cont).append(createDataCard(''))
+        }
+    } else if (globalBabyData.currentFilter === "feed_data") {
+        if (baby.feed_data.length >= 1) {
+            baby.feed_data.forEach(d => {
+                $(all_data_cont).append(createDataCard(d))
+            })
+            $(all_data_cont).append(createDataCard(baby.feed_data))
+        } else {
+            $(all_data_cont).append(createDataCard(''))
+        }
+    } else {
+        if (baby.weight_data.length >= 1) {
+            baby.weight_data.forEach(d => {
+                $(all_data_cont).append(createDataCard(d))
+            })
+            $(all_data_cont).append(createDataCard(baby.weight_data))
+        } else {
+            $(all_data_cont).append(createDataCard(''))
+        }
+    }
+}
 
 // load html function
 const loadHtml = () => {
@@ -122,10 +154,9 @@ const loadHtml = () => {
     setSelectBabyDropDown()
     // set data into charts
     setBMChart()
+    loadCurrentData()
 }
-const loadInitialHtml = ()=>{
-    
-}
+
 
 $(() => {
     checkBabyData()

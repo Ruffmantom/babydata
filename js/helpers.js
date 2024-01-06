@@ -216,9 +216,10 @@ const createBMDataObj = () => {
   // For example, you can console.log them or send them to the server
   let bmData = {
     _id: createId(),
+    cardType: 'bm',
     type: bmType,
     note: note,
-    created_at: createdAt
+    createdAt: createdAt
   }
   // console.log("BM Data:", bmData);
   console.log("Global Data BEFORE add BM data: ",globalBabyData)
@@ -256,6 +257,7 @@ const createWeightData = () => {
   // Create weightData object
   var weightData = {
     _id: createId(),
+    cardType: 'weight',
     pounds: pounds,
     ounces: ounces,
     createdAt: createdAt
@@ -298,6 +300,7 @@ const createFeedData = () => {
   // Create weightData object
   var feedData = {
     _id: createId(),
+    cardType: 'feed',
     ounces: ounces,
     hours: hours,
     minutes: minutes,

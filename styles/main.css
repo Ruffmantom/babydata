@@ -566,19 +566,21 @@ div#add_feeding_data_form>p {
 
 .all_data_cont {
     background-color: var(--secondary-background);
-    height: 75vh;
-    max-height: 80vh;
-    padding: 10px 10px 50px 10px;
+    height: 70vh;
+    padding: 10px 10px 10px 10px;
     border-radius: 10px;
 }
 
 .all_data_header{
     padding-bottom: 10px;
+    height: 10%;
 }
+
 .all_data_content_cont {
-    max-height: 100%;
+    max-height: 89%;
     overflow-y: scroll;
-    padding-bottom: 80px;
+    margin-top: 5px;
+    border-radius: 7px;
 }
 
 .all_data_content_cont::-webkit-scrollbar {
@@ -587,6 +589,7 @@ div#add_feeding_data_form>p {
 .data_card {
     border-radius: 7px;
     padding: 10px;
+    background-color: var(--primary-background);
 }
 
 .data_card.potty {
@@ -606,6 +609,7 @@ div#add_feeding_data_form>p {
     margin-top: 10px;
 }
 
+
 .data_card_type {
     font-size: 14px;
     font-weight: bold;
@@ -617,7 +621,7 @@ div#add_feeding_data_form>p {
 }
 
 .data_card_date {
-    font-size: 10px;
+    font-size: 12px;
     margin-bottom: 0;
     font-style: italic;
 }
