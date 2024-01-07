@@ -1,11 +1,15 @@
 var idChars = "3QKXV0F8IYCA7S5T4ZGJDWB9L1N26UHOMRPVE";
-const theme_raadio_dark = $("#theme_raadio_dark")
-const theme_raadio_light = $("#theme_raadio_light")
+const theme_radio_dark = $("#theme_raadio_dark")
+const theme_radio_light = $("#theme_raadio_light")
 const bm_data_radio_elm_potty = $("#bm_data_radio_elm_potty")
 const bm_data_radio_elm_poopy = $("#bm_data_radio_elm_poopy")
 const bm_data_radio_elm_two_for_one = $("#bm_data_radio_elm_two_for_one")
 const bm_data_radio_elm_now = $("#bm_data_radio_elm_now")
 const bm_data_radio_elm_enter = $("#bm_data_radio_elm_enter")
+
+const enter_time_for_bm_data_cont = $("#enter_time_for_bm_data_cont")
+const enter_time_for_weight_data_cont = $("#enter_time_for_weight_data_cont")
+const enter_time_for_feed_data_cont = $("#enter_time_for_feed_data_cont")
 
 
 const createId = () => {
@@ -116,15 +120,15 @@ const toggleTheme = () => {
   if (globalBabyData.theme) {
     globalBabyData.theme = false
     // set to light theme
-    $(theme_raadio_dark).prop('checked', false);
-    $(theme_raadio_light).prop('checked', true);
+    $(theme_radio_dark).prop('checked', false);
+    $(theme_radio_light).prop('checked', true);
     $(".custom_toggle").removeClass('dark')
     saveToLocalStorage()
   } else {
     globalBabyData.theme = true
     // set to dark theme
-    $(theme_raadio_dark).prop('checked', true);
-    $(theme_raadio_light).prop('checked', false);
+    $(theme_radio_dark).prop('checked', true);
+    $(theme_radio_light).prop('checked', false);
     // add class to toggle
     $(".custom_toggle").addClass('dark')
     saveToLocalStorage()
@@ -132,8 +136,8 @@ const toggleTheme = () => {
 }
 
 const setToDarkTheme = () => {
-  $(theme_raadio_dark).prop('checked', true);
-  $(theme_raadio_light).prop('checked', false);
+  $(theme_radio_dark).prop('checked', true);
+  $(theme_radio_light).prop('checked', false);
   // add class to toggle
   $(".custom_toggle").addClass('dark')
 }
@@ -336,6 +340,10 @@ const clearInputsAndCloseAddData = () => {
   add_weight_data_form.hide()
   add_feeding_data_form.hide()
   add_bm_data_form.hide()
+  // time forms
+  enter_time_for_bm_data_cont.hide()
+  enter_time_for_weight_data_cont.hide()
+  enter_time_for_feed_data_cont.hide()
 }
 
 const dayCoordinates = { // these are based off the top left corner of the container
@@ -388,14 +396,17 @@ const returnDayOfWeekCoordinate = (dateAndTime) => {
 }
 
 function returnTimeOfDayCoordinate(timeString) {
-  const [hours, minutes] = timeString.split(':').map(Number);
+  const timeOnly = timeString.split('T')[1]; // Extract time part from the string
+  const [hours, minutes] = timeOnly.split(':').map(Number);
   const totalMinutes = hours * 60 + minutes;
-  const minutesInRange = minAndMaxCoordinates.yMaxHeight - minAndMaxCoordinates.yMinHeight;
+  const maxCoordinate = 263; // Maximum absolute vertical coordinate
   const minutesPerDay = 24 * 60;
+
   // Calculate the proportion of total minutes and map it to the range
-  const mappedValue = ((totalMinutes / minutesPerDay) * minutesInRange) + minAndMaxCoordinates.yMinHeight;
+  const mappedValue = (totalMinutes / minutesPerDay) * maxCoordinate;
   return mappedValue;
 }
+
 
 // return a data dot
 const returnCircleCoordinates = (data) => {

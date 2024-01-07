@@ -17,7 +17,7 @@ const create_BM_chart_HTML = (baby) => {
     });
 }
 
-const createDataCard = (data) => {
+const createDataCard = (baby,data) => {
     if (data === '') {
         return `<p>There is no data</p>`
     } else {
@@ -39,15 +39,11 @@ const createDataCard = (data) => {
             return `
                 <div data-id="${data._id}" class="data_card">
                 <p class="data_card_type">Feeding</p>
-                ${data.ounces ? `<p class="data_card_comment"> ${data.ounces} within ${data.hours}hr's and ${data.minutes}min's</p>` : ""}
+                ${data.ounces ? `<p class="data_card_comment">${baby.name} drank ${data.ounces}oz within ${data.hours}hr's and ${data.minutes}min's</p>` : ""}
         
                 <p class="data_card_date">${formatDate(data.createdAt)}</p>
             </div>`
         }
-
-
-
-
 
     }
 }

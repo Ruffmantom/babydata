@@ -3,7 +3,8 @@ let defaultData = {
     currentPage: "home", //default
     theme: false,
     babies: [],
-    currentFilter: 'bm_data',
+    currentFilter: 'most_recent',
+    currentData: 'bm_data',
 }
 const welcome_section_elm = $("#welcome_section")
 const signup_section_elm = $("#signup_section")
@@ -45,7 +46,7 @@ const setHomeGreeting = () => {
 const setDataPage = () => {
     let baby = getCurrentBaby()
     let babyName = baby.name.split(' ')[0]
-    $("#data_page_babys_name").text(`Viewing ${babyName}'s ${globalBabyData.currentFilter}`)
+    $("#data_page_babys_name").text(`Viewing ${babyName}'s ${globalBabyData.currentData}`)
 }
 
 const setSelectBabyDropDown = () => {
@@ -113,35 +114,44 @@ const loadCurrentPage = () => {
     }
 }
 const loadCurrentData = () => {
-    // createDataCard()
-    let baby = getCurrentBaby()
-    if (globalBabyData.currentFilter === "bm_data") {
-        if (baby.bm_data.length >= 1) {
-            baby.bm_data.forEach(d => {
-                $(all_data_cont).append(createDataCard(d))
-            })
-        } else {
-            $(all_data_cont).append(createDataCard(''))
-        }
-    } else if (globalBabyData.currentFilter === "feed_data") {
-        if (baby.feed_data.length >= 1) {
-            baby.feed_data.forEach(d => {
-                $(all_data_cont).append(createDataCard(d))
-            })
-            $(all_data_cont).append(createDataCard(baby.feed_data))
-        } else {
-            $(all_data_cont).append(createDataCard(''))
-        }
-    } else {
-        if (baby.weight_data.length >= 1) {
-            baby.weight_data.forEach(d => {
-                $(all_data_cont).append(createDataCard(d))
-            })
-            $(all_data_cont).append(createDataCard(baby.weight_data))
-        } else {
-            $(all_data_cont).append(createDataCard(''))
-        }
+    const baby = getCurrentBaby();
+    const allDataContainer = $(all_data_cont);
+    allDataContainer.empty();
+
+    let currentData = [];
+    switch (globalBabyData.currentData) {
+        case "bm_data":
+            currentData = baby.bm_data;
+            break;
+        case "feed_data":
+            currentData = baby.feed_data;
+            break;
+        default:
+            currentData = baby.weight_data;
+            break;
     }
+
+    let filteredData = [];
+
+    if (currentData.length >= 1) {
+        if (globalBabyData.currentFilter === "most_recent") {
+            filteredData = currentData.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        } else if (globalBabyData.currentFilter === "oldest_first") {
+            filteredData = currentData.slice().sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+        }
+        console.log(`${globalBabyData.currentData} load filtered data: `, filteredData);
+        filteredData.forEach(d => {
+            allDataContainer.append(createDataCard(baby,d));
+        });
+    } else {
+        allDataContainer.append(createDataCard(baby,''));
+    }
+};
+
+
+// load current data selector
+const loadDataSelect = () => {
+    $("#all_data_select").val(globalBabyData.currentData);
 }
 
 // load html function
@@ -154,6 +164,7 @@ const loadHtml = () => {
     setSelectBabyDropDown()
     // set data into charts
     setBMChart()
+    loadDataSelect()
     loadCurrentData()
 }
 
