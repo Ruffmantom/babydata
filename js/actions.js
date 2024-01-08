@@ -410,6 +410,10 @@ $(() => {
     
         // Save to local storage and load data
         saveToLocalStorage();
+        // start loader
+        // this is just for ascetics
+        
+        // load data
         loadCurrentData();
     });
     

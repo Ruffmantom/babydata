@@ -89,28 +89,28 @@ function getAgeDescription(dateString) {
 
   if (days < 7) {
     if (days === 1) {
-      return `${days} day old`;
+      returnPx = `${days} day old`;
     } else {
-      return `${days} days old`;
+      returnPx = `${days} days old`;
     }
   } else if (days >= 7 && days < 30) {
     if (days === 7) {
-      return `1 week old`;
+      returnPx = `1 week old`;
     } else {
-      return `${weeks} weeks and ${remainingDays} days old`;
+      returnPx = `${weeks} weeks and ${remainingDays} days old`;
     }
   } else if (days >= 30 && days < 365) {
     if (days === 30) {
-      return `1 month old`;
+      returnPx = `1 month old`;
     } else {
-      return `${months} months and ${remainingWeeks} weeks old`;
+      returnPx = `${months} months and ${remainingWeeks} weeks old`;
     }
   } else {
     const years = Math.floor(days / 365);
     if (years === 1) {
-      return `1 year old`;
+      returnPx = `1 year old`;
     } else {
-      return `${years} years old`;
+      returnPx = `${years} years old`;
     }
   }
 }
@@ -226,10 +226,10 @@ const createBMDataObj = () => {
     createdAt: createdAt
   }
   // console.log("BM Data:", bmData);
-  console.log("Global Data BEFORE add BM data: ",globalBabyData)
+  console.log("Global Data BEFORE add BM data: ", globalBabyData)
   let currentBaby = getCurrentBaby()
   currentBaby.bm_data.push(bmData)
-  console.log("Global Data AFTER add BM data: ",globalBabyData)
+  console.log("Global Data AFTER add BM data: ", globalBabyData)
   saveToLocalStorage()
 };
 
@@ -346,21 +346,168 @@ const clearInputsAndCloseAddData = () => {
   enter_time_for_feed_data_cont.hide()
 }
 
+// const dayCoordinates = { // these are based off the top left corner of the container
+//   sunday: 15, //switching to percentage since sun-sat is set to space between.
+//   monday: 63,
+//   tuesday: 110,
+//   wednesday: 157,
+//   thursday: 205,
+//   friday: 248,
+//   saturday: 288,
+// }
 const dayCoordinates = { // these are based off the top left corner of the container
-  sunday: 3,
-  monday: 52,
-  tuesday: 103,
-  wednesday: 153,
-  thursday: 204,
-  friday: 249,
-  saturday: 294,
+  sunday: 5, //switching to percentage since sun-sat is set to space between.
+  monday: 20,
+  tuesday: 35,
+  wednesday: 50,
+  thursday: 65,
+  friday: 79,
+  saturday: 92,
 }
 
 // min and max coordinates
 const minAndMaxCoordinates = {
-  yMinHeight: 263,
-  yMaxHeight: 0,
+  yMinHeight: 0,
+  yMaxHeight: 261,
 }
+
+
+/*
+military time                   
+11:00pm = 2300 - Target Px = 263  // difference is 11px
+10:00pm = 2200 - Target Px = 252    
+09:00pm = 2100 - Target Px = 241  
+08:00pm = 2000 - Target Px = 230  
+07:00pm = 1900 - Target Px = 219    
+06:00pm = 1800 - Target Px = 208  
+05:00pm = 1700 - Target Px = 197  
+04:00pm = 1600 - Target Px = 186  
+03:00pm = 1500 - Target Px = 175  
+02:00pm = 1400 - Target Px = 164  
+01:00pm = 1300 - Target Px = 153  
+12:00pm = 1200 - Target Px = 142  
+11:00am = 1100 - Target Px = 131  
+10:00am = 1000 - Target Px = 120  
+09:00am = 0900 - Target Px = 109  
+08:00am = 0800 - Target Px = 98  
+07:00am = 0700 - Target Px = 87  
+06:00am = 0600 - Target Px = 76  
+05:00am = 0500 - Target Px = 65  
+04:00am = 0400 - Target Px = 54  
+03:00am = 0300 - Target Px = 43  
+02:00am = 0200 - Target Px = 32  
+01:00am = 0100 - Target Px = 21  
+12:00am = 0000 - Target Px = 0
+*/
+
+const checkTimeAndReturnPx = (hour, min) => {
+  // find the hour switch case
+  let m = parseInt(min) / 60
+  let mx = Math.floor(m * 100) / 100;
+  let returnMinPx = mx.toString().split('.')[1]
+  let returnPx = ''
+  switch (hour) {
+    case 23:
+      console.log("recorded at: 2300 = 11:00pm")
+      returnPx = `263.${returnMinPx}`
+      break;
+    case 22:
+      console.log("recorded at: 2200 = 10:00pm")
+      returnPx = `252.${returnMinPx}`
+      break;
+    case 21:
+      console.log("recorded at: 2100 = 09:00pm")
+      returnPx = `241.${returnMinPx}`
+      break;
+    case 20:
+      console.log("recorded at: 2000 = 08:00pm")
+      returnPx = `230.${returnMinPx}`
+      break;
+    case 19:
+      console.log("recorded at: 1900 = 07:00pm")
+      returnPx = `219.${returnMinPx}`
+      break;
+    case 18:
+      console.log("recorded at: 1800 = 06:00pm")
+      returnPx = `208.${returnMinPx}`
+      break;
+    case 17:
+      console.log("recorded at: 1700 = 05:00pm")
+      returnPx = `197.${returnMinPx}`
+      break;
+    case 16:
+      console.log("recorded at: 1600 = 04:00pm")
+      returnPx = `186.${returnMinPx}`
+      break;
+    case 15:
+      console.log("recorded at: 1500 = 03:00pm")
+      returnPx = `175.${returnMinPx}`
+      break;
+    case 14:
+      console.log("recorded at: 1400 = 02:00pm")
+      returnPx = `164.${returnMinPx}`
+      break;
+    case 13:
+      console.log("recorded at: 1300 = 01:00pm")
+      returnPx = `153.${returnMinPx}`
+      break;
+    case 12:
+      console.log("recorded at: 1200 = 12:00pm")
+      returnPx = `142.${returnMinPx}`
+      break;
+    case 11:
+      console.log("recorded at: 1100 = 11:00am")
+      returnPx = `131.${returnMinPx}`
+      break;
+    case 10:
+      console.log("recorded at: 1000 = 10:00am")
+      returnPx = `120.${returnMinPx}`
+      break;
+    case 9:
+      console.log("recorded at: 0900 = 09:00am")
+      returnPx = `109.${returnMinPx}`
+      break;
+    case 8:
+      console.log("recorded at: 0800 = 08:00am")
+      returnPx = `98.${returnMinPx}`
+      break;
+    case 7:
+      console.log("recorded at: 0700 = 07:00am")
+      returnPx = `87.${returnMinPx}`
+      break;
+    case 6:
+      console.log("recorded at: 0600 = 06:00am")
+      returnPx = `76.${returnMinPx}`
+      break;
+    case 5:
+      console.log("recorded at: 0500 = 05:00am")
+      returnPx = `65.${returnMinPx}`
+      break;
+    case 4:
+      console.log("recorded at: 0400 = 04:00am")
+      returnPx = `54.${returnMinPx}`
+      break;
+    case 3:
+      console.log("recorded at: 0300 = 03:00am")
+      returnPx = `43.${returnMinPx}`
+      break;
+    case 2:
+      console.log("recorded at: 0200 = 02:00am")
+      returnPx = `32.${returnMinPx}`
+      break;
+    case 1:
+      console.log("recorded at: 0100 = 01:00am")
+      returnPx = `21.${returnMinPx}`
+      break;
+    case parseInt("00"):
+      console.log("recorded at: 0000 = 12:00am")
+      returnPx = `0`
+      break;
+  }
+  return returnPx
+}
+
+
 
 const returnDayOfWeekCoordinate = (dateAndTime) => {
   // console.log("returnDayOfWeekCoordinate INCOMING dateAndTime: ", dateAndTime)
@@ -370,41 +517,35 @@ const returnDayOfWeekCoordinate = (dateAndTime) => {
   // console.log("returnDayOfWeekCoordinate DAY OF WEEK: ", dayOfWeek)
   let coordinate;
   switch (dayOfWeek) {
-      case "Sunday":
-          coordinate = dayCoordinates.sunday
-          break;
-      case "Monday":
-          coordinate = dayCoordinates.monday
-          break;
-      case "Tuesday":
-          coordinate = dayCoordinates.tuesday
-          break;
-      case "Wednesday":
-          coordinate = dayCoordinates.wednesday
-          break;
-      case "Thursday":
-          coordinate = dayCoordinates.thursday
-          break;
-      case "Friday":
-          coordinate = dayCoordinates.friday
-          break;
-      default:
-          coordinate = dayCoordinates.saturday
+    case "Sunday":
+      coordinate = dayCoordinates.sunday
+      break;
+    case "Monday":
+      coordinate = dayCoordinates.monday
+      break;
+    case "Tuesday":
+      coordinate = dayCoordinates.tuesday
+      break;
+    case "Wednesday":
+      coordinate = dayCoordinates.wednesday
+      break;
+    case "Thursday":
+      coordinate = dayCoordinates.thursday
+      break;
+    case "Friday":
+      coordinate = dayCoordinates.friday
+      break;
+    default:
+      coordinate = dayCoordinates.saturday
   }
   // console.log("returnDayOfWeekCoordinate RETURNED COORDINATE: ", coordinate)
   return parseInt(coordinate);
 }
 
 function returnTimeOfDayCoordinate(timeString) {
-  const timeOnly = timeString.split('T')[1]; // Extract time part from the string
-  const [hours, minutes] = timeOnly.split(':').map(Number);
-  const totalMinutes = hours * 60 + minutes;
-  const maxCoordinate = 263; // Maximum absolute vertical coordinate
-  const minutesPerDay = 24 * 60;
-
-  // Calculate the proportion of total minutes and map it to the range
-  const mappedValue = (totalMinutes / minutesPerDay) * maxCoordinate;
-  return mappedValue;
+  const [hours, minutes] = timeString ? timeString.split(':').map(Number) : "null";
+  const time = hours.toString() + minutes.toString()
+  return checkTimeAndReturnPx(hours, minutes)
 }
 
 
@@ -417,9 +558,10 @@ const returnCircleCoordinates = (data) => {
   let time = data.split("T")[1];
   // coordinates object
   let coordinatesObj = {
-      innerX: returnDayOfWeekCoordinate(data),
-      innerY:Math.round( returnTimeOfDayCoordinate(time)),
+    innerX: returnDayOfWeekCoordinate(data),
+    innerY: returnTimeOfDayCoordinate(time),
   };
+  console.log("coordinates: ", coordinatesObj)
   return coordinatesObj;
 };
 
@@ -427,14 +569,14 @@ const returnCircleCoordinates = (data) => {
 const returnPottyDotColor = (type) => {
   let color;
   switch (type) {
-      case "potty":
-          color = "potty_dot"
-          break;
-      case "poopy":
-          color = "poopy_dot"
-          break;
-      default:
-          color = "two_for_one_dot"
+    case "potty":
+      color = "potty_dot"
+      break;
+    case "poopy":
+      color = "poopy_dot"
+      break;
+    default:
+      color = "two_for_one_dot"
   }
   return color;
 }

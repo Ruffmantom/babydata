@@ -156,6 +156,7 @@ const loadDataSelect = () => {
 
 // load html function
 const loadHtml = () => {
+    console.log('loading HTML...')
     // set titles and names
     loadCurrentPage()
     setHomeTitle()

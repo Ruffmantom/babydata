@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+        const jsonData = [
+            {
+                _id: "3WXBAS-NZ3WQT-VWLW4A",
+                cardType: "feed",
+                ounces: "75",
+                hours: "0",
+                minutes: "45",
+                createdAt: "2024-01-01T06:15"
+            },
+            {
+                _id: "5AHZS3-DVAK48-VOTA47",
+                cardType: "feed",
+                ounces: "90",
+                hours: "1",
+                minutes: "15",
+                createdAt: "2024-01-01T03:10"
+            },
+            {
+                _id: "B0XN47-H9VENP-8K0Z1P",
+                cardType: "feed",
+                ounces: "120",
+                hours: "1",
+                minutes: "2",
+                createdAt: "2024-01-01T09:15"
+            },
+            {
+                _id: "S6VY3R-2IHMN9-5JFQWK",
+                cardType: "feed",
+                ounces: "90",
+                hours: "0",
+                minutes: "45",
+                createdAt: "2024-02-14T14:30"
+            }
+        ]
+
+        const createCsvData = (jsonData) => {
+            let data = [
+                ["ID", "Type", "Ounces", "Length Hr", "Length Min", "Recorded At"],
+            ]
+            // map the json data 
+            jsonData.forEach(d => {
+                data.push([d._id, d.cardType, d.ounces, d.hours, d.minutes, d.createdAt])
+            });
+            return data
+        }
+
+        function downloadCSV(data, filename) {
+            let outputData = createCsvData(data)
+
+
+            const csvContent = "data:text/csv;charset=utf-8," + outputData.map(row => row.join(",")).join("\n");
+
+            const encodedUri = encodeURI(csvContent);
+            // const link = document.createElement("a");
+            // link.setAttribute("href", encodedUri);
+            // link.setAttribute("download", filename);
+            // document.body.appendChild(link); // Append the link to the DOM
+            // link.click(); // Simulate click to trigger download
+            // document.body.removeChild(link); // Clean up by removing the link from the DOM
+        }
+
+
+        const filename = 'exported_data.csv';
+        downloadCSV(jsonData, filename);
+
+
+    </script>
+</body>
+
+</html>

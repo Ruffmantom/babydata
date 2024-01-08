@@ -5,7 +5,7 @@ const createBmDot = (bm, index) => {
     // console.log(coordinates.innerX)
     // console.log(coordinates.innerY)
     return `
-        <div id="data_dot_${index}" class="bm_dot_outer ${typeClassName} chart_dot" style="top:${coordinates.innerY}px; left:${coordinates.innerX}px;">
+        <div id="data_dot_${index}" class="bm_dot_outer ${typeClassName} chart_dot" style="top:${coordinates.innerY}px; left:${coordinates.innerX}%;">
             <div class="bm_dot_inner ${typeClassName}"></div>
         </div>
     `
