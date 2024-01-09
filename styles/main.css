@@ -571,9 +571,11 @@ div#add_feeding_data_form>p {
     border-radius: 10px;
 }
 
-.all_data_header{
+.all_data_header {
     padding-bottom: 10px;
     height: 10%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .all_data_content_cont {
@@ -583,9 +585,23 @@ div#add_feeding_data_form>p {
     border-radius: 7px;
 }
 
+#all_data_select {
+    max-width: 82%;
+    height: 50px;
+}
+
+#export_csv_btn {
+    background-color: var(--primary-background);
+    height: 50px;
+    width: 15%;
+    padding: 15px;
+    border-radius: 7px;
+}
+
 .all_data_content_cont::-webkit-scrollbar {
     display: none;
 }
+
 .data_card {
     border-radius: 7px;
     padding: 10px;
@@ -626,6 +642,43 @@ div#add_feeding_data_form>p {
     font-style: italic;
 }
 
-.rotate_filter{
+.rotate_filter {
     transform: scaleY(-1);
+}
+
+.loader_cont{
+    background:none;
+}
+.loader_inner{
+    margin: auto;
+    height: 100px;
+    width: 100px;
+    background-color: var(--accent-color);
+    border-radius: 10pc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 7px var(--accent-color);
+}
+
+@keyframes rotateAndScale {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(360deg) scale(1);
+    }
+    70% {
+        transform: rotate(360deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+#loader_icon{
+    height: 50px;
+    width: 50px;
+    fill: #fff;
+    animation: rotateAndScale 2s infinite ease-in-out;
 }

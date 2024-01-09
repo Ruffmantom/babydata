@@ -41,6 +41,7 @@ const add_data_btn = $("#add_data_btn")
 const home_btn = $("#home_btn")
 const view_all_data_btn = $("#view_all_data_btn")
 const filter_baby_data_by_date_btn = $("#filter_baby_data_by_date_btn")
+const export_csv_btn = $("#export_csv_btn")
 // data form buttons
 const add_data_feed_btn = $("#add_data_feed_btn")
 const add_data_weight_btn = $("#add_data_weight_btn")
@@ -416,5 +417,12 @@ $(() => {
         // load data
         loadCurrentData();
     });
+
+
+    $(export_csv_btn).on("click",(e)=>{
+        console.log("exporting CSV!")
+        // set loader
+        // after loader.. download csv
+    })
     
 })
