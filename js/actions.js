@@ -397,10 +397,10 @@ $(() => {
     $(filter_baby_data_by_date_btn).on("click", (e) => {
         let dateFilter = $(e.target).data('datefilter');
         dateFilter = !dateFilter; // Toggle the boolean value
-    
+
         // Update the button's data attribute with the new boolean value
         $(e.target).data("datefilter", dateFilter);
-    
+
         if (dateFilter) {
             globalBabyData.currentFilter = "most_recent";
             $("#filter_baby_data_by_date_icon").removeClass("rotate_filter")
@@ -408,21 +408,28 @@ $(() => {
             globalBabyData.currentFilter = "oldest_first";
             $("#filter_baby_data_by_date_icon").addClass("rotate_filter")
         }
-    
+
         // Save to local storage and load data
         saveToLocalStorage();
         // start loader
         // this is just for ascetics
-        
+
         // load data
         loadCurrentData();
     });
 
 
-    $(export_csv_btn).on("click",(e)=>{
-        console.log("exporting CSV!")
+    $(export_csv_btn).on("click", (e) => {
         // set loader
-        // after loader.. download csv
+        renderLoader(true)
+        let timer = setTimeout(() => {
+            // close loader
+            renderLoader(false)
+            // after loader.. download csv
+            console.log("exporting CSV!")
+            createCsvDownload()
+            clearTimeout(timer)
+        }, 2000)
     })
-    
+
 })

@@ -18,7 +18,6 @@ const getCurrentBaby = () => {
     return globalBabyData.babies.find(l => l.active === true)
 }
 
-
 const checkThemeData = () => {
     if (globalBabyData.theme === true) {
         setToDarkTheme()

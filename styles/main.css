@@ -648,6 +648,12 @@ div#add_feeding_data_form>p {
 
 .loader_cont{
     background:none;
+    opacity: 0;
+}
+.loader_cont.active{
+    opacity: 1;
+    display: flex;
+    transition: opacity 500ms ease-in-out;
 }
 .loader_inner{
     margin: auto;
@@ -658,7 +664,6 @@ div#add_feeding_data_form>p {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 6px 7px var(--accent-color);
 }
 
 @keyframes rotateAndScale {

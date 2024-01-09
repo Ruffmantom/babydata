@@ -6,6 +6,7 @@ const bm_data_radio_elm_poopy = $("#bm_data_radio_elm_poopy")
 const bm_data_radio_elm_two_for_one = $("#bm_data_radio_elm_two_for_one")
 const bm_data_radio_elm_now = $("#bm_data_radio_elm_now")
 const bm_data_radio_elm_enter = $("#bm_data_radio_elm_enter")
+const loader_cont = $(".loader_cont")
 
 const enter_time_for_bm_data_cont = $("#enter_time_for_bm_data_cont")
 const enter_time_for_weight_data_cont = $("#enter_time_for_weight_data_cont")
@@ -226,10 +227,10 @@ const createBMDataObj = () => {
     createdAt: createdAt
   }
   // console.log("BM Data:", bmData);
-  console.log("Global Data BEFORE add BM data: ", globalBabyData)
+  // console.log("Global Data BEFORE add BM data: ", globalBabyData)
   let currentBaby = getCurrentBaby()
   currentBaby.bm_data.push(bmData)
-  console.log("Global Data AFTER add BM data: ", globalBabyData)
+  // console.log("Global Data AFTER add BM data: ", globalBabyData)
   saveToLocalStorage()
 };
 
@@ -346,15 +347,6 @@ const clearInputsAndCloseAddData = () => {
   enter_time_for_feed_data_cont.hide()
 }
 
-// const dayCoordinates = { // these are based off the top left corner of the container
-//   sunday: 15, //switching to percentage since sun-sat is set to space between.
-//   monday: 63,
-//   tuesday: 110,
-//   wednesday: 157,
-//   thursday: 205,
-//   friday: 248,
-//   saturday: 288,
-// }
 const dayCoordinates = { // these are based off the top left corner of the container
   sunday: 5, //switching to percentage since sun-sat is set to space between.
   monday: 20,
@@ -408,99 +400,99 @@ const checkTimeAndReturnPx = (hour, min) => {
   let returnPx = ''
   switch (hour) {
     case 23:
-      console.log("recorded at: 2300 = 11:00pm")
+
       returnPx = `263.${returnMinPx}`
       break;
     case 22:
-      console.log("recorded at: 2200 = 10:00pm")
+
       returnPx = `252.${returnMinPx}`
       break;
     case 21:
-      console.log("recorded at: 2100 = 09:00pm")
+
       returnPx = `241.${returnMinPx}`
       break;
     case 20:
-      console.log("recorded at: 2000 = 08:00pm")
+
       returnPx = `230.${returnMinPx}`
       break;
     case 19:
-      console.log("recorded at: 1900 = 07:00pm")
+
       returnPx = `219.${returnMinPx}`
       break;
     case 18:
-      console.log("recorded at: 1800 = 06:00pm")
+
       returnPx = `208.${returnMinPx}`
       break;
     case 17:
-      console.log("recorded at: 1700 = 05:00pm")
+
       returnPx = `197.${returnMinPx}`
       break;
     case 16:
-      console.log("recorded at: 1600 = 04:00pm")
+
       returnPx = `186.${returnMinPx}`
       break;
     case 15:
-      console.log("recorded at: 1500 = 03:00pm")
+
       returnPx = `175.${returnMinPx}`
       break;
     case 14:
-      console.log("recorded at: 1400 = 02:00pm")
+
       returnPx = `164.${returnMinPx}`
       break;
     case 13:
-      console.log("recorded at: 1300 = 01:00pm")
+
       returnPx = `153.${returnMinPx}`
       break;
     case 12:
-      console.log("recorded at: 1200 = 12:00pm")
+
       returnPx = `142.${returnMinPx}`
       break;
     case 11:
-      console.log("recorded at: 1100 = 11:00am")
+
       returnPx = `131.${returnMinPx}`
       break;
     case 10:
-      console.log("recorded at: 1000 = 10:00am")
+
       returnPx = `120.${returnMinPx}`
       break;
     case 9:
-      console.log("recorded at: 0900 = 09:00am")
+
       returnPx = `109.${returnMinPx}`
       break;
     case 8:
-      console.log("recorded at: 0800 = 08:00am")
+
       returnPx = `98.${returnMinPx}`
       break;
     case 7:
-      console.log("recorded at: 0700 = 07:00am")
+
       returnPx = `87.${returnMinPx}`
       break;
     case 6:
-      console.log("recorded at: 0600 = 06:00am")
+
       returnPx = `76.${returnMinPx}`
       break;
     case 5:
-      console.log("recorded at: 0500 = 05:00am")
+
       returnPx = `65.${returnMinPx}`
       break;
     case 4:
-      console.log("recorded at: 0400 = 04:00am")
+
       returnPx = `54.${returnMinPx}`
       break;
     case 3:
-      console.log("recorded at: 0300 = 03:00am")
+
       returnPx = `43.${returnMinPx}`
       break;
     case 2:
-      console.log("recorded at: 0200 = 02:00am")
+
       returnPx = `32.${returnMinPx}`
       break;
     case 1:
-      console.log("recorded at: 0100 = 01:00am")
+
       returnPx = `21.${returnMinPx}`
       break;
     case parseInt("00"):
-      console.log("recorded at: 0000 = 12:00am")
+
       returnPx = `0`
       break;
   }
@@ -551,8 +543,6 @@ function returnTimeOfDayCoordinate(timeString) {
 
 // return a data dot
 const returnCircleCoordinates = (data) => {
-  // console.log("returnCircleCoordinates INCOMING data: ", data);
-  // dateTime will come in this format: 2023-12-23T17:15
   // return an object that has the outer circle and inner circle coordinates
   // take in the date, grab what day of the week it is
   let time = data.split("T")[1];
@@ -561,7 +551,6 @@ const returnCircleCoordinates = (data) => {
     innerX: returnDayOfWeekCoordinate(data),
     innerY: returnTimeOfDayCoordinate(time),
   };
-  console.log("coordinates: ", coordinatesObj)
   return coordinatesObj;
 };
 
@@ -579,4 +568,74 @@ const returnPottyDotColor = (type) => {
       color = "two_for_one_dot"
   }
   return color;
+}
+
+const renderLoader = (show) => {
+  if (show) {
+    $(loader_cont).addClass("active")
+  } else {
+    $(loader_cont).fadeOut()
+    $(loader_cont).removeClass("active")
+  }
+}
+
+// create the csv data
+// create Feed CSV
+const createFeedCsvData = (loadedData) => {
+  let data = [
+    ["ID", "Type", "Ounces", "Length Hr", "Length Min", "Recorded At"],
+  ]
+  // map the json data 
+  loadedData.forEach(d => {
+    data.push([d._id, d.cardType, d.ounces, d.hours, d.minutes, formatDate(d.createdAt)])
+  });
+  return data
+}
+// Create BM CSV
+const createBmCsvData = (loadedData) => {
+  let data = [
+    ["ID", "Type", "Note", "Recorded At"],
+  ]
+  // map the json data 
+  loadedData.forEach(d => {
+    data.push([d._id, d.type, JSON.stringify(d.note), formatDate(d.createdAt)])
+  });
+  return data
+}
+// Create Weight CSV
+const createWeightCsvData = (loadedData) => {
+  let data = [
+    ["ID", "Type", "Pounds", "Ounces", "Recorded At"],
+  ]
+  // map the json data 
+  loadedData.forEach(d => {
+    data.push([d._id, d.cardType, d.pounds, d.ounces, formatDate(d.createdAt)])
+  });
+  return data
+}
+
+
+
+const createCsvDownload = () => {
+  let baby = getCurrentBaby()
+  let outputData = null;
+  let filename = ''
+  if (globalBabyData.currentData === "bm_data") {
+    outputData = createBmCsvData(baby.bm_data)
+    filename = `${baby.name.replace(" ", "_")}_bm_data.csv`
+  } else if (globalBabyData.currentData === "weight_data") {
+    outputData = createWeightCsvData(baby.weight_data)
+    filename = `${baby.name.replace(" ", "_")}_weight_data.csv`
+  } else if (globalBabyData.currentData === "feed_data") {
+    outputData = createFeedCsvData(baby.feed_data)
+    filename = `${baby.name.replace(" ", "_")}_feed_data.csv`
+  }
+  const csvContent = "data:text/csv;charset=utf-8," + outputData.map(row => row.join(",")).join("\n");
+  const encodedUri = encodeURI(csvContent);
+  const link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  link.setAttribute("download", filename);
+  document.body.appendChild(link); // Append the link to the DOM
+  link.click(); // Simulate click to trigger download
+  document.body.removeChild(link);
 }
