@@ -573,6 +573,7 @@ const returnPottyDotColor = (type) => {
 const renderLoader = (show) => {
   if (show) {
     $(loader_cont).addClass("active")
+    $(loader_cont).fadeIn()
   } else {
     $(loader_cont).fadeOut()
     $(loader_cont).removeClass("active")

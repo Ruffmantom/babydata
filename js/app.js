@@ -13,7 +13,6 @@ const all_data_cont = $("#all_data")
 
 // on load
 // Need to create baby user
-
 const getCurrentBaby = () => {
     return globalBabyData.babies.find(l => l.active === true)
 }

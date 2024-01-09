@@ -390,7 +390,13 @@ $(() => {
         // save to local
         saveToLocalStorage()
         // load section
-        loadCurrentData()
+        renderLoader(true)
+        let timer = setTimeout(() => {
+            // close loader
+            renderLoader(false)
+            loadCurrentData();
+            clearTimeout(timer)
+        }, 2000)
     })
 
     // filter data
@@ -413,9 +419,14 @@ $(() => {
         saveToLocalStorage();
         // start loader
         // this is just for ascetics
-
+        renderLoader(true)
+        let timer = setTimeout(() => {
+            // close loader
+            renderLoader(false)
+            loadCurrentData();
+            clearTimeout(timer)
+        }, 2000)
         // load data
-        loadCurrentData();
     });
 
 
