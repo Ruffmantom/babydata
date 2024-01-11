@@ -174,5 +174,10 @@
     position: absolute;
 
 }
-
+.no_data_note{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
 /* END bm chart */

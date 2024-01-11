@@ -12,14 +12,17 @@ const createBmDot = (bm, index) => {
 }
 
 const create_BM_chart_HTML = (baby) => {
-    baby.bm_data.forEach((bm, index) => {
+
+    let thisWeeksData = returnThisWeeksData(baby.bm_data)
+    console.log("This weeks BM data: ", thisWeeksData)
+    thisWeeksData && thisWeeksData.length >= 1 ? thisWeeksData.forEach((bm, index) => {
         $("#dot_cont").append(createBmDot(bm, index))
-    });
+    }) : $("#bm_chart_body").append("<p class='no_data_note'>No Data Found</p>")
 }
 
-const createDataCard = (baby,data) => {
+const createDataCard = (baby, data) => {
     if (data === '') {
-        return `<p>There is no data</p>`
+        return `<p>There is no data. To start recording data, click on the lower right button to add a new data point.</p>`
     } else {
         if (data.cardType === "bm") {
             return `
@@ -35,7 +38,7 @@ const createDataCard = (baby,data) => {
                 ${data.pounds || data.ounces ? `<p class="data_card_comment"> ${data.pounds}lbs and ${data.ounces}oz</p>` : ""}
                 <p class="data_card_date">${formatDate(data.createdAt)}</p>
                 </div>`
-        } else if (data.cardType === "feed"){
+        } else if (data.cardType === "feed") {
             return `
                 <div data-id="${data._id}" class="data_card">
                 <p class="data_card_type">Feeding</p>

@@ -640,3 +640,24 @@ const createCsvDownload = () => {
   link.click(); // Simulate click to trigger download
   document.body.removeChild(link);
 }
+
+const returnThisWeeksData = (data) => {
+  // Get the current date
+  var currentDate = new Date();
+
+  // Calculate the first day of the current week (Sunday)
+  var firstDayOfWeek = new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay()));
+
+  // Calculate the last day of the current week (Saturday)
+  var lastDayOfWeek = new Date(firstDayOfWeek);
+  lastDayOfWeek.setDate(firstDayOfWeek.getDate() + 6);
+
+  // Filter data for entries within the current week
+  return data.filter(entry => {
+    // Parse the date from the "createdAt" property
+    var entryDate = new Date(entry.createdAt);
+
+    // Check if the entry date is within the current week
+    return entryDate >= firstDayOfWeek && entryDate <= lastDayOfWeek;
+  });
+};
