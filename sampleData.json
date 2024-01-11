@@ -1,6 +1,6 @@
 {
-    "currentPage": "all_data",
-    "theme": false,
+    "currentPage": "home",
+    "theme": true,
     "babies": [
         {
             "_id": "TSAQ7V-MX8VXV-SJ8QL2",
@@ -78,6 +78,41 @@
                     "type": "twoforone",
                     "note": "Smooth change, very efficient!",
                     "createdAt": "2024-06-30T09:40"
+                },
+                {
+                    "_id": "TUQDIJ-KFU4XE-U9X5TC",
+                    "cardType": "bm",
+                    "type": "potty",
+                    "note": "large potty past midnight",
+                    "createdAt": "2024-01-09T01:38"
+                },
+                {
+                    "_id": "GSC4ED-YIVZTV-522IMN",
+                    "cardType": "bm",
+                    "type": "twoforone",
+                    "note": "this was a big one after she ate!",
+                    "createdAt": "2024-01-10T19:46"
+                },
+                {
+                    "_id": "RL7ZTH-XEOFIB-5TWZVM",
+                    "cardType": "bm",
+                    "type": "poopy",
+                    "note": "one diaper this time",
+                    "createdAt": "2024-01-10T16:54"
+                },
+                {
+                    "_id": "QRFGFB-EHAGWX-4VZW2Z",
+                    "cardType": "bm",
+                    "type": "poopy",
+                    "note": "one diaper. so proud of her!",
+                    "createdAt": "2024-01-10T13:15"
+                },
+                {
+                    "_id": "YDR1IP-C8CVSE-AM5V21",
+                    "cardType": "bm",
+                    "type": "twoforone",
+                    "note": "Largest poop known to man kind!",
+                    "createdAt": "2024-01-11T07:33"
                 }
             ],
             "weight_data": [
