@@ -1,6 +1,6 @@
 {
     "currentPage": "home",
-    "theme": true,
+    "theme": false,
     "babies": [
         {
             "_id": "TSAQ7V-MX8VXV-SJ8QL2",
@@ -297,6 +297,6 @@
             ]
         }
     ],
-    "currentFilter": "oldest_first",
-    "currentData": "bm_data"
+    "currentFilter": "most_recent",
+    "currentData": "weight_data"
 }

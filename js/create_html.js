@@ -12,12 +12,16 @@ const createBmDot = (bm, index) => {
 }
 
 const create_BM_chart_HTML = (baby) => {
-
     let thisWeeksData = returnThisWeeksData(baby.bm_data)
-    console.log("This weeks BM data: ", thisWeeksData)
-    thisWeeksData && thisWeeksData.length >= 1 ? thisWeeksData.forEach((bm, index) => {
-        $("#dot_cont").append(createBmDot(bm, index))
-    }) : $("#bm_chart_body").append("<p class='no_data_note'>No Data Found</p>")
+console.log(thisWeeksData)
+    if (thisWeeksData && thisWeeksData.length >= 1) {
+        thisWeeksData.forEach((bm, index) => {
+            $(".no_data_note").removeClass("show_no_data")
+            $("#dot_cont").append(createBmDot(bm, index))
+        })
+    } else {
+        $(".no_data_note").addClass("show_no_data")
+    }
 }
 
 const createDataCard = (baby, data) => {

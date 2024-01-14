@@ -58,6 +58,7 @@ const createNotification = (text) => {
 
 function getTimeOfDay() {
   const currentTime = new Date();
+  // console.log(currentTime)
   const currentHour = currentTime.getHours();
 
   if (currentHour >= 5 && currentHour < 12) {
@@ -185,6 +186,11 @@ const changeAddDataForm = (formType) => {
 
   }
 }
+// Helper function to format date and time
+function formatDateTime() {
+  let a = new Date();
+  return `${a.getFullYear()}-${(a.getMonth() + 1).toString().padStart(2, '0')}-${a.getDate().toString().padStart(2, '0')}T${a.getHours().toString().padStart(2, '0')}:${a.getMinutes().toString().padStart(2, '0')}`;
+}
 
 // create BM data
 const createBMDataObj = () => {
@@ -202,19 +208,16 @@ const createBMDataObj = () => {
   // Get entered time value if "Enter Time" is selected
   var enteredTime = isEnterTime ? $("#input-time").val() : null;
 
-  // Helper function to format date and time
-  function formatDateTime(date) {
-    return date.toISOString().slice(0, 16);
-  }
-
   let createdAt = "";
 
   if (isNow) {
     // Set createdAt to current time and date
-    createdAt = formatDateTime(new Date());
+    createdAt = formatDateTime();
+    console.log("BM data recorded now: " + createdAt)
   } else {
     // Set createdAt to entered date
     createdAt = enteredTime;
+    console.log("BM data manual record: " + createdAt)
   }
 
   // Now you can use these variables (bmType, note, isNow, enteredTime) as needed
@@ -246,18 +249,16 @@ const createWeightData = () => {
   // Get entered time value if "Enter Time" is selected
   var enteredTime = isEnterTime ? $("#input_time_weight").val() : null;
 
-  function formatDateTime(date) {
-    return date.toISOString().slice(0, 16);
-  }
-
   let createdAt = "";
 
   if (isNow) {
     // Set createdAt to current time and date
-    createdAt = formatDateTime(new Date());
+    createdAt = formatDateTime();
+    console.log("Weight data recorded now: " + createdAt)
   } else {
     // Set createdAt to entered date
     createdAt = enteredTime;
+    console.log("Weight data manual record: " + createdAt)
   }
   // Create weightData object
   var weightData = {
@@ -287,18 +288,16 @@ const createFeedData = () => {
   // Get entered time value if "Enter Time" is selected
   var enteredTime = isEnterTime ? $("#input_time_feed").val() : null;
 
-  function formatDateTime(date) {
-    return date.toISOString().slice(0, 16);
-  }
-
   let createdAt = "";
 
   if (isNow) {
     // Set createdAt to current time and date
-    createdAt = formatDateTime(new Date());
+    createdAt = formatDateTime();
+    console.log("Feed data recorded now: " + createdAt)
   } else {
     // Set createdAt to entered date
     createdAt = enteredTime;
+    console.log("Feed data manual record: " + createdAt)
   }
 
   // Do something with the retrieved values (for example, log them)
@@ -394,9 +393,16 @@ military time
 
 const checkTimeAndReturnPx = (hour, min) => {
   // find the hour switch case
-  let m = parseInt(min) / 60
+  let m;
+  if (parseInt(min) <= 0) {
+    m = 0
+  } else {
+    m = parseInt(min) / 60
+  }
   let mx = Math.floor(m * 100) / 100;
-  let returnMinPx = mx.toString().split('.')[1]
+  let isMxDecimal = mx % 1 !== 0
+  let returnMinPx = isMxDecimal ? mx.toString().split('.')[1] : mx
+  console.log(returnMinPx)
   let returnPx = ''
   switch (hour) {
     case 23:
@@ -493,9 +499,10 @@ const checkTimeAndReturnPx = (hour, min) => {
       break;
     case parseInt("00"):
 
-      returnPx = `0`
+      returnPx = `10.${returnMinPx}`
       break;
   }
+  // console.log("Returned PX: " + returnPx)
   return returnPx
 }
 
@@ -537,6 +544,7 @@ const returnDayOfWeekCoordinate = (dateAndTime) => {
 function returnTimeOfDayCoordinate(timeString) {
   const [hours, minutes] = timeString ? timeString.split(':').map(Number) : "null";
   const time = hours.toString() + minutes.toString()
+  console.log("Time: Hour " + hours + " min " + minutes)
   return checkTimeAndReturnPx(hours, minutes)
 }
 
@@ -551,6 +559,7 @@ const returnCircleCoordinates = (data) => {
     innerX: returnDayOfWeekCoordinate(data),
     innerY: returnTimeOfDayCoordinate(time),
   };
+  console.log(coordinatesObj)
   return coordinatesObj;
 };
 
@@ -614,9 +623,7 @@ const createWeightCsvData = (loadedData) => {
   });
   return data
 }
-
-
-
+// cvs download
 const createCsvDownload = () => {
   let baby = getCurrentBaby()
   let outputData = null;
@@ -640,24 +647,25 @@ const createCsvDownload = () => {
   link.click(); // Simulate click to trigger download
   document.body.removeChild(link);
 }
-
+// return formatted date for getting start and finish of week
+const returnFormattedStartDate = (date) => {
+  return date.toString().split(' ').slice(0, 4).join("-") + "-00:00:00"
+}
+// return this weeks data
 const returnThisWeeksData = (data) => {
   // Get the current date
   var currentDate = new Date();
-
   // Calculate the first day of the current week (Sunday)
-  var firstDayOfWeek = new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay()));
-
+  var a = new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay()));
+  let firstDayOfWeek = returnFormattedStartDate(a)
   // Calculate the last day of the current week (Saturday)
-  var lastDayOfWeek = new Date(firstDayOfWeek);
-  lastDayOfWeek.setDate(firstDayOfWeek.getDate() + 6);
-
+  let b = parseInt(firstDayOfWeek.split("-")[2]) + 6;
+  let lastDayOfWeek = `${firstDayOfWeek.split("-")[0]}-${firstDayOfWeek.split("-")[1]}-${b}-${firstDayOfWeek.split("-")[3]}-${firstDayOfWeek.split("-")[4]}`;
   // Filter data for entries within the current week
   return data.filter(entry => {
     // Parse the date from the "createdAt" property
-    var entryDate = new Date(entry.createdAt);
-
-    // Check if the entry date is within the current week
+    let c = new Date(entry.createdAt);
+    let entryDate = returnFormattedStartDate(c)
     return entryDate >= firstDayOfWeek && entryDate <= lastDayOfWeek;
   });
 };

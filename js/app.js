@@ -137,7 +137,7 @@ const loadCurrentData = () => {
         } else if (globalBabyData.currentFilter === "oldest_first") {
             filteredData = currentData.slice().sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
         }
-        console.log(`${globalBabyData.currentData} load filtered data: `, filteredData);
+        // console.log(`${globalBabyData.currentData} load filtered data: `, filteredData);
         filteredData.forEach(d => {
             allDataContainer.append(createDataCard(baby,d));
         });
