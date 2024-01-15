@@ -113,6 +113,41 @@
                     "type": "twoforone",
                     "note": "Largest poop known to man kind!",
                     "createdAt": "2024-01-11T07:33"
+                },
+                {
+                    "_id": "8QN780-UFLKK4-RCK1D7",
+                    "cardType": "bm",
+                    "type": "potty",
+                    "note": "large pooty just now!",
+                    "createdAt": "2024-01-14T15:50"
+                },
+                {
+                    "_id": "EFCHXA-F9ALMM-L3HB6K",
+                    "cardType": "bm",
+                    "type": "potty",
+                    "note": "another one just now!",
+                    "createdAt": "2024-01-14T15:59"
+                },
+                {
+                    "_id": "8LNK58-BR2B3C-ONDF1W",
+                    "cardType": "bm",
+                    "type": "twoforone",
+                    "note": "asdfsfsdfsd",
+                    "createdAt": "2024-01-14T16:00"
+                },
+                {
+                    "_id": "BY15BN-FGP10F-YWD3RU",
+                    "cardType": "bm",
+                    "type": "poopy",
+                    "note": "another huge one!",
+                    "createdAt": "2024-01-14T21:41"
+                },
+                {
+                    "_id": "L1SD2I-8MBSQ3-56B6JV",
+                    "cardType": "bm",
+                    "type": "twoforone",
+                    "note": "starting the day out with a bang!",
+                    "createdAt": "2024-01-15T01:12"
                 }
             ],
             "weight_data": [
@@ -298,5 +333,5 @@
         }
     ],
     "currentFilter": "most_recent",
-    "currentData": "weight_data"
+    "currentData": "bm_data"
 }

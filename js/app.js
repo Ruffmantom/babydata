@@ -38,13 +38,14 @@ const setHomeTitle = () => {
 const setHomeGreeting = () => {
     let baby = getCurrentBaby()
     let babyName = baby.name.split(' ')[0]
-    $("#home_message").text(`Good ${getTimeOfDay()}, ${babyName}! You are ${getAgeDescription(baby.birthday)} today!`)
+    let age = calculateAge(baby.birthday)
+    $("#home_message").text(`Good ${getTimeOfDay()}, ${babyName}! You are ${age.years >= 1 ? `${age.years} year${age.years > 1 ? `s` : ""} and ` : ""}${age.months >= 1 ? `${age.months} month${age.months > 1 ? `s` : ""} and ` : ""}${age.days} days old!`)
 }
 
 const setDataPage = () => {
     let baby = getCurrentBaby()
     let babyName = baby.name.split(' ')[0]
-    $("#data_page_babys_name").text(`Viewing ${babyName}'s ${globalBabyData.currentData}`)
+    $("#data_page_babys_name").text(`All ${babyName}'s data`)
 }
 
 const setSelectBabyDropDown = () => {
@@ -139,10 +140,10 @@ const loadCurrentData = () => {
         }
         // console.log(`${globalBabyData.currentData} load filtered data: `, filteredData);
         filteredData.forEach(d => {
-            allDataContainer.append(createDataCard(baby,d));
+            allDataContainer.append(createDataCard(baby, d));
         });
     } else {
-        allDataContainer.append(createDataCard(baby,''));
+        allDataContainer.append(createDataCard(baby, ''));
     }
 };
 

@@ -70,52 +70,31 @@ function getTimeOfDay() {
   }
 }
 
+// calculate age
+function calculateAge(inputDate) {
+  // Input date
+  const inputDateObj = new Date(inputDate);
 
-function getAgeDescription(dateString) {
+  // Current date
   const currentDate = new Date();
-  const inputDate = new Date(dateString);
 
-  // Calculate the time difference in milliseconds
-  const timeDifference = currentDate - inputDate;
+  // Calculate the age
+  const ageInMillis = currentDate - inputDateObj;
 
-  // Convert milliseconds to days
-  const days = Math.floor(timeDifference / (1000 * 3600 * 24));
+  // Convert age from milliseconds to years, months, and days
+  const ageInYears = Math.floor(ageInMillis / (365.25 * 24 * 60 * 60 * 1000));
+  const remainingDaysInMillis = ageInMillis % (365.25 * 24 * 60 * 60 * 1000);
+  const ageInMonths = Math.floor(remainingDaysInMillis / (30.44 * 24 * 60 * 60 * 1000));
+  const remainingDays = Math.floor((remainingDaysInMillis % (30.44 * 24 * 60 * 60 * 1000)) / (24 * 60 * 60 * 1000));
 
-  // Calculate weeks and remaining days
-  const weeks = Math.floor(days / 7);
-  const remainingDays = days % 7;
-
-  // Calculate months and remaining weeks
-  const months = Math.floor(days / 30);
-  const remainingWeeks = Math.floor((days % 30) / 7);
-
-  if (days < 7) {
-    if (days === 1) {
-      returnPx = `${days} day old`;
-    } else {
-      returnPx = `${days} days old`;
-    }
-  } else if (days >= 7 && days < 30) {
-    if (days === 7) {
-      returnPx = `1 week old`;
-    } else {
-      returnPx = `${weeks} weeks and ${remainingDays} days old`;
-    }
-  } else if (days >= 30 && days < 365) {
-    if (days === 30) {
-      returnPx = `1 month old`;
-    } else {
-      returnPx = `${months} months and ${remainingWeeks} weeks old`;
-    }
-  } else {
-    const years = Math.floor(days / 365);
-    if (years === 1) {
-      returnPx = `1 year old`;
-    } else {
-      returnPx = `${years} years old`;
-    }
-  }
+  // Return the result
+  return {
+    years: ageInYears,
+    months: ageInMonths,
+    days: remainingDays
+  };
 }
+
 
 
 const toggleTheme = () => {
@@ -402,7 +381,7 @@ const checkTimeAndReturnPx = (hour, min) => {
   let mx = Math.floor(m * 100) / 100;
   let isMxDecimal = mx % 1 !== 0
   let returnMinPx = isMxDecimal ? mx.toString().split('.')[1] : mx
-  console.log(returnMinPx)
+  // console.log(returnMinPx)
   let returnPx = ''
   switch (hour) {
     case 23:
@@ -544,7 +523,7 @@ const returnDayOfWeekCoordinate = (dateAndTime) => {
 function returnTimeOfDayCoordinate(timeString) {
   const [hours, minutes] = timeString ? timeString.split(':').map(Number) : "null";
   const time = hours.toString() + minutes.toString()
-  console.log("Time: Hour " + hours + " min " + minutes)
+  // console.log("Time: Hour " + hours + " min " + minutes)
   return checkTimeAndReturnPx(hours, minutes)
 }
 
@@ -559,7 +538,7 @@ const returnCircleCoordinates = (data) => {
     innerX: returnDayOfWeekCoordinate(data),
     innerY: returnTimeOfDayCoordinate(time),
   };
-  console.log(coordinatesObj)
+  // console.log(coordinatesObj)
   return coordinatesObj;
 };
 

@@ -13,7 +13,7 @@ const createBmDot = (bm, index) => {
 
 const create_BM_chart_HTML = (baby) => {
     let thisWeeksData = returnThisWeeksData(baby.bm_data)
-console.log(thisWeeksData)
+    console.log(thisWeeksData)
     if (thisWeeksData && thisWeeksData.length >= 1) {
         thisWeeksData.forEach((bm, index) => {
             $(".no_data_note").removeClass("show_no_data")
