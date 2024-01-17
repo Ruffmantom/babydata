@@ -628,7 +628,7 @@ const createCsvDownload = () => {
 }
 // return formatted date for getting start and finish of week
 const returnFormattedStartDate = (date) => {
-  return date.toString().split(' ').slice(0, 4).join("-") + "-00:00:00"
+  return date.toString().split(' ').slice(0, 4).join("-")
 }
 // return this weeks data
 const returnThisWeeksData = (data) => {
@@ -639,8 +639,11 @@ const returnThisWeeksData = (data) => {
   let firstDayOfWeek = returnFormattedStartDate(a)
   // Calculate the last day of the current week (Saturday)
   let b = parseInt(firstDayOfWeek.split("-")[2]) + 6;
-  let lastDayOfWeek = `${firstDayOfWeek.split("-")[0]}-${firstDayOfWeek.split("-")[1]}-${b}-${firstDayOfWeek.split("-")[3]}-${firstDayOfWeek.split("-")[4]}`;
+  let lastDayOfWeek = `${firstDayOfWeek.split("-")[0]}-${firstDayOfWeek.split("-")[1]}-${b}-${firstDayOfWeek.split("-")[3]}`;
   // Filter data for entries within the current week
+  console.log(firstDayOfWeek)
+  console.log(b)
+  console.log(lastDayOfWeek)
   return data.filter(entry => {
     // Parse the date from the "createdAt" property
     let c = new Date(entry.createdAt);
