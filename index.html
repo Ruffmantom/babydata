@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/charts.css">
-    <script src="./js/jquery.js"></script>
+    <script src="./js/libraries/jquery.js"></script>
     <title>MYBABY</title>
 </head>
 
@@ -345,6 +345,23 @@
                     <div class="widget_cont">
                         <div class="widget_title_block">
                             <h4 class="widget_title">Diaper Count</h4>
+                            <div class="widget_setting_dd">
+                                <div class="widget_setting_dd_preview">
+                                    <svg data-date_dropdown_id="bm" class="dd_icon" xmlns="http://www.w3.org/2000/svg" width="6" height="3.499">
+                                        <path id="Icon_fa-solid-angle-down" data-name="Icon fa-solid-angle-down"
+                                            d="M4.892,12.348a.5.5,0,0,0,.708,0l2.5-2.5a.5.5,0,0,0-.708-.708L5.245,11.287,3.1,9.143a.5.5,0,0,0-.708.708l2.5,2.5Z"
+                                            transform="translate(-2.245 -8.995)" />
+                                    </svg>
+                                    <!-- this will be dynamically changes -->
+                                    <p data-date_dropdown_id="bm" class="dd_title">Week of 14<small>th</small></p>
+                                    <div data-date_dropdown_id="bm" class="drop_down_action_btn" id="bm_week_chooser_dd_btn"></div>
+                                </div>
+                                <div data-date_dropdown_id="bm" class="widget_dd_item_container">
+                                    <!-- these will be dynamically added based on the data -->
+                                    <p data-week_of_bm_data="1-14-2024" class="widget_dd_item active">Week of 14th</p>
+                                    <p data-week_of_bm_data="1-7-2024" class="widget_dd_item">Week of 7th</p>
+                                </div>
+                            </div>
                         </div>
                         <div class="widget_chart_cont">
                             <!-- creating the chart with HTML instead of svg -->
@@ -462,19 +479,21 @@
                     <div class="widget_cont">
                         <div class="widget_title_block">
                             <h4 class="widget_title">Weight</h4>
-                            <!-- <div class="widget_setting_dd">
-                                 <div class="widget_setting_dd_preview">
-
-                                <svg xmlns="http://www.w3.org/2000/svg" width="6" height="3.499">
-                                    <path id="Icon_fa-solid-angle-down" data-name="Icon fa-solid-angle-down" d="M4.892,12.348a.5.5,0,0,0,.708,0l2.5-2.5a.5.5,0,0,0-.708-.708L5.245,11.287,3.1,9.143a.5.5,0,0,0-.708.708l2.5,2.5Z" transform="translate(-2.245 -8.995)"/>
-                                  </svg>
-
-                                <p class="">Weekly</p>
-                                
-                            </div> -->
-                            <div class="widget_dd_item_container">
-                                <div class="widget_dd_item">Weekly</div>
-                                <div class="widget_dd_item">Monthly</div>
+                            <div class="widget_setting_dd">
+                                <div class="widget_setting_dd_preview">
+                                    <svg data-date_dropdown_id="weight" class="dd_icon" xmlns="http://www.w3.org/2000/svg" width="6" height="3.499">
+                                        <path id="Icon_fa-solid-angle-down" data-name="Icon fa-solid-angle-down"
+                                            d="M4.892,12.348a.5.5,0,0,0,.708,0l2.5-2.5a.5.5,0,0,0-.708-.708L5.245,11.287,3.1,9.143a.5.5,0,0,0-.708.708l2.5,2.5Z"
+                                            transform="translate(-2.245 -8.995)" />
+                                    </svg>
+                                    <!-- this will be dynamically changed -->
+                                    <p data-date_dropdown_id="weight" class="dd_title">Weekly</p>
+                                    <div data-date_dropdown_id="weight" class="drop_down_action_btn" id="weight_week_chooser_dd_btn"></div>
+                                </div>
+                                <div data-date_dropdown_id="weight" class="widget_dd_item_container">
+                                    <p data-chart_dd_sort="weekly" class="widget_dd_item active">Weekly</p>
+                                    <p data-chart_dd_sort="monthly" class="widget_dd_item">Monthly</p>
+                                </div>
                             </div>
                         </div>
                         <div class="widget_chart_cont">
@@ -488,19 +507,18 @@
                             <h4 class="widget_title">Feeding</h4>
                             <div class="widget_setting_dd">
                                 <div class="widget_setting_dd_preview">
-
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="6" height="3.499">
+                                    <svg data-date_dropdown_id="feed" class="dd_icon" xmlns="http://www.w3.org/2000/svg" width="6" height="3.499">
                                         <path id="Icon_fa-solid-angle-down" data-name="Icon fa-solid-angle-down"
                                             d="M4.892,12.348a.5.5,0,0,0,.708,0l2.5-2.5a.5.5,0,0,0-.708-.708L5.245,11.287,3.1,9.143a.5.5,0,0,0-.708.708l2.5,2.5Z"
                                             transform="translate(-2.245 -8.995)" />
                                     </svg>
-
-                                    <p class="">Weekly</p>
-
+                                    <!-- this will be dynamically changes -->
+                                    <p data-date_dropdown_id="feed" class="dd_title">Weekly</p>
+                                    <div data-date_dropdown_id="feed" class="drop_down_action_btn" id="feed_week_chooser_dd_btn"></div>
                                 </div>
-                                <div class="widget_dd_item_container">
-                                    <div class="widget_dd_item">Weekly</div>
-                                    <div class="widget_dd_item">Monthly</div>
+                                <div data-date_dropdown_id="feed" class="widget_dd_item_container">
+                                    <p data-chart_dd_sort="weekly" class="widget_dd_item active">Weekly</p>
+                                    <p data-chart_dd_sort="monthly" class="widget_dd_item">Monthly</p>
                                 </div>
                             </div>
                         </div>

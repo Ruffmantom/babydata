@@ -134,9 +134,11 @@ const loadCurrentData = () => {
 
     if (currentData.length >= 1) {
         if (globalBabyData.currentFilter === "most_recent") {
-            filteredData = currentData.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-        } else if (globalBabyData.currentFilter === "oldest_first") {
             filteredData = currentData.slice().sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+            $("#filter_baby_data_by_date_icon").removeClass("rotate_filter")
+        } else if (globalBabyData.currentFilter === "oldest_first") {
+            filteredData = currentData.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            $("#filter_baby_data_by_date_icon").addClass("rotate_filter")
         }
         // console.log(`${globalBabyData.currentData} load filtered data: `, filteredData);
         filteredData.forEach(d => {

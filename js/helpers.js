@@ -45,6 +45,19 @@ function formatDate(inputDate) {
 
   return formattedDate;
 }
+const formatCreatedAtDate =()=>{
+  const date = new Date();
+  const offsetMinutes = date.getTimezoneOffset();
+  const offsetHours = offsetMinutes / 60;
+  
+  const formattedDate = new Date(date.getTime() - offsetMinutes * 60 * 1000)
+    .toISOString()
+    .replace('Z', `${offsetHours >= 0 ? '+' : '-'}${Math.abs(offsetHours).toString().padStart(2, '0')}:${Math.abs(offsetMinutes % 60).toString().padStart(2, '0')}`);
+  
+  return formattedDate;
+  
+}
+
 
 const createNotification = (text) => {
   $(".notification_text").text('')
@@ -165,11 +178,6 @@ const changeAddDataForm = (formType) => {
 
   }
 }
-// Helper function to format date and time
-function formatDateTime() {
-  let a = new Date();
-  return `${a.getFullYear()}-${(a.getMonth() + 1).toString().padStart(2, '0')}-${a.getDate().toString().padStart(2, '0')}T${a.getHours().toString().padStart(2, '0')}:${a.getMinutes().toString().padStart(2, '0')}`;
-}
 
 // create BM data
 const createBMDataObj = () => {
@@ -191,7 +199,7 @@ const createBMDataObj = () => {
 
   if (isNow) {
     // Set createdAt to current time and date
-    createdAt = formatDateTime();
+    createdAt = formatCreatedAtDate()
     console.log("BM data recorded now: " + createdAt)
   } else {
     // Set createdAt to entered date
@@ -232,7 +240,7 @@ const createWeightData = () => {
 
   if (isNow) {
     // Set createdAt to current time and date
-    createdAt = formatDateTime();
+    createdAt = formatCreatedAtDate()
     console.log("Weight data recorded now: " + createdAt)
   } else {
     // Set createdAt to entered date
@@ -271,7 +279,7 @@ const createFeedData = () => {
 
   if (isNow) {
     // Set createdAt to current time and date
-    createdAt = formatDateTime();
+    createdAt = formatCreatedAtDate()
     console.log("Feed data recorded now: " + createdAt)
   } else {
     // Set createdAt to entered date
@@ -632,22 +640,18 @@ const returnFormattedStartDate = (date) => {
 }
 // return this weeks data
 const returnThisWeeksData = (data) => {
-  // Get the current date
-  var currentDate = new Date();
-  // Calculate the first day of the current week (Sunday)
-  var a = new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay()));
-  let firstDayOfWeek = returnFormattedStartDate(a)
-  // Calculate the last day of the current week (Saturday)
-  let b = parseInt(firstDayOfWeek.split("-")[2]) + 6;
-  let lastDayOfWeek = `${firstDayOfWeek.split("-")[0]}-${firstDayOfWeek.split("-")[1]}-${b}-${firstDayOfWeek.split("-")[3]}`;
-  // Filter data for entries within the current week
-  console.log(firstDayOfWeek)
-  console.log(b)
-  console.log(lastDayOfWeek)
-  return data.filter(entry => {
-    // Parse the date from the "createdAt" property
-    let c = new Date(entry.createdAt);
-    let entryDate = returnFormattedStartDate(c)
-    return entryDate >= firstDayOfWeek && entryDate <= lastDayOfWeek;
+  const currentDate = new Date();
+  const currentDay = currentDate.getDay();
+  const firstDayOfWeek = new Date(currentDate);
+  firstDayOfWeek.setDate(currentDate.getDate() - currentDay);
+  firstDayOfWeek.setHours(0, 0, 0, 0);
+  
+  const lastDayOfWeek = new Date(currentDate);
+  lastDayOfWeek.setDate(currentDate.getDate() + (6 - currentDay));
+  lastDayOfWeek.setHours(23, 59, 59, 999);
+  
+  return currentWeekData = data.filter(item => {
+    const itemDate = new Date(item.createdAt);
+    return itemDate >= firstDayOfWeek && itemDate <= lastDayOfWeek;
   });
 };

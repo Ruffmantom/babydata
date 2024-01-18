@@ -42,6 +42,7 @@ const home_btn = $("#home_btn")
 const view_all_data_btn = $("#view_all_data_btn")
 const filter_baby_data_by_date_btn = $("#filter_baby_data_by_date_btn")
 const export_csv_btn = $("#export_csv_btn")
+const drop_down_action_btn = $("#drop_down_action_btn")
 // data form buttons
 const add_data_feed_btn = $("#add_data_feed_btn")
 const add_data_weight_btn = $("#add_data_weight_btn")
@@ -319,6 +320,8 @@ $(() => {
 
     $("#close_data_btn").on("click", (e) => {
         $(baby_add_data_modal).fadeOut()
+        // clear inputs and hide forms
+        clearInputsAndCloseAddData()
         // remove active classes if any
         changeActiveFooterButton(globalBabyData.currentPage)
     })
@@ -428,7 +431,7 @@ $(() => {
             renderLoader(false)
             loadCurrentData();
             clearTimeout(timer)
-        }, 2000)
+        }, 1250)
         // load data
     });
 
@@ -445,5 +448,39 @@ $(() => {
             clearTimeout(timer)
         }, 2000)
     })
+    // dropdowns
+    let dropDownElmArr = Array.from($(".widget_dd_item_container"))
 
+    const handleDropDown = (ddId) => {
+        dropDownElmArr.forEach(elm=>{
+            let elmId = $(elm).data("date_dropdown_id")
+            if(ddId === elmId){
+                if($(elm).hasClass('active')){
+                    $(elm).removeClass('active')
+                }else{
+                    $(elm).addClass('active')
+                }
+            }else{
+                $(elm).removeClass('active')
+            }
+        })
+    }
+ 
+    
+    // // chart drop down functionality
+    $(".drop_down_action_btn").on("click", (e) => {
+        console.log("clicked!");
+        console.log($(e.currentTarget).data("date_dropdown_id"));
+        let ddId = $(e.currentTarget).data("date_dropdown_id")
+        handleDropDown(ddId)
+    });
+
+    
+    // Close dropdown if clicked outside of it
+    $(document).on("click", (e) => {
+        const target = e.target;
+        if (!$(target).closest('.drop_down_action_btn').length && !$(target).closest('.widget_setting_dd').length) {
+            handleDropDown(null);
+        }
+    });
 })
