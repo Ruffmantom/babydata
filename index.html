@@ -366,7 +366,7 @@
                         <div class="widget_chart_cont">
                             <!-- creating the chart with HTML instead of svg -->
 
-                            <div class="bm_chart_cont">
+                            <div class="widget_chart_inner_cont">
                                 <div class="chart_title_group">
                                     <p id="bm_chart_title" class="chart_title">Week of Dec 10th</p>
                                     <div class="chart_legend">
@@ -498,7 +498,83 @@
                         </div>
                         <div class="widget_chart_cont">
                             <div class="widget_chart">
-
+                                <div class="widget_chart_inner_cont">
+                                    <div class="chart_title_group">
+                                        <p id="weigth_chart_title" class="chart_title">Weekly</p>
+                                        <div class="chart_legend">
+                                            <div class="chart_legend_group">
+                                                <div class="chart_legend_line"></div>
+                                                <p class="chart_legend_group_text">Record</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chart_main_cont">
+                                        <div class="chart_main_cont_col chart_y">
+                                            <p class="chart_y_text">LBS</p>
+                                            <p class="chart_y_text">48</p>
+                                            <p class="chart_y_text">46</p>
+                                            <p class="chart_y_text">44</p>
+                                            <p class="chart_y_text">42</p>
+                                            <p class="chart_y_text">40</p>
+                                            <p class="chart_y_text">38</p>
+                                            <p class="chart_y_text">36</p>
+                                            <p class="chart_y_text">34</p>
+                                            <p class="chart_y_text">32</p>
+                                            <p class="chart_y_text">30</p>
+                                            <p class="chart_y_text">28</p>
+                                            <p class="chart_y_text">26</p>
+                                            <p class="chart_y_text">24</p>
+                                            <p class="chart_y_text">22</p>
+                                            <p class="chart_y_text">20</p>
+                                            <p class="chart_y_text">18</p>
+                                            <p class="chart_y_text">16</p>
+                                            <p class="chart_y_text">14</p>
+                                            <p class="chart_y_text">12</p>
+                                            <p class="chart_y_text">10</p>
+                                            <p class="chart_y_text">8</p>
+                                            <p class="chart_y_text">6</p>
+                                            <p class="chart_y_text">4</p>
+                                            <p class="chart_y_text">2</p>
+                                            <p class="chart_y_text"></p>
+                                        </div>
+                                        <div id="weight_chart_body" class="chart_main_cont_col chart_body">
+                                            <p class='no_data_note'>No Data Found</p>
+                                            <div id="weight_line_cont">
+                                            </div>
+                                            <!-- <div class="chart_y_line"></div> -->
+                                            <div class="chart_bkg_cont">
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chart_footer_x">
+                                       <p>Trending</p>
+                                    </div>
+    
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -524,7 +600,57 @@
                         </div>
                         <div class="widget_chart_cont">
                             <div class="widget_chart">
-
+                                <div class="widget_chart_inner_cont">
+                                    <div class="chart_title_group">
+                                        <p id="weigth_chart_title" class="chart_title">Weekly</p>
+                                        <div class="chart_legend">
+                                            <div class="chart_legend_group">
+                                                <div class="chart_legend_line"></div>
+                                                <p class="chart_legend_group_text">Record</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chart_main_cont">
+                                        <div id="weight_chart_y" class="chart_main_cont_col chart_y">
+                                            <p class="chart_y_text">OZ</p>
+                                            <p class="chart_y_text">10</p>
+                                            <p class="chart_y_text">9</p>
+                                            <p class="chart_y_text">8</p>
+                                            <p class="chart_y_text">7</p>
+                                            <p class="chart_y_text">6</p>
+                                            <p class="chart_y_text">5</p>
+                                            <p class="chart_y_text">4</p>
+                                            <p class="chart_y_text">3</p>
+                                            <p class="chart_y_text">2</p>
+                                            <p class="chart_y_text">1</p>
+                                            <p class="chart_y_text">0</p>
+                                        </div>
+                                        <div id="weight_chart_body" class="chart_main_cont_col chart_body">
+                                            <p class='no_data_note'>No Data Found</p>
+                                            <div id="weight_line_cont">
+                                            </div>
+                                            <!-- <div class="chart_y_line"></div> -->
+                                            <div id="feed_chart_bkg" class="chart_bkg_cont">
+                                           
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                                <div class="chart_y_line"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chart_footer_x">
+                                       <p>Trending</p>
+                                    </div>
+    
+                                </div>
                             </div>
                         </div>
                     </div>

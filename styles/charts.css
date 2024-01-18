@@ -36,7 +36,7 @@
 }
 
 /* bm chart */
-.bm_chart_cont {
+.widget_chart_inner_cont {
     position: absolute;
     top: 0;
     left: 0;
@@ -135,11 +135,19 @@
     position: relative;
     padding-left: 5px;
 }
+#weight_chart_y {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .chart_bkg_cont{
     padding-top: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+#feed_chart_bkg{
+    gap: 25px;
 }
 
 #dot_cont {
@@ -150,6 +158,13 @@
     width: 100%;
     height: 100%;
     transform: scaleY(-1);
+}
+#weight_line_cont{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .chart_y_line {
@@ -185,3 +200,11 @@
     display: block;
 }
 /* END bm chart */
+/* weight and Feed chart */
+.chart_legend_line{
+    width: 25px;
+    height: 2px;
+    margin-right: 7px;
+    background-color: var(--accent-color);
+    border-radius: 10px;
+}
