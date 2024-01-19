@@ -153,7 +153,7 @@ const createWeightChartData = () => {
         let dataPointX = Math.round(monthsDays / currentMonth.getDate() * 100) / 100
         console.log(`X axis: ${dataPointX} Y axis: ${dataPointY}`)
 
-        pathData += `M ${dataPointX} ${dataPointY}`;
+        pathData += `M ${dataPointX} ${dataPointY}`; // finish this
     });
 
     // Set path attributes
