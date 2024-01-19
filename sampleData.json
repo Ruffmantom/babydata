@@ -1,6 +1,6 @@
 {
     "currentPage": "home",
-    "theme": false,
+    "theme": true,
     "babies": [
         {
             "_id": "TSAQ7V-MX8VXV-SJ8QL2",
@@ -8,15 +8,82 @@
             "birthday": "2023-12-04",
             "gender": "female",
             "active": true,
+            "weight_chart_filter": "weekly",
             "bm_data": [
-               
+                {
+                    "_id": "NLN813-2GAVIA-WOJ1A2",
+                    "cardType": "bm",
+                    "type": "potty",
+                    "note": "try again",
+                    "createdAt": "2024-01-17T18:49:53.619+07:00"
+                },
+                {
+                    "_id": "65RWSI-MD1Y0Y-USWZ2N",
+                    "cardType": "bm",
+                    "type": "twoforone",
+                    "note": "time entered",
+                    "createdAt": "2024-01-16T08:00"
+                },
+                {
+                    "_id": "NQR730-KOGO9D-VNRX1T",
+                    "cardType": "bm",
+                    "type": "potty",
+                    "note": "Good Morning Potty! It was a lot today!",
+                    "createdAt": "2024-01-14T07:03"
+                },
+                {
+                    "_id": "UB3HCG-FLE6AQ-4AV39D",
+                    "cardType": "bm",
+                    "type": "poopy",
+                    "note": "2 large poops right after each other!",
+                    "createdAt": "2024-01-14T00:08"
+                },
+                {
+                    "_id": "6Z52C6-J9SUKG-2V93QQ",
+                    "cardType": "bm",
+                    "type": "twoforone",
+                    "note": "to diapers for this one haha",
+                    "createdAt": "2024-01-14T11:13"
+                },
+                {
+                    "_id": "PE9Z03-9T7W7X-YGLDL0",
+                    "cardType": "bm",
+                    "type": "poopy",
+                    "note": "She felt great after this one! lol",
+                    "createdAt": "2024-01-14T15:15"
+                },
+                {
+                    "_id": "IDVCNT-79B2SG-QM4WQW",
+                    "cardType": "bm",
+                    "type": "poopy",
+                    "note": "big poopy while eating haha",
+                    "createdAt": "2024-01-18T17:01:25.343+07:00"
+                }
             ],
             "weight_data": [
-                
+                {
+                    "_id": "Q5WTI6-2B8N1H-OWAC0P",
+                    "cardType": "weight",
+                    "pounds": "4",
+                    "ounces": "6",
+                    "createdAt": "2023-12-19T20:42"
+                },
+                {
+                    "_id": "38C1QB-FNVPBM-F79BBV",
+                    "cardType": "weight",
+                    "pounds": "5",
+                    "ounces": "8",
+                    "createdAt": "2023-12-29T09:44"
+                },
+                {
+                    "_id": "IJ5NE3-BAW09E-VXO1K7",
+                    "cardType": "weight",
+                    "pounds": "8",
+                    "ounces": "9",
+                    "createdAt": "2024-01-18T17:42:04.127+07:00"
+                }
             ],
-            "feed_data": [
-              
-            ],
+            "feed_data": [],
             "achievements": [
                 {
                     "achievement": "Cluster Feeding!",

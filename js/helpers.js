@@ -655,3 +655,19 @@ const returnThisWeeksData = (data) => {
     return itemDate >= firstDayOfWeek && itemDate <= lastDayOfWeek;
   });
 };
+
+const returnThisMonthsData = (data) => {
+  // Sort data by "createdAt"
+  data.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+
+  const currentDate = new Date();
+  const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+  const lastDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0, 23, 59, 59, 999);
+
+  return currentMonthData = data.filter(item => {
+    const itemDate = new Date(item.createdAt);
+    return itemDate >= firstDayOfMonth && itemDate <= lastDayOfMonth;
+  });
+};
+
+
