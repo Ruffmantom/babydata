@@ -689,7 +689,6 @@ const plotWeightData = (data) => {
     // this is the Y axis
     let ozToLbs = Math.round((entry.ounces / 16) * 100) / 100
     let Lbs = parseFloat(parseInt(entry.pounds) + ozToLbs)
-    console.log("----------------")
     console.log(Lbs + " lBS")
     // let dataPointY = Lbs
     // create the X axis
@@ -699,9 +698,8 @@ const plotWeightData = (data) => {
     let currentMonth = new Date(entry.createdAt)
     let monthsDays = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0).getDate();
     xDistance = Math.round(minX / monthsDays)
-    yDistance = Math.round(minY / 10) // 11 is the spacing amount on chart max LBS is 10 but chart starts at 0
-    console.log(yDistance+" Distance")
-    console.log("----------------")
+    yDistance = Math.round(minY / 10)
+
 
     let dayOfEntry = currentMonth.getDate();
     // Adjust the day if there's a time zone offset
@@ -711,8 +709,7 @@ const plotWeightData = (data) => {
 
     // distance * day to get x data point
     let dataPointX = Math.round((xDistance * dayOfEntry) + xDistance)
-    let dataPointY = yDistance * Lbs // Im close....
-
+    let dataPointY = Math.round((yDistance / Lbs) * yDistance)
 
     //let dataPointX = Math.round(monthsDays / currentMonth.getDate() * 100) / 100
     console.log(`Data Points: X axis: ${dataPointX} Y axis: ${dataPointY}`)

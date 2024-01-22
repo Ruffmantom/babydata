@@ -116,7 +116,7 @@ const createWeightChartData = () => {
         let thisWeeksData = returnThisWeeksData(data)
         if (thisWeeksData.length >= 1) {
             // hide "no data found"
-            $("#feed_chart_body>.no_data_note").removeClass("show_no_data")
+            $("#feed_chart_body>.no_data_note").removeClass("show_no_data") // need to switch charts, wrong chart displaying weight data
             // plot data
             plotWeightData(thisWeeksData)
         }
