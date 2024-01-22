@@ -698,7 +698,7 @@ const plotWeightData = (data) => {
     let currentMonth = new Date(entry.createdAt)
     let monthsDays = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0).getDate();
     xDistance = Math.round(minX / monthsDays)
-    yDistance = Math.round(minY / 10)
+    yDistance = Math.round(minY / 30)
 
 
     let dayOfEntry = currentMonth.getDate();
@@ -709,7 +709,7 @@ const plotWeightData = (data) => {
 
     // distance * day to get x data point
     let dataPointX = Math.round((xDistance * dayOfEntry) + xDistance)
-    let dataPointY = Math.round((yDistance / Lbs) * yDistance)
+    let dataPointY = Math.round(minY - (Lbs * yDistance))
 
     //let dataPointX = Math.round(monthsDays / currentMonth.getDate() * 100) / 100
     console.log(`Data Points: X axis: ${dataPointX} Y axis: ${dataPointY}`)
