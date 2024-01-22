@@ -45,17 +45,17 @@ function formatDate(inputDate) {
 
   return formattedDate;
 }
-const formatCreatedAtDate =()=>{
+const formatCreatedAtDate = () => {
   const date = new Date();
   const offsetMinutes = date.getTimezoneOffset();
   const offsetHours = offsetMinutes / 60;
-  
+
   const formattedDate = new Date(date.getTime() - offsetMinutes * 60 * 1000)
     .toISOString()
     .replace('Z', `${offsetHours >= 0 ? '+' : '-'}${Math.abs(offsetHours).toString().padStart(2, '0')}:${Math.abs(offsetMinutes % 60).toString().padStart(2, '0')}`);
-  
+
   return formattedDate;
-  
+
 }
 
 
@@ -645,11 +645,11 @@ const returnThisWeeksData = (data) => {
   const firstDayOfWeek = new Date(currentDate);
   firstDayOfWeek.setDate(currentDate.getDate() - currentDay);
   firstDayOfWeek.setHours(0, 0, 0, 0);
-  
+
   const lastDayOfWeek = new Date(currentDate);
   lastDayOfWeek.setDate(currentDate.getDate() + (6 - currentDay));
   lastDayOfWeek.setHours(23, 59, 59, 999);
-  
+
   return currentWeekData = data.filter(item => {
     const itemDate = new Date(item.createdAt);
     return itemDate >= firstDayOfWeek && itemDate <= lastDayOfWeek;
@@ -669,5 +669,72 @@ const returnThisMonthsData = (data) => {
     return itemDate >= firstDayOfMonth && itemDate <= lastDayOfMonth;
   });
 };
+
+const plotWeightData = (data) => {
+  let minY = 228
+  let maxY = 10
+  let minX = 313
+  let maxX = 10
+
+  // Create an SVG element
+  console.log('about to create the SVG')
+  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("width", minX);
+  svg.setAttribute("height", minY);
+  let pathData = "M "
+  data.forEach(function (entry) {
+    // create LBS data point
+    let xDistance = ''
+    let yDistance = ''
+    // this is the Y axis
+    let ozToLbs = Math.round((entry.ounces / 16) * 100) / 100
+    let Lbs = parseFloat(parseInt(entry.pounds) + ozToLbs)
+    console.log("----------------")
+    console.log(Lbs + " lBS")
+    // let dataPointY = Lbs
+    // create the X axis
+    // based on days of the month
+    // month days / day = x end point
+    // get current months amount of days
+    let currentMonth = new Date(entry.createdAt)
+    let monthsDays = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0).getDate();
+    xDistance = Math.round(minX / monthsDays)
+    yDistance = Math.round(minY / 10) // 11 is the spacing amount on chart max LBS is 10 but chart starts at 0
+    console.log(yDistance+" Distance")
+    console.log("----------------")
+
+    let dayOfEntry = currentMonth.getDate();
+    // Adjust the day if there's a time zone offset
+    if (entry.createdAt.includes('+')) {
+      dayOfEntry++;
+    }
+
+    // distance * day to get x data point
+    let dataPointX = Math.round((xDistance * dayOfEntry) + xDistance)
+    let dataPointY = yDistance * Lbs // Im close....
+
+
+    //let dataPointX = Math.round(monthsDays / currentMonth.getDate() * 100) / 100
+    console.log(`Data Points: X axis: ${dataPointX} Y axis: ${dataPointY}`)
+
+    pathData += `${dataPointX} ${dataPointY} `; // finish this
+  });
+  console.log("Path data: " + pathData)
+  // Set path attributes
+  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", pathData);
+  path.setAttribute("stroke", "#ff80ab");
+  path.setAttribute("fill", "none");
+  path.setAttribute("stroke-linecap", "round");
+  path.setAttribute("stroke-width", 4);
+
+  // Append the path to the SVG
+  svg.appendChild(path);
+
+
+  let div = document.querySelector("#feed_line_cont")
+  // Append the SVG to the document body
+  div.appendChild(svg);
+}
 
 

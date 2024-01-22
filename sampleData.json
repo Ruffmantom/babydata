@@ -1,14 +1,15 @@
 {
     "currentPage": "home",
-    "theme": true,
+    "theme": false,
     "babies": [
         {
             "_id": "TSAQ7V-MX8VXV-SJ8QL2",
             "name": "Elizabeth Ruff",
             "birthday": "2023-12-04",
             "gender": "female",
+            "weight_chart_filter": "monthly",
+            "feed_chart_filter": "weekly",
             "active": true,
-            "weight_chart_filter": "weekly",
             "bm_data": [
                 {
                     "_id": "NLN813-2GAVIA-WOJ1A2",
@@ -62,25 +63,60 @@
             ],
             "weight_data": [
                 {
+                    "_id": "H2C4VT-G2XXNZ-8O9WLH",
+                    "cardType": "weight",
+                    "pounds": "4",
+                    "ounces": "9",
+                    "createdAt": "2023-11-30T20:33"
+                },
+                {
                     "_id": "Q5WTI6-2B8N1H-OWAC0P",
                     "cardType": "weight",
                     "pounds": "4",
-                    "ounces": "6",
+                    "ounces": "3",
                     "createdAt": "2023-12-19T20:42"
                 },
                 {
                     "_id": "38C1QB-FNVPBM-F79BBV",
                     "cardType": "weight",
-                    "pounds": "5",
-                    "ounces": "8",
+                    "pounds": "4",
+                    "ounces": "1",
                     "createdAt": "2023-12-29T09:44"
+                },
+                {
+                    "_id": "01N5U5-ZETC1F-S0G9C7",
+                    "cardType": "weight",
+                    "pounds": "4",
+                    "ounces": "6",
+                    "createdAt": "2024-01-15T21:29"
+                },
+                {
+                    "_id": "VKKID6-VBLMDY-456JXI",
+                    "cardType": "weight",
+                    "pounds": "4",
+                    "ounces": "9",
+                    "createdAt": "2024-01-17T14:01"
                 },
                 {
                     "_id": "IJ5NE3-BAW09E-VXO1K7",
                     "cardType": "weight",
-                    "pounds": "8",
-                    "ounces": "9",
+                    "pounds": "5",
+                    "ounces": "8",
                     "createdAt": "2024-01-18T17:42:04.127+07:00"
+                },
+                {
+                    "_id": "LJVM14-M3NA0V-JWBHIZ",
+                    "cardType": "weight",
+                    "pounds": "6",
+                    "ounces": "7",
+                    "createdAt": "2024-01-20T21:34"
+                },
+                {
+                    "_id": "VA4Y44-FBA36V-T312QH",
+                    "cardType": "weight",
+                    "pounds": "7",
+                    "ounces": "8",
+                    "createdAt": "2024-01-21T16:29:33.875+07:00"
                 }
             ],
             "feed_data": [],
@@ -122,5 +158,5 @@
         }
     ],
     "currentFilter": "oldest_first",
-    "currentData": "bm_data"
+    "currentData": "weight_data"
 }

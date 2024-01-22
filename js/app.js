@@ -106,70 +106,30 @@ const setBMChart = () => {
 }
 
 const createWeightChartData = () => {
-    console.log('about to create the weight chart')
-    let minY = 228
-    let maxY = 10
-    let minX = 313
-    let maxX = 10
-    // Create an SVG element
-    console.log('about to create the SVG')
-    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("width", minX);
-    svg.setAttribute("height", minY);
-
-    // Calculate path data based on the provided data
-    console.log('about to get the current baby')
     let baby = getCurrentBaby()
     let data = baby.weight_data
 
     // filter data based on chart filter
     console.log('about to check if weekly or monthly')
-    if (baby.weight_chart_filter !== "weekly") {
+    if (baby.weight_chart_filter === "weekly") {
         // return this weeks data
         let thisWeeksData = returnThisWeeksData(data)
-        console.log(thisWeeksData)
+        if (thisWeeksData.length >= 1) {
+            // hide "no data found"
+            $("#feed_chart_body>.no_data_note").removeClass("show_no_data")
+            // plot data
+            plotWeightData(thisWeeksData)
+        }
+
     } else {
         let thisMonthsData = returnThisMonthsData(data)
-        // return current months data
-        console.log(thisMonthsData)
-
+        if (thisMonthsData.length >= 1) {
+            $("#feed_chart_body>.no_data_note").removeClass("show_no_data")
+            // return current months data
+            plotWeightData(thisMonthsData)
+        }
     }
-    console.log('about to create data points')
-    let pathData = ""
-    data.forEach(function (entry) {
-        // create LBS data point
-        // this is the Y axis
-        let ozToLbs = Math.round((entry.ounces / 16) * 100) / 100
-        let oz = ozToLbs.toString().split(".")[1]
-        let Lbs = parseFloat(entry.pounds + "." + oz)
-        let dataPointY = Lbs
-        // create the X axis
-        // based on days of the month
-        // month days / day = x end point
-        // get current months amount of days
-        let currentMonth = new Date(entry.createdAt)
-        let monthsDays = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0).getDate();
 
-        let dataPointX = Math.round(monthsDays / currentMonth.getDate() * 100) / 100
-        console.log(`X axis: ${dataPointX} Y axis: ${dataPointY}`)
-
-        pathData += `M ${dataPointX} ${dataPointY}`; // finish this
-    });
-
-    // Set path attributes
-    var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path.setAttribute("d", pathData);
-    path.setAttribute("stroke", "blue");
-    path.setAttribute("fill", "transparent");
-    path.setAttribute("stroke-width", 3);
-
-    // Append the path to the SVG
-    svg.appendChild(path);
-
-
-    let div = document.querySelector("#feed_line_cont")
-    // Append the SVG to the document body
-    div.appendChild(svg);
 
 }
 

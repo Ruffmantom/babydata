@@ -216,7 +216,7 @@
     height: max-content;
     border-radius: 1pc;
     background-color: var(--accent-three);
-    color: var(--text-color);
+    color: #fff;
 }
 .trend_icon{
     max-height: 18px;
