@@ -110,7 +110,6 @@ const createWeightChartData = () => {
     let data = baby.weight_data
 
     // filter data based on chart filter
-    console.log('about to check if weekly or monthly')
     if (baby.weight_chart_filter === "weekly") {
         // return this weeks data
         let thisWeeksData = returnThisWeeksData(data)
@@ -118,21 +117,20 @@ const createWeightChartData = () => {
             // hide "no data found"
             $("#weight_chart_body>.no_data_note").removeClass("show_no_data") // need to switch charts, wrong chart displaying weight data
             // plot data
-            plotWeightData(thisWeeksData)
+            plotWeightData(thisWeeksData, "weekly")
         }
-
     } else {
         let thisMonthsData = returnThisMonthsData(data)
         if (thisMonthsData.length >= 1) {
             $("#weight_chart_body>.no_data_note").removeClass("show_no_data")
             // return current months data
-            plotWeightData(thisMonthsData)
+            plotWeightData(thisMonthsData, "monthly")
         }
     }
 
 
 }
-
+// create the feed chart
 const createFeedChartData = () => {
     let baby = getCurrentBaby()
     let data = baby.feed_data
@@ -144,16 +142,18 @@ const createFeedChartData = () => {
         if (thisWeeksData.length >= 1) {
             // hide "no data found"
             $("#feed_chart_body>.no_data_note").removeClass("show_no_data") // need to switch charts, wrong chart displaying weight data
+            console.log('Feed data week: ', thisWeeksData)
             // plot data
-            // plotWeightData(thisWeeksData)
+            plotFeedData(thisWeeksData, "weekly")
         }
-
+        
     } else {
         let thisMonthsData = returnThisMonthsData(data)
         if (thisMonthsData.length >= 1) {
+            console.log('Feed data month: ', thisMonthsData)
             $("#feed_chart_body>.no_data_note").removeClass("show_no_data")
             // return current months data
-            // plotWeightData(thisMonthsData)
+            plotFeedData(thisMonthsData, "monthly")
         }
     }
 
