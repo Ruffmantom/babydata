@@ -100,7 +100,7 @@ const checkBabyData = () => {
 }
 
 
-const setBMChart = () => {
+const createBmChartData = () => {
     let baby = getCurrentBaby()
     create_BM_chart_HTML(baby)
 }
@@ -116,7 +116,7 @@ const createWeightChartData = () => {
         let thisWeeksData = returnThisWeeksData(data)
         if (thisWeeksData.length >= 1) {
             // hide "no data found"
-            $("#feed_chart_body>.no_data_note").removeClass("show_no_data") // need to switch charts, wrong chart displaying weight data
+            $("#weight_chart_body>.no_data_note").removeClass("show_no_data") // need to switch charts, wrong chart displaying weight data
             // plot data
             plotWeightData(thisWeeksData)
         }
@@ -124,9 +124,36 @@ const createWeightChartData = () => {
     } else {
         let thisMonthsData = returnThisMonthsData(data)
         if (thisMonthsData.length >= 1) {
-            $("#feed_chart_body>.no_data_note").removeClass("show_no_data")
+            $("#weight_chart_body>.no_data_note").removeClass("show_no_data")
             // return current months data
             plotWeightData(thisMonthsData)
+        }
+    }
+
+
+}
+
+const createFeedChartData = () => {
+    let baby = getCurrentBaby()
+    let data = baby.feed_data
+
+    // filter data based on chart filter
+    if (baby.feed_chart_filter === "weekly") {
+        // return this weeks data
+        let thisWeeksData = returnThisWeeksData(data)
+        if (thisWeeksData.length >= 1) {
+            // hide "no data found"
+            $("#feed_chart_body>.no_data_note").removeClass("show_no_data") // need to switch charts, wrong chart displaying weight data
+            // plot data
+            // plotWeightData(thisWeeksData)
+        }
+
+    } else {
+        let thisMonthsData = returnThisMonthsData(data)
+        if (thisMonthsData.length >= 1) {
+            $("#feed_chart_body>.no_data_note").removeClass("show_no_data")
+            // return current months data
+            // plotWeightData(thisMonthsData)
         }
     }
 
@@ -200,7 +227,9 @@ const loadHtml = () => {
     setDataPage()
     setSelectBabyDropDown()
     // set data into charts
-    setBMChart()
+    createBmChartData()
+    createWeightChartData()
+    createFeedChartData()
     loadDataSelect()
     loadCurrentData()
 }
@@ -208,9 +237,4 @@ const loadHtml = () => {
 
 $(() => {
     checkBabyData()
-    createWeightChartData()
 })
-
-document.addEventListener("DOMContentLoaded", function () {
-    // Your SVG creation code here
-});

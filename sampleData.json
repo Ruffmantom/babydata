@@ -1,6 +1,6 @@
 {
     "currentPage": "home",
-    "theme": false,
+    "theme": true,
     "babies": [
         {
             "_id": "TSAQ7V-MX8VXV-SJ8QL2",
@@ -16,49 +16,49 @@
                     "cardType": "bm",
                     "type": "potty",
                     "note": "try again",
-                    "createdAt": "2024-01-17T18:49:53.619+07:00"
+                    "createdAt": "2024-01-21T18:49:53.619+07:00"
                 },
                 {
                     "_id": "65RWSI-MD1Y0Y-USWZ2N",
                     "cardType": "bm",
                     "type": "twoforone",
                     "note": "time entered",
-                    "createdAt": "2024-01-16T08:00"
+                    "createdAt": "2024-01-21T08:00"
                 },
                 {
                     "_id": "NQR730-KOGO9D-VNRX1T",
                     "cardType": "bm",
                     "type": "potty",
                     "note": "Good Morning Potty! It was a lot today!",
-                    "createdAt": "2024-01-14T07:03"
+                    "createdAt": "2024-01-22T07:03"
                 },
                 {
                     "_id": "UB3HCG-FLE6AQ-4AV39D",
                     "cardType": "bm",
                     "type": "poopy",
                     "note": "2 large poops right after each other!",
-                    "createdAt": "2024-01-14T00:08"
+                    "createdAt": "2024-01-22T00:08"
                 },
                 {
                     "_id": "6Z52C6-J9SUKG-2V93QQ",
                     "cardType": "bm",
                     "type": "twoforone",
                     "note": "to diapers for this one haha",
-                    "createdAt": "2024-01-14T11:13"
+                    "createdAt": "2024-01-21T11:13"
                 },
                 {
                     "_id": "PE9Z03-9T7W7X-YGLDL0",
                     "cardType": "bm",
                     "type": "poopy",
                     "note": "She felt great after this one! lol",
-                    "createdAt": "2024-01-14T15:15"
+                    "createdAt": "2024-01-20T15:15"
                 },
                 {
                     "_id": "IDVCNT-79B2SG-QM4WQW",
                     "cardType": "bm",
                     "type": "poopy",
                     "note": "big poopy while eating haha",
-                    "createdAt": "2024-01-18T17:01:25.343+07:00"
+                    "createdAt": "2024-01-23T17:01:25.343+07:00"
                 }
             ],
             "weight_data": [
@@ -117,9 +117,81 @@
                     "pounds": "7",
                     "ounces": "8",
                     "createdAt": "2024-01-21T16:29:33.875+07:00"
+                },
+                {
+                    "_id": "P6VEIZ-GYNUSB-WCLES6",
+                    "cardType": "weight",
+                    "pounds": "8",
+                    "ounces": "0",
+                    "createdAt": "2024-01-24T21:48"
                 }
             ],
-            "feed_data": [],
+            "feed_data": [
+                {
+                    "_id": "MJTRQX-YXTSWT-YKRTQA",
+                    "cardType": "feed",
+                    "ounces": "2.2",
+                    "hours": "1",
+                    "minutes": "5",
+                    "createdAt": "2024-01-01T07:01"
+                },
+                {
+                    "_id": "MIP2QR-U99GJV-IZDT77",
+                    "cardType": "feed",
+                    "ounces": "2.8",
+                    "hours": "0",
+                    "minutes": "0",
+                    "createdAt": "2024-01-01T10:03"
+                },
+                {
+                    "_id": "JF8BXQ-PGV754-LR7JAD",
+                    "cardType": "feed",
+                    "ounces": "2.6",
+                    "hours": "1",
+                    "minutes": "10",
+                    "createdAt": "2024-01-01T13:30"
+                },
+                {
+                    "_id": "U6PHCV-PYVVQY-SB0D42",
+                    "cardType": "feed",
+                    "ounces": "2.9",
+                    "hours": "0",
+                    "minutes": "40",
+                    "createdAt": "2024-01-01T16:33"
+                },
+                {
+                    "_id": "ABC123-DEF456-GHI789",
+                    "cardType": "feed",
+                    "ounces": "2.5",
+                    "hours": "2",
+                    "minutes": "15",
+                    "createdAt": "2024-01-01T19:45"
+                },
+                {
+                    "_id": "JKL321-MNO654-PQR987",
+                    "cardType": "feed",
+                    "ounces": "3.0",
+                    "hours": "1",
+                    "minutes": "50",
+                    "createdAt": "2024-01-01T22:48"
+                },
+                {
+                    "_id": "XYZ789-UVW456-123ABC",
+                    "cardType": "feed",
+                    "ounces": "2.7",
+                    "hours": "0",
+                    "minutes": "30",
+                    "createdAt": "2024-01-02T01:51"
+                },
+                {
+                    "_id": "456DEF-789GHI-123JKL",
+                    "cardType": "feed",
+                    "ounces": "2.4",
+                    "hours": "2",
+                    "minutes": "5",
+                    "createdAt": "2024-01-02T04:54"
+                }
+            ],
             "achievements": [
                 {
                     "achievement": "Cluster Feeding!",

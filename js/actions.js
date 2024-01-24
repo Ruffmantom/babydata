@@ -140,7 +140,9 @@ const closeAddData = (dataType) => {
     var timer = setTimeout(() => {
         $(baby_add_data_modal).fadeOut()
         // load charts
-        setBMChart()
+        createBmChartData()
+        createWeightChartData()
+        createFeedChartData()
         // change footer based on last click
         changeActiveFooterButton(globalBabyData.currentPage)
         clearTimeout(timer)

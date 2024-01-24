@@ -514,7 +514,7 @@
                             <div class="widget_chart">
                                 <div class="widget_chart_inner_cont">
                                     <div class="chart_title_group">
-                                        <p id="weigth_chart_title" class="chart_title">Weekly</p>
+                                        <p id="weight_chart_title" class="chart_title">Weekly</p>
                                         <div class="chart_legend">
                                             <div class="chart_legend_group">
                                                 <div class="chart_legend_line"></div>
@@ -523,7 +523,7 @@
                                         </div>
                                     </div>
                                     <div class="chart_main_cont">
-                                        <div class="chart_main_cont_col chart_y">
+                                        <div id="weight_chart_y" class="chart_main_cont_col chart_y">
                                             <p class="chart_y_text">30</p>
                                             <p class="chart_y_text">25</p>
                                             <p class="chart_y_text">20</p>
@@ -536,11 +536,11 @@
                                         <div id="weight_chart_body" class="chart_main_cont_col chart_body">
                                             <p class='no_data_note'>No Data Found</p>
                                             <div id="weight_line_cont">
-                                            </div>
-                                            <!-- <div class="chart_y_line"></div> -->
-                                            <div class="chart_bkg_cont">
+                                                <!-- svg will be placed here -->
 
-                                                <div class="chart_y_line"></div>
+                                                <!-- svg will be placed here -->
+                                            </div>
+                                            <div id="weight_chart_bkg" class="chart_bkg_cont">
                                                 <div class="chart_y_line"></div>
                                                 <div class="chart_y_line"></div>
                                                 <div class="chart_y_line"></div>
@@ -551,8 +551,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="chart_footer_x">
+                                    <!-- chart footer -->
+                                    <div class="chart_footer_x weight_chart_footer">
                                         <p>Trending</p>
+                                        <div class="trend_bubble">Great</div>
+                                        <img class="trend_icon" src="./assets/icons/trend-up.png" alt="">
                                     </div>
 
                                 </div>

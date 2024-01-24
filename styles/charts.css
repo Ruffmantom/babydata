@@ -131,22 +131,28 @@
 .chart_main_cont_col.chart_body {
     padding-top: 5px;
     width: 95%;
-    
+
     position: relative;
     padding-left: 5px;
 }
-#weight_chart_y, #feed_chart_y {
+
+#weight_chart_y,
+#feed_chart_y,
+#weight_chart_y {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-.chart_bkg_cont{
+
+.chart_bkg_cont {
     padding-top: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-#feed_chart_bkg{
+
+#feed_chart_bkg,
+#weight_chart_bkg {
     justify-content: space-between;
     height: 250px;
     padding-bottom: 27px;
@@ -154,7 +160,7 @@
 }
 
 #dot_cont {
-    padding-top:10px;
+    padding-top: 10px;
     position: absolute;
     top: 0;
     left: 0;
@@ -162,7 +168,9 @@
     height: 100%;
     transform: scaleY(-1);
 }
-#weight_line_cont,#feed_line_cont{
+
+#weight_line_cont,
+#feed_line_cont {
     position: absolute;
     top: 0;
     left: 0;
@@ -188,45 +196,59 @@
     font-size: .7rem;
 
 }
-.chart_dot{
+
+.chart_dot {
     position: absolute;
 
 }
-.no_data_note{
+
+.no_data_note {
     display: none;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
-.show_no_data{
+
+.show_no_data {
     display: block;
 }
+
 /* END bm chart */
 /* weight and Feed chart */
-.chart_legend_line{
+.chart_legend_line {
     width: 25px;
     height: 2px;
     margin-right: 7px;
-    background-color: var(--accent-color);
+    background-color: var(--data-type-potty);
     border-radius: 10px;
 }
-.trend_bubble{
+
+.trend_bubble {
     padding: 2px 15px;
     height: max-content;
     border-radius: 1pc;
     background-color: var(--accent-three);
     color: #fff;
 }
-.trend_icon{
+
+.trend_icon {
     max-height: 18px;
 }
-.feed_chart_footer{
+
+.feed_chart_footer,.weight_chart_footer {
     padding-top: 7px;
     justify-content: flex-start;
     gap: 20px;
     align-items: center;
 }
-.feed_chart_footer>*{
+
+.feed_chart_footer>*,.weight_chart_footer>* {
     margin: 0;
+}
+
+#weight_chart_bkg.chart_bkg_cont {
+
+    padding-bottom: 40px;
+
 }

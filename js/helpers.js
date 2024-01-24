@@ -716,7 +716,6 @@ const plotWeightData = (data) => {
 
     pathData += `${dataPointX} ${dataPointY} `; // finish this
   });
-  console.log("Path data: " + pathData)
   // Set path attributes
   var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
   path.setAttribute("d", pathData);
@@ -729,7 +728,7 @@ const plotWeightData = (data) => {
   svg.appendChild(path);
 
 
-  let div = document.querySelector("#feed_line_cont")
+  let div = document.querySelector("#weight_line_cont")
   // Append the SVG to the document body
   div.appendChild(svg);
 }
