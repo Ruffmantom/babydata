@@ -16,49 +16,49 @@
                     "cardType": "bm",
                     "type": "potty",
                     "note": "try again",
-                    "createdAt": "2024-01-21T18:49:53.619+07:00"
+                    "createdAt": "2024-01-28T18:49:53.619+07:00"
                 },
                 {
                     "_id": "65RWSI-MD1Y0Y-USWZ2N",
                     "cardType": "bm",
                     "type": "twoforone",
                     "note": "time entered",
-                    "createdAt": "2024-01-21T08:00"
+                    "createdAt": "2024-01-28T08:00"
                 },
                 {
                     "_id": "NQR730-KOGO9D-VNRX1T",
                     "cardType": "bm",
                     "type": "potty",
                     "note": "Good Morning Potty! It was a lot today!",
-                    "createdAt": "2024-01-22T07:03"
+                    "createdAt": "2024-01-29T07:03"
                 },
                 {
                     "_id": "UB3HCG-FLE6AQ-4AV39D",
                     "cardType": "bm",
                     "type": "poopy",
                     "note": "2 large poops right after each other!",
-                    "createdAt": "2024-01-22T00:08"
+                    "createdAt": "2024-01-29T00:08"
                 },
                 {
                     "_id": "6Z52C6-J9SUKG-2V93QQ",
                     "cardType": "bm",
                     "type": "twoforone",
                     "note": "to diapers for this one haha",
-                    "createdAt": "2024-01-21T11:13"
+                    "createdAt": "2024-01-30T11:13"
                 },
                 {
                     "_id": "PE9Z03-9T7W7X-YGLDL0",
                     "cardType": "bm",
                     "type": "poopy",
                     "note": "She felt great after this one! lol",
-                    "createdAt": "2024-01-20T15:15"
+                    "createdAt": "2024-01-30T15:15"
                 },
                 {
                     "_id": "IDVCNT-79B2SG-QM4WQW",
                     "cardType": "bm",
                     "type": "poopy",
                     "note": "big poopy while eating haha",
-                    "createdAt": "2024-01-23T17:01:25.343+07:00"
+                    "createdAt": "2024-02-01T17:01:25.343+07:00"
                 }
             ],
             "weight_data": [
@@ -67,63 +67,35 @@
                     "cardType": "weight",
                     "pounds": "4",
                     "ounces": "9",
-                    "createdAt": "2023-11-30T20:33"
+                    "createdAt": "2023-01-30T20:33"
                 },
                 {
                     "_id": "Q5WTI6-2B8N1H-OWAC0P",
                     "cardType": "weight",
                     "pounds": "4",
                     "ounces": "3",
-                    "createdAt": "2023-12-19T20:42"
+                    "createdAt": "2023-01-31T20:42"
                 },
                 {
                     "_id": "38C1QB-FNVPBM-F79BBV",
                     "cardType": "weight",
                     "pounds": "4",
                     "ounces": "1",
-                    "createdAt": "2023-12-29T09:44"
+                    "createdAt": "2023-02-01T09:44"
                 },
                 {
                     "_id": "01N5U5-ZETC1F-S0G9C7",
                     "cardType": "weight",
                     "pounds": "4",
                     "ounces": "6",
-                    "createdAt": "2024-01-15T21:29"
+                    "createdAt": "2024-02-02T21:29"
                 },
                 {
                     "_id": "VKKID6-VBLMDY-456JXI",
                     "cardType": "weight",
                     "pounds": "4",
                     "ounces": "9",
-                    "createdAt": "2024-01-17T14:01"
-                },
-                {
-                    "_id": "IJ5NE3-BAW09E-VXO1K7",
-                    "cardType": "weight",
-                    "pounds": "5",
-                    "ounces": "8",
-                    "createdAt": "2024-01-18T17:42:04.127+07:00"
-                },
-                {
-                    "_id": "LJVM14-M3NA0V-JWBHIZ",
-                    "cardType": "weight",
-                    "pounds": "6",
-                    "ounces": "7",
-                    "createdAt": "2024-01-20T21:34"
-                },
-                {
-                    "_id": "VA4Y44-FBA36V-T312QH",
-                    "cardType": "weight",
-                    "pounds": "7",
-                    "ounces": "8",
-                    "createdAt": "2024-01-21T16:29:33.875+07:00"
-                },
-                {
-                    "_id": "P6VEIZ-GYNUSB-WCLES6",
-                    "cardType": "weight",
-                    "pounds": "8",
-                    "ounces": "0",
-                    "createdAt": "2024-01-24T21:48"
+                    "createdAt": "2024-02-03T14:01"
                 }
             ],
             "feed_data": [
