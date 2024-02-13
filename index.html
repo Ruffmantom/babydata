@@ -1,746 +1,1036 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/main.css">
-    <link rel="stylesheet" href="./styles/charts.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/charts.css" />
     <script src="./js/libraries/jquery.js"></script>
     <title>MYBABY</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="notification_box">
-        <p class="notification_text"></p>
+      <p class="notification_text"></p>
     </div>
     <!-- Start Screen If no user found -->
-    <div id="welcome_section" class="modal_cont ">
-        <div class="modal_inner first_section_inner_modal">
-            <img src="./assets/images/MYBABYLogo.png" alt="" class="logo_img">
-            <h1>Welcome!</h1>
-            <p class="info_text">This is your baby’s personal tracker app. Jot down statistics like bowel movements,
-                weight, and more!</p>
-            <h3>Ready to get started?</h3>
+    <div id="welcome_section" class="modal_cont">
+      <div class="modal_inner first_section_inner_modal">
+        <img src="./assets/images/MYBABYLogo.png" alt="" class="logo_img" />
+        <h1>Welcome!</h1>
+        <p class="info_text">
+          This is your baby’s personal tracker app. Jot down statistics like
+          bowel movements, weight, and more!
+        </p>
+        <h3>Ready to get started?</h3>
 
-            <button class="btn_elm" id="get_started_btn">Let's Go!</button>
-        </div>
+        <button class="btn_elm" id="get_started_btn">Let's Go!</button>
+      </div>
     </div>
     <!-- loader -->
     <div class="modal_cont loader_cont">
-        <div class="loader_inner">
-            <svg id="loader_icon" xmlns="http://www.w3.org/2000/svg" width="20" height="17.587" viewBox="0 0 20 17.587">
-                <g id="Icon_core-baby" data-name="Icon core-baby" transform="translate(-1.029 -2.216)">
-                    <path id="Path_3" data-name="Path 3"
-                        d="M18.047,9.2a7.636,7.636,0,0,0-5.576-4.505L13.58,2.919l-1.124-.7-1.463,2.34A7.625,7.625,0,0,0,4.011,9.2a2.982,2.982,0,1,0,0,5.964,7.626,7.626,0,0,0,14.036,0,2.982,2.982,0,1,0,0-5.964Zm1.125,4.142a1.648,1.648,0,0,1-1.15.5l-.859.016-.336.79a6.3,6.3,0,0,1-11.6,0l-.336-.79-.859-.016a1.656,1.656,0,1,1,0-3.312l.859-.016.336-.79a6.3,6.3,0,0,1,11.6,0l.336.79.859.016a1.656,1.656,0,0,1,1.15,2.816Z"
-                        transform="translate(0 0)" />
-                    <path id="Path_4" data-name="Path 4"
-                        d="M11.813,16.313H13.47V17.97H11.813Zm5.635,0H19.1V17.97H17.447Zm-1.989,6.3A3.314,3.314,0,0,0,18.773,19.3H12.144a3.314,3.314,0,0,0,3.314,3.314Z"
-                        transform="translate(-4.43 -5.79)" />
-                </g>
-            </svg>
-        </div>
+      <div class="loader_inner">
+        <svg
+          id="loader_icon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="17.587"
+          viewBox="0 0 20 17.587"
+        >
+          <g
+            id="Icon_core-baby"
+            data-name="Icon core-baby"
+            transform="translate(-1.029 -2.216)"
+          >
+            <path
+              id="Path_3"
+              data-name="Path 3"
+              d="M18.047,9.2a7.636,7.636,0,0,0-5.576-4.505L13.58,2.919l-1.124-.7-1.463,2.34A7.625,7.625,0,0,0,4.011,9.2a2.982,2.982,0,1,0,0,5.964,7.626,7.626,0,0,0,14.036,0,2.982,2.982,0,1,0,0-5.964Zm1.125,4.142a1.648,1.648,0,0,1-1.15.5l-.859.016-.336.79a6.3,6.3,0,0,1-11.6,0l-.336-.79-.859-.016a1.656,1.656,0,1,1,0-3.312l.859-.016.336-.79a6.3,6.3,0,0,1,11.6,0l.336.79.859.016a1.656,1.656,0,0,1,1.15,2.816Z"
+              transform="translate(0 0)"
+            />
+            <path
+              id="Path_4"
+              data-name="Path 4"
+              d="M11.813,16.313H13.47V17.97H11.813Zm5.635,0H19.1V17.97H17.447Zm-1.989,6.3A3.314,3.314,0,0,0,18.773,19.3H12.144a3.314,3.314,0,0,0,3.314,3.314Z"
+              transform="translate(-4.43 -5.79)"
+            />
+          </g>
+        </svg>
+      </div>
     </div>
 
-
     <!-- Sign up modal -->
-    <div id="signup_section" class="modal_cont ">
-        <div class="modal_inner first_section_inner_modal">
-            <h1>Sign Up</h1>
-            <p class="info_text">The information and the data you provide this app will only be stored on your phone. It
-                can be deleted by clearing your browser cache or by deleting this app.</p>
-            <h3>Ready to get started?</h3>
-            <div class="main_form_cont">
-                <div class="form_section_cont">
-                    <label for="fullname">Baby’s First and Last Name</label>
-                    <input id="full_name_input" type="text" name="fullname" placeholder="John Doe" class="">
-                </div>
+    <div id="signup_section" class="modal_cont">
+      <div class="modal_inner first_section_inner_modal">
+        <h1>Sign Up</h1>
+        <p class="info_text">
+          The information and the data you provide this app will only be stored
+          on your phone. It can be deleted by clearing your browser cache or by
+          deleting this app.
+        </p>
+        <h3>Ready to get started?</h3>
+        <div class="main_form_cont">
+          <div class="form_section_cont">
+            <label for="fullname">Baby’s First and Last Name</label>
+            <input
+              id="full_name_input"
+              type="text"
+              name="fullname"
+              placeholder="John Doe"
+              class=""
+            />
+          </div>
 
-                <div class="form_section_cont">
-                    <label for="birthday">Baby’s Birthday</label>
-                    <input id="birthday_input" type="date" class="" name="birthday">
-                </div>
+          <div class="form_section_cont">
+            <label for="birthday">Baby’s Birthday</label>
+            <input id="birthday_input" type="date" class="" name="birthday" />
+          </div>
 
-                <div class="form_section_cont">
-                    <label for="gender">Baby's Gender</label>
-                    <select id="gender_select" name="gender" id="">
-                        <option value="">Select..</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-                </div>
-            </div>
-            <button id="sign_first_baby_up_btn" class="btn_elm">Sign Baby Up</button>
-
+          <div class="form_section_cont">
+            <label for="gender">Baby's Gender</label>
+            <select id="gender_select" name="gender" id="">
+              <option value="">Select..</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
         </div>
+        <button id="sign_first_baby_up_btn" class="btn_elm">
+          Sign Baby Up
+        </button>
+      </div>
     </div>
 
     <!-- baby settings modal -->
     <div id="baby_settings_modal" class="modal_cont blur_bkg">
+      <div class="modal_inner first_section_inner_modal">
+        <div class="modal_heading">
+          <h1>Settings</h1>
 
-        <div class="modal_inner first_section_inner_modal">
+          <div class="close_button">
+            <div id="settings_close" class="button_elm_trigger"></div>
 
-            <div class="modal_heading">
-
-                <h1>Settings</h1>
-
-                <div class="close_button">
-                    <div id="settings_close" class="button_elm_trigger"></div>
-
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
-                        <path id="Icon_ion-close" data-name="Icon ion-close"
-                            d="M15.931,14.435l4.19-4.19a1.059,1.059,0,1,0-1.5-1.5l-4.19,4.19-4.19-4.19a1.06,1.06,0,0,0-1.5,1.5l4.19,4.19-4.19,4.19a1.06,1.06,0,0,0,1.5,1.5l4.19-4.19,4.19,4.19a1.06,1.06,0,0,0,1.5-1.5Z"
-                            transform="translate(-8.435 -8.435)" />
-                    </svg>
-
-                </div>
-            </div>
-
-            <div class="modal_overflow_cont">
-
-                <div class="main_form_cont">
-                    <div class="form_section_cont">
-                        <label>Theme</label>
-                        <input type="radio" checked id="theme_raadio_light">
-                        <input type="radio" id="theme_raadio_dark">
-                        <div class="custom_toggle">
-                            <div id="theme_toggle_btn" class="toggle"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="main_form_cont">
-                    <div class="form_section_cont">
-                        <label for="baby">Current Baby</label>
-                        <select id="select_baby" name="baby" id="">
-
-                        </select>
-                    </div>
-                </div>
-
-                <button id="add_new_baby_btn" class="btn_elm">Add Baby</button>
-                <div id="add_baby_form" class="main_form_cont ">
-                    <h4>Add New Baby</h4>
-
-                    <div class="form_section_cont">
-                        <label for="fullname">Baby’s First and Last Name</label>
-                        <input id="add_new_baby_input_name" type="text" name="fullname" placeholder="John Doe" class="">
-                    </div>
-
-                    <div class="form_section_cont">
-                        <label for="birthday">Baby’s Birthday</label>
-                        <input id="add_new_baby_input_birthday" type="date" class="" name="birthday">
-                    </div>
-
-                    <div class="form_section_cont">
-                        <label for="gender">Baby's Gender</label>
-                        <select id="add_new_baby_input_gender" name="gender" id="">
-                            <option value="">Select..</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
-                    </div>
-                    <button id="add_new_baby_add_btn" class="btn_elm">Add</button>
-                    <button id="add_new_baby_cancel_btn" class="btn_elm cancel_btn">Cancel</button>
-                </div>
-
-                <div class="main_form_cont">
-                    <div class="form_section_cont">
-                        <label>App Version</label>
-                        <p>0.0.1</p>
-                    </div>
-                </div>
-            </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+            >
+              <path
+                id="Icon_ion-close"
+                data-name="Icon ion-close"
+                d="M15.931,14.435l4.19-4.19a1.059,1.059,0,1,0-1.5-1.5l-4.19,4.19-4.19-4.19a1.06,1.06,0,0,0-1.5,1.5l4.19,4.19-4.19,4.19a1.06,1.06,0,0,0,1.5,1.5l4.19-4.19,4.19,4.19a1.06,1.06,0,0,0,1.5-1.5Z"
+                transform="translate(-8.435 -8.435)"
+              />
+            </svg>
+          </div>
         </div>
+
+        <div class="modal_overflow_cont">
+          <div class="main_form_cont">
+            <div class="form_section_cont">
+              <label>Theme</label>
+              <input type="radio" checked id="theme_raadio_light" />
+              <input type="radio" id="theme_raadio_dark" />
+              <div class="custom_toggle">
+                <div id="theme_toggle_btn" class="toggle"></div>
+              </div>
+            </div>
+          </div>
+          <div class="main_form_cont">
+            <div class="form_section_cont">
+              <label for="baby">Current Baby</label>
+              <select id="select_baby" name="baby" id=""></select>
+            </div>
+          </div>
+
+          <button id="add_new_baby_btn" class="btn_elm">Add Baby</button>
+          <div id="add_baby_form" class="main_form_cont">
+            <h4>Add New Baby</h4>
+
+            <div class="form_section_cont">
+              <label for="fullname">Baby’s First and Last Name</label>
+              <input
+                id="add_new_baby_input_name"
+                type="text"
+                name="fullname"
+                placeholder="John Doe"
+                class=""
+              />
+            </div>
+
+            <div class="form_section_cont">
+              <label for="birthday">Baby’s Birthday</label>
+              <input
+                id="add_new_baby_input_birthday"
+                type="date"
+                class=""
+                name="birthday"
+              />
+            </div>
+
+            <div class="form_section_cont">
+              <label for="gender">Baby's Gender</label>
+              <select id="add_new_baby_input_gender" name="gender" id="">
+                <option value="">Select..</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <button id="add_new_baby_add_btn" class="btn_elm">Add</button>
+            <button id="add_new_baby_cancel_btn" class="btn_elm cancel_btn">
+              Cancel
+            </button>
+          </div>
+
+          <div class="main_form_cont">
+            <div class="form_section_cont">
+              <label>App Version</label>
+              <p>0.0.1</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-
     <!-- add data modal -->
-    <div id="baby_add_data_modal" class="modal_cont  blur_bkg">
+    <div id="baby_add_data_modal" class="modal_cont blur_bkg">
+      <div class="modal_inner first_section_inner_modal">
+        <div class="modal_heading">
+          <h1>Add Data</h1>
 
-        <div class="modal_inner first_section_inner_modal">
+          <div class="close_button">
+            <div id="close_data_btn" class="button_elm_trigger"></div>
 
-            <div class="modal_heading">
-
-                <h1>Add Data</h1>
-
-                <div class="close_button">
-                    <div id="close_data_btn" class="button_elm_trigger"></div>
-
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
-                        <path id="Icon_ion-close" data-name="Icon ion-close"
-                            d="M15.931,14.435l4.19-4.19a1.059,1.059,0,1,0-1.5-1.5l-4.19,4.19-4.19-4.19a1.06,1.06,0,0,0-1.5,1.5l4.19,4.19-4.19,4.19a1.06,1.06,0,0,0,1.5,1.5l4.19-4.19,4.19,4.19a1.06,1.06,0,0,0,1.5-1.5Z"
-                            transform="translate(-8.435 -8.435)" />
-                    </svg>
-
-                </div>
-            </div>
-
-            <div class="modal_overflow_cont">
-
-                <div class="main_form_cont">
-                    <div class="form_section_cont">
-                        <label for="datatype">Type</label>
-                        <select id="data_type_select" name="datatype" id="">
-                            <option value="null">Select</option>
-                            <option value="bm">Bowel Movement</option>
-                            <option value="weight">Weight</option>
-                            <option value="feeding">Feeding</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="add_data_forms_cont">
-                    <!-- bm form -->
-                    <div id="add_bm_data_form" class="main_form_cont add_baby_form">
-                        <div class="radio_group">
-                            <input class="radio" checked type="radio" data-bmtype="potty" id="bm_data_radio_elm_potty"
-                                name="bm_type">
-                            <label for="bm_data_radio_elm_potty">Potty</label>
-                        </div>
-                        <div class="radio_group">
-                            <input class="radio" type="radio" data-bmtype="poopy" id="bm_data_radio_elm_poopy"
-                                name="bm_type">
-                            <label for="bm_data_radio_elm_poopy">Poopy</label>
-
-                        </div>
-                        <div class="radio_group">
-                            <input class="radio" type="radio" data-bmtype="twoforone" id="bm_data_radio_elm_two_for_one"
-                                name="bm_type">
-                            <label for="bm_data_radio_elm_two_for_one">Two For One</label>
-                        </div>
-
-                        <div class="form_section_cont">
-                            <label for="note">Enter Note</label>
-                            <textarea name="note" id="" cols="30" rows="4" placeholder="..."></textarea>
-                        </div>
-
-                        <div class="form_section_cont">
-                            <label>Time Recorded</label>
-                            <div class="radio_group">
-                                <input class="radio" checked type="radio" data-bmtime="now" id="bm_data_radio_elm_now"
-                                    name="bm_time">
-                                <label for="bm_data_radio_elm_now">Now</label>
-                            </div>
-                            <div class="radio_group">
-                                <input class="radio" type="radio" data-bmtime="choose" id="bm_data_radio_elm_enter"
-                                    name="bm_time">
-                                <label for="bm_data_radio_elm_enter">Enter Time</label>
-                            </div>
-                            <div id="enter_time_for_bm_data_cont" class="form_section_cont">
-                                <label for="input-time">When:</label>
-                                <input type="datetime-local" id="input-time" name="input-time" />
-                            </div>
-                        </div>
-                        <button id="add_data_bm_btn" class="btn_elm">Add Data</button>
-                    </div>
-
-                    <!-- add weight form -->
-                    <div id="add_weight_data_form" class="main_form_cont add_baby_form">
-                        <div class="flex_form_cont">
-                            <div class="form_section_cont">
-                                <label for="add_data_pounds_input_elm">Pounds</label>
-                                <input type="text" id="add_data_pounds_input_elm" value="0" name="pounds">
-                            </div>
-
-                            <div class="form_section_cont">
-                                <label for="add_data_ounces_input_elm">Ounces</label>
-                                <input type="text" id="add_data_ounces_input_elm" value="0" name="ounces">
-                            </div>
-                        </div>
-                        <!-- Time record -->
-                        <div class="form_section_cont">
-                            <label>Time Recorded</label>
-                            <div class="radio_group">
-                                <input class="radio" checked type="radio" data-weighttime="now"
-                                    id="weight_data_radio_elm_now" name="weight_time">
-                                <label for="weight_data_radio_elm_now">Now</label>
-                            </div>
-                            <div class="radio_group">
-                                <input class="radio" type="radio" data-weighttime="choose"
-                                    id="weight_data_radio_elm_enter" name="weight_time">
-                                <label for="weight_data_radio_elm_enter">Enter Time</label>
-                            </div>
-                            <div id="enter_time_for_weight_data_cont" class="form_section_cont">
-                                <label for="input_time_weight">When:</label>
-                                <input type="datetime-local" id="input_time_weight" name="input_time_weight" />
-                            </div>
-                        </div>
-                        <button id="add_data_weight_btn" class="btn_elm">Add Data</button>
-                    </div>
-
-
-                    <!-- Feeding data -->
-                    <div id="add_feeding_data_form" class="main_form_cont add_baby_form">
-                        <div class="form_section_cont">
-                            <label for="ounces">Ounces</label>
-                            <input type="number" min="0" max="250" id="add_data_feed_ounce_input_elm" value="0"
-                                name="ounces">
-                        </div>
-                        <p>Duration</p>
-                        <div class="flex_form_cont">
-                            <div class="form_section_cont">
-                                <label for="time">Hr</label>
-                                <input type="number" id="add_data_feed_hr_input_elm" min="0" max="200" value="0"
-                                    name="time">
-                            </div>
-                            <div class="form_section_cont">
-                                <label for="time">Min</label>
-                                <input type="number" id="add_data_feed_min_input_elm" min="0" max="200" value="0"
-                                    name="time">
-
-                            </div>
-                        </div>
-
-                        <div class="form_section_cont">
-                            <label>Time Recorded</label>
-                            <div class="radio_group">
-                                <input class="radio" checked data-feedtime="now" type="radio"
-                                    id="feed_data_radio_elm_now" name="feed_time">
-                                <label for="feed_data_radio_elm_now">Now</label>
-                            </div>
-                            <div class="radio_group">
-                                <input class="radio" type="radio" data-feedtime="choose" id="feed_data_radio_elm_enter"
-                                    name="feed_time">
-                                <label for="feed_data_radio_elm_enter">Enter Time</label>
-                            </div>
-                            <div id="enter_time_for_feed_data_cont" class="form_section_cont">
-                                <label for="ounces">When:</label>
-                                <input type="datetime-local" data-feedtime="choose" id="input_time_feed"
-                                    name="meeting-time" />
-                            </div>
-
-                        </div>
-                        <button id="add_data_feed_btn" class="btn_elm">Add Data</button>
-                    </div>
-
-                </div>
-
-            </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+            >
+              <path
+                id="Icon_ion-close"
+                data-name="Icon ion-close"
+                d="M15.931,14.435l4.19-4.19a1.059,1.059,0,1,0-1.5-1.5l-4.19,4.19-4.19-4.19a1.06,1.06,0,0,0-1.5,1.5l4.19,4.19-4.19,4.19a1.06,1.06,0,0,0,1.5,1.5l4.19-4.19,4.19,4.19a1.06,1.06,0,0,0,1.5-1.5Z"
+                transform="translate(-8.435 -8.435)"
+              />
+            </svg>
+          </div>
         </div>
+
+        <div class="modal_overflow_cont">
+          <div class="main_form_cont">
+            <div class="form_section_cont">
+              <label for="datatype">Type</label>
+              <select id="data_type_select" name="datatype" id="">
+                <option value="null">Select</option>
+                <option value="bm">Bowel Movement</option>
+                <option value="weight">Weight</option>
+                <option value="feeding">Feeding</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="add_data_forms_cont">
+            <!-- bm form -->
+            <div id="add_bm_data_form" class="main_form_cont add_baby_form">
+              <div class="radio_group">
+                <input
+                  class="radio"
+                  checked
+                  type="radio"
+                  data-bmtype="potty"
+                  id="bm_data_radio_elm_potty"
+                  name="bm_type"
+                />
+                <label for="bm_data_radio_elm_potty">Potty</label>
+              </div>
+              <div class="radio_group">
+                <input
+                  class="radio"
+                  type="radio"
+                  data-bmtype="poopy"
+                  id="bm_data_radio_elm_poopy"
+                  name="bm_type"
+                />
+                <label for="bm_data_radio_elm_poopy">Poopy</label>
+              </div>
+              <div class="radio_group">
+                <input
+                  class="radio"
+                  type="radio"
+                  data-bmtype="twoforone"
+                  id="bm_data_radio_elm_two_for_one"
+                  name="bm_type"
+                />
+                <label for="bm_data_radio_elm_two_for_one">Two For One</label>
+              </div>
+
+              <div class="form_section_cont">
+                <label for="note">Enter Note</label>
+                <textarea
+                  name="note"
+                  id=""
+                  cols="30"
+                  rows="4"
+                  placeholder="..."
+                ></textarea>
+              </div>
+
+              <div class="form_section_cont">
+                <label>Time Recorded</label>
+                <div class="radio_group">
+                  <input
+                    class="radio"
+                    checked
+                    type="radio"
+                    data-bmtime="now"
+                    id="bm_data_radio_elm_now"
+                    name="bm_time"
+                  />
+                  <label for="bm_data_radio_elm_now">Now</label>
+                </div>
+                <div class="radio_group">
+                  <input
+                    class="radio"
+                    type="radio"
+                    data-bmtime="choose"
+                    id="bm_data_radio_elm_enter"
+                    name="bm_time"
+                  />
+                  <label for="bm_data_radio_elm_enter">Enter Time</label>
+                </div>
+                <div id="enter_time_for_bm_data_cont" class="form_section_cont">
+                  <label for="input-time">When:</label>
+                  <input
+                    type="datetime-local"
+                    id="input-time"
+                    name="input-time"
+                  />
+                </div>
+              </div>
+              <button id="add_data_bm_btn" class="btn_elm">Add Data</button>
+            </div>
+
+            <!-- add weight form -->
+            <div id="add_weight_data_form" class="main_form_cont add_baby_form">
+              <div class="flex_form_cont">
+                <div class="form_section_cont">
+                  <label for="add_data_pounds_input_elm">Pounds</label>
+                  <input
+                    type="text"
+                    id="add_data_pounds_input_elm"
+                    value="0"
+                    name="pounds"
+                  />
+                </div>
+
+                <div class="form_section_cont">
+                  <label for="add_data_ounces_input_elm">Ounces</label>
+                  <input
+                    type="text"
+                    id="add_data_ounces_input_elm"
+                    value="0"
+                    name="ounces"
+                  />
+                </div>
+              </div>
+              <!-- Time record -->
+              <div class="form_section_cont">
+                <label>Time Recorded</label>
+                <div class="radio_group">
+                  <input
+                    class="radio"
+                    checked
+                    type="radio"
+                    data-weighttime="now"
+                    id="weight_data_radio_elm_now"
+                    name="weight_time"
+                  />
+                  <label for="weight_data_radio_elm_now">Now</label>
+                </div>
+                <div class="radio_group">
+                  <input
+                    class="radio"
+                    type="radio"
+                    data-weighttime="choose"
+                    id="weight_data_radio_elm_enter"
+                    name="weight_time"
+                  />
+                  <label for="weight_data_radio_elm_enter">Enter Time</label>
+                </div>
+                <div
+                  id="enter_time_for_weight_data_cont"
+                  class="form_section_cont"
+                >
+                  <label for="input_time_weight">When:</label>
+                  <input
+                    type="datetime-local"
+                    id="input_time_weight"
+                    name="input_time_weight"
+                  />
+                </div>
+              </div>
+              <button id="add_data_weight_btn" class="btn_elm">Add Data</button>
+            </div>
+
+            <!-- Feeding data -->
+            <div
+              id="add_feeding_data_form"
+              class="main_form_cont add_baby_form"
+            >
+              <div class="form_section_cont">
+                <label for="ounces">Ounces</label>
+                <input
+                  type="number"
+                  min="0"
+                  max="250"
+                  id="add_data_feed_ounce_input_elm"
+                  value="0"
+                  name="ounces"
+                />
+              </div>
+              <p>Duration</p>
+              <div class="flex_form_cont">
+                <div class="form_section_cont">
+                  <label for="time">Hr</label>
+                  <input
+                    type="number"
+                    id="add_data_feed_hr_input_elm"
+                    min="0"
+                    max="200"
+                    value="0"
+                    name="time"
+                  />
+                </div>
+                <div class="form_section_cont">
+                  <label for="time">Min</label>
+                  <input
+                    type="number"
+                    id="add_data_feed_min_input_elm"
+                    min="0"
+                    max="200"
+                    value="0"
+                    name="time"
+                  />
+                </div>
+              </div>
+
+              <div class="form_section_cont">
+                <label>Time Recorded</label>
+                <div class="radio_group">
+                  <input
+                    class="radio"
+                    checked
+                    data-feedtime="now"
+                    type="radio"
+                    id="feed_data_radio_elm_now"
+                    name="feed_time"
+                  />
+                  <label for="feed_data_radio_elm_now">Now</label>
+                </div>
+                <div class="radio_group">
+                  <input
+                    class="radio"
+                    type="radio"
+                    data-feedtime="choose"
+                    id="feed_data_radio_elm_enter"
+                    name="feed_time"
+                  />
+                  <label for="feed_data_radio_elm_enter">Enter Time</label>
+                </div>
+                <div
+                  id="enter_time_for_feed_data_cont"
+                  class="form_section_cont"
+                >
+                  <label for="ounces">When:</label>
+                  <input
+                    type="datetime-local"
+                    data-feedtime="choose"
+                    id="input_time_feed"
+                    name="meeting-time"
+                  />
+                </div>
+              </div>
+              <button id="add_data_feed_btn" class="btn_elm">Add Data</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- dot info modal -->
+    <div id="bm_dot_info_modal" class="modal_cont blur_bkg">
+      <div class="modal_inner first_section_inner_modal">
+        <div class="modal_heading">
+          <h3 id="bm_dot_info_heading"></h3>
+          <div class="close_button">
+            <div id="close_dot_info_btn" class="button_elm_trigger"></div>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+            >
+              <path
+                id="Icon_ion-close"
+                data-name="Icon ion-close"
+                d="M15.931,14.435l4.19-4.19a1.059,1.059,0,1,0-1.5-1.5l-4.19,4.19-4.19-4.19a1.06,1.06,0,0,0-1.5,1.5l4.19,4.19-4.19,4.19a1.06,1.06,0,0,0,1.5,1.5l4.19-4.19,4.19,4.19a1.06,1.06,0,0,0,1.5-1.5Z"
+                transform="translate(-8.435 -8.435)"
+              />
+            </svg>
+          </div>
+        </div>
+        <div id="bm_dot_info_cont">
+          <!-- add dynamic card here -->
+        </div>
+      </div>
     </div>
 
     <!-- main container -->
     <div class="main_cont">
-
-        <div class="content_cont">
-            <!-- these containers will be swapped out and re rendered when actions happen -->
-            <div id="title_block">
-                <div id="baby_settings_button_cont" class="btn_elm btn_lg">
-                    <div id="baby_settings_button" class="button_elm_trigger"></div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17.587" viewBox="0 0 20 17.587">
-                        <g id="Icon_core-baby" data-name="Icon core-baby" transform="translate(-1.029 -2.216)">
-                            <path id="Path_3" data-name="Path 3"
-                                d="M18.047,9.2a7.636,7.636,0,0,0-5.576-4.505L13.58,2.919l-1.124-.7-1.463,2.34A7.625,7.625,0,0,0,4.011,9.2a2.982,2.982,0,1,0,0,5.964,7.626,7.626,0,0,0,14.036,0,2.982,2.982,0,1,0,0-5.964Zm1.125,4.142a1.648,1.648,0,0,1-1.15.5l-.859.016-.336.79a6.3,6.3,0,0,1-11.6,0l-.336-.79-.859-.016a1.656,1.656,0,1,1,0-3.312l.859-.016.336-.79a6.3,6.3,0,0,1,11.6,0l.336.79.859.016a1.656,1.656,0,0,1,1.15,2.816Z"
-                                transform="translate(0 0)" />
-                            <path id="Path_4" data-name="Path 4"
-                                d="M11.813,16.313H13.47V17.97H11.813Zm5.635,0H19.1V17.97H17.447Zm-1.989,6.3A3.314,3.314,0,0,0,18.773,19.3H12.144a3.314,3.314,0,0,0,3.314,3.314Z"
-                                transform="translate(-4.43 -5.79)" />
-                        </g>
+      <div class="content_cont">
+        <!-- these containers will be swapped out and re rendered when actions happen -->
+        <div id="title_block">
+          <div id="baby_settings_button_cont" class="btn_elm btn_lg">
+            <div id="baby_settings_button" class="button_elm_trigger"></div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="17.587"
+              viewBox="0 0 20 17.587"
+            >
+              <g
+                id="Icon_core-baby"
+                data-name="Icon core-baby"
+                transform="translate(-1.029 -2.216)"
+              >
+                <path
+                  id="Path_3"
+                  data-name="Path 3"
+                  d="M18.047,9.2a7.636,7.636,0,0,0-5.576-4.505L13.58,2.919l-1.124-.7-1.463,2.34A7.625,7.625,0,0,0,4.011,9.2a2.982,2.982,0,1,0,0,5.964,7.626,7.626,0,0,0,14.036,0,2.982,2.982,0,1,0,0-5.964Zm1.125,4.142a1.648,1.648,0,0,1-1.15.5l-.859.016-.336.79a6.3,6.3,0,0,1-11.6,0l-.336-.79-.859-.016a1.656,1.656,0,1,1,0-3.312l.859-.016.336-.79a6.3,6.3,0,0,1,11.6,0l.336.79.859.016a1.656,1.656,0,0,1,1.15,2.816Z"
+                  transform="translate(0 0)"
+                />
+                <path
+                  id="Path_4"
+                  data-name="Path 4"
+                  d="M11.813,16.313H13.47V17.97H11.813Zm5.635,0H19.1V17.97H17.447Zm-1.989,6.3A3.314,3.314,0,0,0,18.773,19.3H12.144a3.314,3.314,0,0,0,3.314,3.314Z"
+                  transform="translate(-4.43 -5.79)"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="content_block_container" id="home_data_page">
+          <div class="title_block">
+            <p id="baby_name_title"></p>
+            <p id="home_message"></p>
+          </div>
+          <div class="widget_main_cont">
+            <!-- first chart -->
+            <div class="widget_cont">
+              <div class="widget_title_block">
+                <h4 class="widget_title">Diaper Count</h4>
+                <div class="widget_setting_dd">
+                  <div class="widget_setting_dd_preview">
+                    <svg
+                      data-date_dropdown_id="bm"
+                      class="dd_icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="6"
+                      height="3.499"
+                    >
+                      <path
+                        id="Icon_fa-solid-angle-down"
+                        data-name="Icon fa-solid-angle-down"
+                        d="M4.892,12.348a.5.5,0,0,0,.708,0l2.5-2.5a.5.5,0,0,0-.708-.708L5.245,11.287,3.1,9.143a.5.5,0,0,0-.708.708l2.5,2.5Z"
+                        transform="translate(-2.245 -8.995)"
+                      />
                     </svg>
+                    <!-- this will be dynamically changes -->
+                    <p data-date_dropdown_id="bm" class="dd_title">
+                      Week of 14<small>th</small>
+                    </p>
+                    <div
+                      data-date_dropdown_id="bm"
+                      class="drop_down_action_btn"
+                      id="bm_week_chooser_dd_btn"
+                    ></div>
+                  </div>
+                  <div
+                    data-date_dropdown_id="bm"
+                    class="widget_dd_item_container"
+                  >
+                    <!-- these will be dynamically added based on the data -->
+                    <p
+                      data-week_of_bm_data="1-14-2024"
+                      class="widget_dd_item active"
+                    >
+                      Week of 14th
+                    </p>
+                    <p data-week_of_bm_data="1-7-2024" class="widget_dd_item">
+                      Week of 7th
+                    </p>
+                  </div>
                 </div>
+              </div>
+              <!-- ************************************************ -->
+              <!-- Bowel Movement chart -->
+              <!-- ************************************************ -->
+              <div class="widget_chart_cont">
+                <!-- creating the chart with HTML instead of svg -->
+
+                <div class="widget_chart_inner_cont">
+                  <div class="chart_title_group">
+                    <p id="bm_chart_title" class="chart_title">
+                      Week of Dec 10th
+                    </p>
+                    <div class="chart_legend">
+                      <div class="chart_legend_group">
+                        <div class="bm_dot_outer potty_dot">
+                          <div class="bm_dot_inner potty_dot"></div>
+                        </div>
+                        <p class="chart_legend_group_text">Potty</p>
+                      </div>
+
+                      <div class="chart_legend_group">
+                        <div class="bm_dot_outer poopy_dot">
+                          <div class="bm_dot_inner poopy_dot"></div>
+                        </div>
+                        <p class="chart_legend_group_text">Poopy</p>
+                      </div>
+
+                      <div class="chart_legend_group">
+                        <div class="bm_dot_outer two_for_one_dot">
+                          <div class="bm_dot_inner two_for_one_dot"></div>
+                        </div>
+                        <p class="chart_legend_group_text">Two For One</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="chart_main_cont">
+                    <div class="chart_main_cont_col bm chart_y">
+                      <p class="chart_y_text">11pm</p>
+                      <p class="chart_y_text">10pm</p>
+                      <p class="chart_y_text">9pm</p>
+                      <p class="chart_y_text">8pm</p>
+                      <p class="chart_y_text">7pm</p>
+                      <p class="chart_y_text">6pm</p>
+                      <p class="chart_y_text">5pm</p>
+                      <p class="chart_y_text">4pm</p>
+                      <p class="chart_y_text">3pm</p>
+                      <p class="chart_y_text">2pm</p>
+                      <p class="chart_y_text">1pm</p>
+                      <p class="chart_y_text">12pm</p>
+                      <p class="chart_y_text">11am</p>
+                      <p class="chart_y_text">10am</p>
+                      <p class="chart_y_text">9am</p>
+                      <p class="chart_y_text">8am</p>
+                      <p class="chart_y_text">7am</p>
+                      <p class="chart_y_text">6am</p>
+                      <p class="chart_y_text">5am</p>
+                      <p class="chart_y_text">4am</p>
+                      <p class="chart_y_text">3am</p>
+                      <p class="chart_y_text">2am</p>
+                      <p class="chart_y_text">1am</p>
+                      <p class="chart_y_text">12am</p>
+                    </div>
+                    <div
+                      id="bm_chart_body"
+                      class="chart_main_cont_col chart_body"
+                    >
+                      <p class="no_data_note">No Data Found</p>
+                      <div id="dot_cont"></div>
+                      <!-- <div class="chart_y_line"></div> -->
+                      <div class="chart_bkg_cont bm">
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                        <div class="chart_y_line"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="chart_footer_x bm">
+                    <p class="chart_footer_x_text">Sun</p>
+                    <p class="chart_footer_x_text">Mon</p>
+                    <p class="chart_footer_x_text">Tue</p>
+                    <p class="chart_footer_x_text">Wed</p>
+                    <p class="chart_footer_x_text">Thu</p>
+                    <p class="chart_footer_x_text">Fri</p>
+                    <p class="chart_footer_x_text">Sat</p>
+                  </div>
+                </div>
+                <!-- creating the chart with HTML instead of svg -->
+              </div>
             </div>
-            <div class="content_block_container" id="home_data_page">
-                <div class="title_block">
-                    <p id="baby_name_title"></p>
-                    <p id="home_message"></p>
+            <!-- Second chart -->
+            <div class="widget_cont">
+              <div class="widget_title_block">
+                <h4 class="widget_title">Weight</h4>
+                <div class="widget_setting_dd">
+                  <div class="widget_setting_dd_preview">
+                    <svg
+                      data-date_dropdown_id="weight"
+                      class="dd_icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="6"
+                      height="3.499"
+                    >
+                      <path
+                        id="Icon_fa-solid-angle-down"
+                        data-name="Icon fa-solid-angle-down"
+                        d="M4.892,12.348a.5.5,0,0,0,.708,0l2.5-2.5a.5.5,0,0,0-.708-.708L5.245,11.287,3.1,9.143a.5.5,0,0,0-.708.708l2.5,2.5Z"
+                        transform="translate(-2.245 -8.995)"
+                      />
+                    </svg>
+                    <!-- this will be dynamically changed -->
+                    <p data-date_dropdown_id="weight" class="dd_title">
+                      Weekly
+                    </p>
+                    <div
+                      data-date_dropdown_id="weight"
+                      class="drop_down_action_btn"
+                      id="weight_week_chooser_dd_btn"
+                    ></div>
+                  </div>
+                  <div
+                    data-date_dropdown_id="weight"
+                    class="widget_dd_item_container"
+                  >
+                    <p
+                      data-chart_dd_sort="weekly"
+                      class="widget_dd_item active"
+                    >
+                      Weekly
+                    </p>
+                    <p data-chart_dd_sort="monthly" class="widget_dd_item">
+                      Monthly
+                    </p>
+                  </div>
                 </div>
-                <div class="widget_main_cont">
-                    <!-- first chart -->
-                    <div class="widget_cont">
-                        <div class="widget_title_block">
-                            <h4 class="widget_title">Diaper Count</h4>
-                            <div class="widget_setting_dd">
-                                <div class="widget_setting_dd_preview">
-                                    <svg data-date_dropdown_id="bm" class="dd_icon" xmlns="http://www.w3.org/2000/svg"
-                                        width="6" height="3.499">
-                                        <path id="Icon_fa-solid-angle-down" data-name="Icon fa-solid-angle-down"
-                                            d="M4.892,12.348a.5.5,0,0,0,.708,0l2.5-2.5a.5.5,0,0,0-.708-.708L5.245,11.287,3.1,9.143a.5.5,0,0,0-.708.708l2.5,2.5Z"
-                                            transform="translate(-2.245 -8.995)" />
-                                    </svg>
-                                    <!-- this will be dynamically changes -->
-                                    <p data-date_dropdown_id="bm" class="dd_title">Week of 14<small>th</small></p>
-                                    <div data-date_dropdown_id="bm" class="drop_down_action_btn"
-                                        id="bm_week_chooser_dd_btn"></div>
-                                </div>
-                                <div data-date_dropdown_id="bm" class="widget_dd_item_container">
-                                    <!-- these will be dynamically added based on the data -->
-                                    <p data-week_of_bm_data="1-14-2024" class="widget_dd_item active">Week of 14th</p>
-                                    <p data-week_of_bm_data="1-7-2024" class="widget_dd_item">Week of 7th</p>
-                                </div>
-                            </div>
+              </div>
+              <!-- ************************************************ -->
+              <!-- Weight chart -->
+              <!-- ************************************************ -->
+              <div class="widget_chart_cont">
+                <div class="widget_chart">
+                  <div class="widget_chart_inner_cont">
+                    <div class="chart_title_group">
+                      <p id="weight_chart_title" class="chart_title">Weekly</p>
+                      <div class="chart_legend">
+                        <div class="chart_legend_group">
+                          <div class="chart_legend_line"></div>
+                          <p class="chart_legend_group_text">Record</p>
                         </div>
-                        <!-- ************************************************ -->
-                        <!-- Bowel Movement chart -->
-                        <!-- ************************************************ -->
-                        <div class="widget_chart_cont">
-                            <!-- creating the chart with HTML instead of svg -->
-
-                            <div class="widget_chart_inner_cont">
-                                <div class="chart_title_group">
-                                    <p id="bm_chart_title" class="chart_title">Week of Dec 10th</p>
-                                    <div class="chart_legend">
-                                        <div class="chart_legend_group">
-                                            <div class="bm_dot_outer potty_dot">
-                                                <div class="bm_dot_inner potty_dot"></div>
-                                            </div>
-                                            <p class="chart_legend_group_text">Potty</p>
-                                        </div>
-
-                                        <div class="chart_legend_group">
-
-                                            <div class="bm_dot_outer poopy_dot">
-                                                <div class="bm_dot_inner poopy_dot"></div>
-                                            </div>
-                                            <p class="chart_legend_group_text">Poopy</p>
-                                        </div>
-
-                                        <div class="chart_legend_group">
-
-                                            <div class="bm_dot_outer two_for_one_dot">
-                                                <div class="bm_dot_inner two_for_one_dot"></div>
-                                            </div>
-                                            <p class="chart_legend_group_text">Two For One</p>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="chart_main_cont">
-                                    <div class="chart_main_cont_col chart_y">
-                                        <p class="chart_y_text">PM</p>
-                                        <p class="chart_y_text">11</p>
-                                        <p class="chart_y_text">10</p>
-                                        <p class="chart_y_text">9</p>
-                                        <p class="chart_y_text">8</p>
-                                        <p class="chart_y_text">7</p>
-                                        <p class="chart_y_text">6</p>
-                                        <p class="chart_y_text">5</p>
-                                        <p class="chart_y_text">4</p>
-                                        <p class="chart_y_text">3</p>
-                                        <p class="chart_y_text">2</p>
-                                        <p class="chart_y_text">1</p>
-                                        <p class="chart_y_text">12</p>
-                                        <p class="chart_y_text">11</p>
-                                        <p class="chart_y_text">10</p>
-                                        <p class="chart_y_text">9</p>
-                                        <p class="chart_y_text">8</p>
-                                        <p class="chart_y_text">7</p>
-                                        <p class="chart_y_text">6</p>
-                                        <p class="chart_y_text">5</p>
-                                        <p class="chart_y_text">4</p>
-                                        <p class="chart_y_text">3</p>
-                                        <p class="chart_y_text">2</p>
-                                        <p class="chart_y_text">1</p>
-                                        <p class="chart_y_text">12</p>
-                                        <p class="chart_y_text">AM</p>
-                                    </div>
-                                    <div id="bm_chart_body" class="chart_main_cont_col chart_body">
-                                        <p class='no_data_note'>No Data Found</p>
-                                        <div id="dot_cont">
-                                        </div>
-                                        <!-- <div class="chart_y_line"></div> -->
-                                        <div class="chart_bkg_cont">
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                            <div class="chart_y_line"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="chart_footer_x">
-                                    <p class="chart_footer_x_text">Sun</p>
-                                    <p class="chart_footer_x_text">Mon</p>
-                                    <p class="chart_footer_x_text">Tue</p>
-                                    <p class="chart_footer_x_text">Wed</p>
-                                    <p class="chart_footer_x_text">Thu</p>
-                                    <p class="chart_footer_x_text">Fri</p>
-                                    <p class="chart_footer_x_text">Sat</p>
-                                </div>
-
-                            </div>
-                            <!-- creating the chart with HTML instead of svg -->
-
-
-
-                        </div>
-
+                      </div>
                     </div>
-                    <!-- Second chart -->
-                    <div class="widget_cont">
-                        <div class="widget_title_block">
-                            <h4 class="widget_title">Weight</h4>
-                            <div class="widget_setting_dd">
-                                <div class="widget_setting_dd_preview">
-                                    <svg data-date_dropdown_id="weight" class="dd_icon"
-                                        xmlns="http://www.w3.org/2000/svg" width="6" height="3.499">
-                                        <path id="Icon_fa-solid-angle-down" data-name="Icon fa-solid-angle-down"
-                                            d="M4.892,12.348a.5.5,0,0,0,.708,0l2.5-2.5a.5.5,0,0,0-.708-.708L5.245,11.287,3.1,9.143a.5.5,0,0,0-.708.708l2.5,2.5Z"
-                                            transform="translate(-2.245 -8.995)" />
-                                    </svg>
-                                    <!-- this will be dynamically changed -->
-                                    <p data-date_dropdown_id="weight" class="dd_title">Weekly</p>
-                                    <div data-date_dropdown_id="weight" class="drop_down_action_btn"
-                                        id="weight_week_chooser_dd_btn"></div>
-                                </div>
-                                <div data-date_dropdown_id="weight" class="widget_dd_item_container">
-                                    <p data-chart_dd_sort="weekly" class="widget_dd_item active">Weekly</p>
-                                    <p data-chart_dd_sort="monthly" class="widget_dd_item">Monthly</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ************************************************ -->
-                        <!-- Weight chart -->
-                        <!-- ************************************************ -->
-                        <div class="widget_chart_cont">
-                            <div class="widget_chart">
-                                <div class="widget_chart_inner_cont">
-                                    <div class="chart_title_group">
-                                        <p id="weight_chart_title" class="chart_title">Weekly</p>
-                                        <div class="chart_legend">
-                                            <div class="chart_legend_group">
-                                                <div class="chart_legend_line"></div>
-                                                <p class="chart_legend_group_text">Record</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="chart_main_cont">
-                                        <div id="weight_chart_y" class="chart_main_cont_col chart_y">
-                                            <p class="chart_y_text">30</p>
-                                            <p class="chart_y_text">25</p>
-                                            <p class="chart_y_text">20</p>
-                                            <p class="chart_y_text">15</p>
-                                            <p class="chart_y_text">10</p>
-                                            <p class="chart_y_text">5</p>
-                                            <p class="chart_y_text">0</p>
-                                            <p class="chart_y_text">LBS</p>
-                                        </div>
-                                        <div id="weight_chart_body" class="chart_main_cont_col chart_body">
-                                            <p class='no_data_note'>No Data Found</p>
-                                            <div id="weight_line_cont">
-                                                <!-- svg will be placed here -->
+                    <div class="chart_main_cont">
+                      <div
+                        id="weight_chart_y"
+                        class="chart_main_cont_col chart_y"
+                      >
+                        <p class="chart_y_text">30</p>
+                        <p class="chart_y_text">25</p>
+                        <p class="chart_y_text">20</p>
+                        <p class="chart_y_text">15</p>
+                        <p class="chart_y_text">10</p>
+                        <p class="chart_y_text">5</p>
+                        <p class="chart_y_text">0</p>
+                        <p class="chart_y_text">LBS</p>
+                      </div>
+                      <div
+                        id="weight_chart_body"
+                        class="chart_main_cont_col chart_body"
+                      >
+                        <p class="no_data_note">No Data Found</p>
+                        <div id="weight_line_cont">
+                          <!-- svg will be placed here -->
 
-                                                <!-- svg will be placed here -->
-                                            </div>
-                                            <div id="weight_chart_bkg" class="chart_bkg_cont">
-                                                <div class="chart_y_line"></div>
-                                                <div class="chart_y_line"></div>
-                                                <div class="chart_y_line"></div>
-                                                <div class="chart_y_line"></div>
-                                                <div class="chart_y_line"></div>
-                                                <div class="chart_y_line"></div>
-                                                <div class="chart_y_line"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- chart footer -->
-                                    <div class="chart_footer_x weight_chart_footer">
-                                        <p>Trending</p>
-                                        <div class="trend_bubble">Great</div>
-                                        <img class="trend_icon" src="./assets/icons/trend-up.png" alt="">
-                                    </div>
-
-                                </div>
-                            </div>
+                          <!-- svg will be placed here -->
                         </div>
+                        <div id="weight_chart_bkg" class="chart_bkg_cont">
+                          <div class="chart_y_line"></div>
+                          <div class="chart_y_line"></div>
+                          <div class="chart_y_line"></div>
+                          <div class="chart_y_line"></div>
+                          <div class="chart_y_line"></div>
+                          <div class="chart_y_line"></div>
+                          <div class="chart_y_line"></div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="widget_cont">
-                        <div class="widget_title_block">
-                            <h4 class="widget_title">Feeding</h4>
-                            <div class="widget_setting_dd">
-                                <div class="widget_setting_dd_preview">
-                                    <svg data-date_dropdown_id="feed" class="dd_icon" xmlns="http://www.w3.org/2000/svg"
-                                        width="6" height="3.499">
-                                        <path id="Icon_fa-solid-angle-down" data-name="Icon fa-solid-angle-down"
-                                            d="M4.892,12.348a.5.5,0,0,0,.708,0l2.5-2.5a.5.5,0,0,0-.708-.708L5.245,11.287,3.1,9.143a.5.5,0,0,0-.708.708l2.5,2.5Z"
-                                            transform="translate(-2.245 -8.995)" />
-                                    </svg>
-                                    <!-- this will be dynamically changes -->
-                                    <p data-date_dropdown_id="feed" class="dd_title">Weekly</p>
-                                    <div data-date_dropdown_id="feed" class="drop_down_action_btn"
-                                        id="feed_week_chooser_dd_btn"></div>
-                                </div>
-                                <div data-date_dropdown_id="feed" class="widget_dd_item_container">
-                                    <p data-chart_dd_sort="weekly" class="widget_dd_item active">Weekly</p>
-                                    <p data-chart_dd_sort="monthly" class="widget_dd_item">Monthly</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ************************************************ -->
-                        <!-- Feed chart -->
-                        <!-- ************************************************ -->
-                        <div class="widget_chart_cont">
-                            <div class="widget_chart">
-                                <div class="widget_chart_inner_cont">
-                                    <div class="chart_title_group">
-                                        <p id="weigth_chart_title" class="chart_title">Weekly</p>
-                                        <div class="chart_legend">
-                                            <div class="chart_legend_group">
-                                                <div class="chart_legend_line"></div>
-                                                <p class="chart_legend_group_text">Record</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="chart_main_cont">
-                                        <div id="feed_chart_y" class="chart_main_cont_col chart_y">
-                                            <!-- Swap this chart with the weight chart -->
-                                            <p class="chart_y_text">10</p>
-                                            <p class="chart_y_text">9</p>
-                                            <p class="chart_y_text">8</p>
-                                            <p class="chart_y_text">7</p>
-                                            <p class="chart_y_text">6</p>
-                                            <p class="chart_y_text">5</p>
-                                            <p class="chart_y_text">4</p>
-                                            <p class="chart_y_text">3</p>
-                                            <p class="chart_y_text">2</p>
-                                            <p class="chart_y_text">1</p>
-                                            <p class="chart_y_text">5</p>
-                                            <p class="chart_y_text">OZ</p>
-                                        </div>
-                                        <div id="feed_chart_body" class="chart_main_cont_col chart_body">
-                                            <p class='no_data_note'>No Data Found</p>
-                                            <div id="feed_line_cont">
-                                                <!-- svg will be placed here -->
-
-                                                <!-- svg will be placed here -->
-                                            </div>
-                                            <div id="feed_chart_bkg" class="chart_bkg_cont">
-
-                                                <div class="chart_y_line"></div>
-                                                <div class="chart_y_line"></div>
-                                                <div class="chart_y_line"></div>
-                                                <div class="chart_y_line"></div>
-                                                <div class="chart_y_line"></div>
-                                                <div class="chart_y_line"></div>
-                                                <div class="chart_y_line"></div>
-                                                <div class="chart_y_line"></div>
-                                                <div class="chart_y_line"></div>
-                                                <div class="chart_y_line"></div>
-                                                <div class="chart_y_line"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="chart_footer_x feed_chart_footer">
-                                        <p>Trending</p>
-                                        <div class="trend_bubble">Great</div>
-                                        <img class="trend_icon" src="./assets/icons/trend-up.png" alt="">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
+                    <!-- chart footer -->
+                    <div class="chart_footer_x weight_chart_footer">
+                      <p>Trending</p>
+                      <div class="trend_bubble">Great</div>
+                      <img
+                        class="trend_icon"
+                        src="./assets/icons/trend-up.png"
+                        alt=""
+                      />
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
-
-
-            <!-- all data page -->
-            <div class="content_block_container" id="all_data_page">
-                <div id="title_block">
-                    <p id="baby_name_title">All Baby Data</p>
-                    <div class="title_block_footer_bar">
-                        <p id="data_page_babys_name"></p>
-                        <div class="btn_container">
-                            <p>Filter</p>
-                            <div class="btn_elm btn_lg icon_btn">
-                                <div id="filter_baby_data_by_date_btn" data-datefilter="true"
-                                    class="button_elm_trigger"></div>
-                                <svg id="filter_baby_data_by_date_icon" xmlns="http://www.w3.org/2000/svg"
-                                    width="20.286" height="18" viewBox="0 0 20.286 16">
-                                    <path id="Path_22" data-name="Path 22"
-                                        d="M13.124,32.371a1.142,1.142,0,0,0-1.686,0L8.3,35.8a1.143,1.143,0,1,0,1.686,1.543l1.157-1.261V46.857a1.143,1.143,0,0,0,2.286,0V36.082l1.157,1.264A1.143,1.143,0,0,0,16.267,35.8l-3.143-3.429ZM19.139,48h1.143a1.143,1.143,0,1,0,0-2.286H19.139a1.143,1.143,0,1,0,0,2.286Zm0-4.571h3.429a1.143,1.143,0,1,0,0-2.286H19.139a1.143,1.143,0,1,0,0,2.286Zm0-4.571h5.714a1.143,1.143,0,0,0,0-2.286H19.139a1.143,1.143,0,1,0,0,2.286Zm0-4.571h8a1.143,1.143,0,1,0,0-2.286h-8a1.143,1.143,0,1,0,0,2.286Z"
-                                        transform="translate(-7.996 -32)" />
-                                </svg>
-                            </div>
+            <div class="widget_cont">
+              <div class="widget_title_block">
+                <h4 class="widget_title">Feeding</h4>
+                <div class="widget_setting_dd">
+                  <div class="widget_setting_dd_preview">
+                    <svg
+                      data-date_dropdown_id="feed"
+                      class="dd_icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="6"
+                      height="3.499"
+                    >
+                      <path
+                        id="Icon_fa-solid-angle-down"
+                        data-name="Icon fa-solid-angle-down"
+                        d="M4.892,12.348a.5.5,0,0,0,.708,0l2.5-2.5a.5.5,0,0,0-.708-.708L5.245,11.287,3.1,9.143a.5.5,0,0,0-.708.708l2.5,2.5Z"
+                        transform="translate(-2.245 -8.995)"
+                      />
+                    </svg>
+                    <!-- this will be dynamically changes -->
+                    <p data-date_dropdown_id="feed" class="dd_title">Weekly</p>
+                    <div
+                      data-date_dropdown_id="feed"
+                      class="drop_down_action_btn"
+                      id="feed_week_chooser_dd_btn"
+                    ></div>
+                  </div>
+                  <div
+                    data-date_dropdown_id="feed"
+                    class="widget_dd_item_container"
+                  >
+                    <p
+                      data-chart_dd_sort="weekly"
+                      class="widget_dd_item active"
+                    >
+                      Weekly
+                    </p>
+                    <p data-chart_dd_sort="monthly" class="widget_dd_item">
+                      Monthly
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- ************************************************ -->
+              <!-- Feed chart -->
+              <!-- ************************************************ -->
+              <div class="widget_chart_cont">
+                <div class="widget_chart">
+                  <div class="widget_chart_inner_cont">
+                    <div class="chart_title_group">
+                      <p id="weigth_chart_title" class="chart_title">Weekly</p>
+                      <div class="chart_legend">
+                        <div class="chart_legend_group">
+                          <div class="chart_legend_line"></div>
+                          <p class="chart_legend_group_text">Record</p>
                         </div>
+                      </div>
                     </div>
-                </div>
-                <div class="all_data_cont">
-                    <div class="all_data_header">
-                        <select id="all_data_select" name="all_data">
-                            <option value="bm_data">Bowel Movement</option>
-                            <option value="weight_data">Weight</option>
-                            <option value="feed_data">Feeding</option>
-                        </select>
-                        <svg id="export_csv_btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40.46 39">
-                            <g id="Layer_1-2">
-                                <path class="cls-1"
-                                    d="M40.05,25.02h0s-4.73,4.73-4.73,4.73c-.55.55-1.45.55-2,0-.55-.55-.55-1.45,0-2l2.3-2.3h-6.5s-9.93,0-9.93,0c-.76-.02-1.37-.63-1.39-1.39-.02-.78.6-1.43,1.39-1.45h16.43l-2.3-2.31c-.55-.55-.55-1.45,0-2,.55-.55,1.45-.55,2,0l4.73,4.72c.55.55.55,1.45,0,2Z" />
-                                <path class="cls-1"
-                                    d="M27,20.21v-5.96h-7.42c-.85,0-1.71-.25-2.38-.78-.93-.73-1.45-1.81-1.45-2.97V3H6c-1.65,0-3,1.35-3,3v27c0,1.65,1.35,3,3,3h18c1.65,0,3-1.35,3-3v-5.17h3v5.17c0,3.31-2.69,6-6,6H6c-3.31,0-6-2.69-6-6V6C0,2.69,2.69,0,6,0h11.07c1.08,0,2.11.43,2.87,1.19l8.87,8.87c.76.76,1.19,1.79,1.19,2.87v7.28h-3Z" />
-                            </g>
-                        </svg>
-                    </div>
-                    <div id="all_data" class="all_data_content_cont">
+                    <div class="chart_main_cont">
+                      <div
+                        id="feed_chart_y"
+                        class="chart_main_cont_col chart_y"
+                      >
+                        <!-- Swap this chart with the weight chart -->
+                        <p class="chart_y_text">10</p>
+                        <p class="chart_y_text">9</p>
+                        <p class="chart_y_text">8</p>
+                        <p class="chart_y_text">7</p>
+                        <p class="chart_y_text">6</p>
+                        <p class="chart_y_text">5</p>
+                        <p class="chart_y_text">4</p>
+                        <p class="chart_y_text">3</p>
+                        <p class="chart_y_text">2</p>
+                        <p class="chart_y_text">1</p>
+                        <p class="chart_y_text">5</p>
+                        <p class="chart_y_text">OZ</p>
+                      </div>
+                      <div
+                        id="feed_chart_body"
+                        class="chart_main_cont_col chart_body"
+                      >
+                        <p class="no_data_note">No Data Found</p>
+                        <div id="feed_line_cont">
+                          <!-- svg will be placed here -->
 
+                          <!-- svg will be placed here -->
+                        </div>
+                        <div id="feed_chart_bkg" class="chart_bkg_cont">
+                          <div class="chart_y_line"></div>
+                          <div class="chart_y_line"></div>
+                          <div class="chart_y_line"></div>
+                          <div class="chart_y_line"></div>
+                          <div class="chart_y_line"></div>
+                          <div class="chart_y_line"></div>
+                          <div class="chart_y_line"></div>
+                          <div class="chart_y_line"></div>
+                          <div class="chart_y_line"></div>
+                          <div class="chart_y_line"></div>
+                          <div class="chart_y_line"></div>
+                        </div>
+                      </div>
                     </div>
+                    <div class="chart_footer_x feed_chart_footer">
+                      <p>Trending</p>
+                      <div class="trend_bubble">Great</div>
+                      <img
+                        class="trend_icon"
+                        src="./assets/icons/trend-up.png"
+                        alt=""
+                      />
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
 
-
-        <!-- Footer menu control -->
-        <div class="footer_menu">
-            <div id="footer_menu_all_data" class="footer_menu_item left">
-                <div class="footer_menu_btn" id="view_all_data_btn"></div>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 21.719">
-                    <path id="Icon_simple-databricks" data-name="Icon simple-databricks"
-                        d="M1.425,12.836l10,5.628L20.4,13.442v2l-8.976,5.067L1.937,15.115l-.511.279v.7l10,5.629,10-5.627V12.186l-.466-.28-9.534,5.4L2.5,12.186v-2l8.929,5.023,10-5.627V5.719l-.466-.279-9.534,5.4L2.961,6.046l8.464-4.79,7.023,3.953.6-.372V4.325L11.425,0l-10,5.674v.652l10,5.626L20.4,6.929V8.975l-8.976,5.071L1.937,8.652l-.511.279Z"
-                        transform="translate(-1.425)" />
-                </svg>
+        <!-- all data page -->
+        <div class="content_block_container" id="all_data_page">
+          <div id="title_block">
+            <p id="baby_name_title">All Baby Data</p>
+            <div class="title_block_footer_bar">
+              <p id="data_page_babys_name"></p>
+              <div class="btn_container">
+                <p>Filter</p>
+                <div class="btn_elm btn_lg icon_btn">
+                  <div
+                    id="filter_baby_data_by_date_btn"
+                    data-datefilter="true"
+                    class="button_elm_trigger"
+                  ></div>
+                  <svg
+                    id="filter_baby_data_by_date_icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20.286"
+                    height="18"
+                    viewBox="0 0 20.286 16"
+                  >
+                    <path
+                      id="Path_22"
+                      data-name="Path 22"
+                      d="M13.124,32.371a1.142,1.142,0,0,0-1.686,0L8.3,35.8a1.143,1.143,0,1,0,1.686,1.543l1.157-1.261V46.857a1.143,1.143,0,0,0,2.286,0V36.082l1.157,1.264A1.143,1.143,0,0,0,16.267,35.8l-3.143-3.429ZM19.139,48h1.143a1.143,1.143,0,1,0,0-2.286H19.139a1.143,1.143,0,1,0,0,2.286Zm0-4.571h3.429a1.143,1.143,0,1,0,0-2.286H19.139a1.143,1.143,0,1,0,0,2.286Zm0-4.571h5.714a1.143,1.143,0,0,0,0-2.286H19.139a1.143,1.143,0,1,0,0,2.286Zm0-4.571h8a1.143,1.143,0,1,0,0-2.286h-8a1.143,1.143,0,1,0,0,2.286Z"
+                      transform="translate(-7.996 -32)"
+                    />
+                  </svg>
+                </div>
+              </div>
             </div>
-
-            <div id="footer_menu_home" class="footer_menu_item active center">
-                <div class="footer_menu_btn" id="home_btn"></div>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <g id="Icon_core-bar-chart" data-name="Icon core-bar-chart" transform="translate(-1.125 -1.125)">
-                        <path id="Path_1" data-name="Path 1"
-                            d="M8.875,17.792h3.667a1,1,0,0,0,1-1V8.125a1,1,0,0,0-1-1H8.875a1,1,0,0,0-1,1v8.667A1,1,0,0,0,8.875,17.792Zm.333-9.333h3v8h-3ZM20.875,1.125H17.208a1,1,0,0,0-1,1V16.792a1,1,0,0,0,1,1h3.667a1,1,0,0,0,1-1V2.125a1,1,0,0,0-1-1Zm-.333,15.333h-3v-14h3Z"
-                            transform="translate(-2.75)" />
-                        <path id="Path_2" data-name="Path 2" d="M2.458,1.125H1.125v20h20V19.792H2.458Z"
-                            transform="translate(0 0)" />
-                    </g>
-                </svg>
+          </div>
+          <div class="all_data_cont">
+            <div class="all_data_header">
+              <select id="all_data_select" name="all_data">
+                <option value="bm_data">Bowel Movement</option>
+                <option value="weight_data">Weight</option>
+                <option value="feed_data">Feeding</option>
+              </select>
+              <svg
+                id="export_csv_btn"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 40.46 39"
+              >
+                <g id="Layer_1-2">
+                  <path
+                    class="cls-1"
+                    d="M40.05,25.02h0s-4.73,4.73-4.73,4.73c-.55.55-1.45.55-2,0-.55-.55-.55-1.45,0-2l2.3-2.3h-6.5s-9.93,0-9.93,0c-.76-.02-1.37-.63-1.39-1.39-.02-.78.6-1.43,1.39-1.45h16.43l-2.3-2.31c-.55-.55-.55-1.45,0-2,.55-.55,1.45-.55,2,0l4.73,4.72c.55.55.55,1.45,0,2Z"
+                  />
+                  <path
+                    class="cls-1"
+                    d="M27,20.21v-5.96h-7.42c-.85,0-1.71-.25-2.38-.78-.93-.73-1.45-1.81-1.45-2.97V3H6c-1.65,0-3,1.35-3,3v27c0,1.65,1.35,3,3,3h18c1.65,0,3-1.35,3-3v-5.17h3v5.17c0,3.31-2.69,6-6,6H6c-3.31,0-6-2.69-6-6V6C0,2.69,2.69,0,6,0h11.07c1.08,0,2.11.43,2.87,1.19l8.87,8.87c.76.76,1.19,1.79,1.19,2.87v7.28h-3Z"
+                  />
+                </g>
+              </svg>
             </div>
+            <div id="all_data" class="all_data_content_cont"></div>
+          </div>
+        </div>
+      </div>
 
-            <div id="footer_menu_add_data" class="footer_menu_item right">
-                <div class="footer_menu_btn" id="add_data_btn"></div>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 14.074">
-                    <path id="Icon_core-playlist-add" data-name="Icon core-playlist-add"
-                        d="M12.62,9.15h9.63v1.481H12.62Zm-3.7,4.815H22.25v1.481H8.917Zm0,4.815H22.25v1.481H8.917Zm.741-9.63H6.694V6.188H5.213V9.15H2.25v1.481H5.213v2.963H6.694V10.632H9.657Z"
-                        transform="translate(-2.25 -6.188)" />
-                </svg>
-            </div>
+      <!-- Footer menu control -->
+      <div class="footer_menu">
+        <div id="footer_menu_all_data" class="footer_menu_item left">
+          <div class="footer_menu_btn" id="view_all_data_btn"></div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 21.719">
+            <path
+              id="Icon_simple-databricks"
+              data-name="Icon simple-databricks"
+              d="M1.425,12.836l10,5.628L20.4,13.442v2l-8.976,5.067L1.937,15.115l-.511.279v.7l10,5.629,10-5.627V12.186l-.466-.28-9.534,5.4L2.5,12.186v-2l8.929,5.023,10-5.627V5.719l-.466-.279-9.534,5.4L2.961,6.046l8.464-4.79,7.023,3.953.6-.372V4.325L11.425,0l-10,5.674v.652l10,5.626L20.4,6.929V8.975l-8.976,5.071L1.937,8.652l-.511.279Z"
+              transform="translate(-1.425)"
+            />
+          </svg>
         </div>
 
+        <div id="footer_menu_home" class="footer_menu_item active center">
+          <div class="footer_menu_btn" id="home_btn"></div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <g
+              id="Icon_core-bar-chart"
+              data-name="Icon core-bar-chart"
+              transform="translate(-1.125 -1.125)"
+            >
+              <path
+                id="Path_1"
+                data-name="Path 1"
+                d="M8.875,17.792h3.667a1,1,0,0,0,1-1V8.125a1,1,0,0,0-1-1H8.875a1,1,0,0,0-1,1v8.667A1,1,0,0,0,8.875,17.792Zm.333-9.333h3v8h-3ZM20.875,1.125H17.208a1,1,0,0,0-1,1V16.792a1,1,0,0,0,1,1h3.667a1,1,0,0,0,1-1V2.125a1,1,0,0,0-1-1Zm-.333,15.333h-3v-14h3Z"
+                transform="translate(-2.75)"
+              />
+              <path
+                id="Path_2"
+                data-name="Path 2"
+                d="M2.458,1.125H1.125v20h20V19.792H2.458Z"
+                transform="translate(0 0)"
+              />
+            </g>
+          </svg>
+        </div>
+
+        <div id="footer_menu_add_data" class="footer_menu_item right">
+          <div class="footer_menu_btn" id="add_data_btn"></div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 14.074">
+            <path
+              id="Icon_core-playlist-add"
+              data-name="Icon core-playlist-add"
+              d="M12.62,9.15h9.63v1.481H12.62Zm-3.7,4.815H22.25v1.481H8.917Zm0,4.815H22.25v1.481H8.917Zm.741-9.63H6.694V6.188H5.213V9.15H2.25v1.481H5.213v2.963H6.694V10.632H9.657Z"
+              transform="translate(-2.25 -6.188)"
+            />
+          </svg>
+        </div>
+      </div>
     </div>
 
-
-
     <!-- Import Custom Scripts -->
+    <script src="./js/variables.js"></script>
     <script src="./js/helpers.js"></script>
     <script src="./js/create_html.js"></script>
     <script src="./js/app.js"></script>
     <script src="./js/actions.js"></script>
-
-</body>
-
+    <script src="./js/bmChart.js"></script>
+  </body>
 </html>

@@ -7,7 +7,6 @@ const bm_data_radio_elm_two_for_one = $("#bm_data_radio_elm_two_for_one")
 const bm_data_radio_elm_now = $("#bm_data_radio_elm_now")
 const bm_data_radio_elm_enter = $("#bm_data_radio_elm_enter")
 const loader_cont = $(".loader_cont")
-
 const enter_time_for_bm_data_cont = $("#enter_time_for_bm_data_cont")
 const enter_time_for_weight_data_cont = $("#enter_time_for_weight_data_cont")
 const enter_time_for_feed_data_cont = $("#enter_time_for_feed_data_cont")
@@ -81,6 +80,24 @@ function getTimeOfDay() {
   } else {
     return "evening";
   }
+}
+
+function formatDateWithTime(dateString) {
+  // Create a Date object from the dateString
+  const date = new Date(dateString);
+  
+  // Get the month, day, year, hours, and minutes
+  const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Adding 1 because getMonth() returns zero-based month
+  const day = date.getDate().toString().padStart(2, '0');
+  const year = date.getFullYear().toString();
+  const hours = date.getHours() % 12 || 12; // Convert hours to 12-hour format
+  const minutes = date.getMinutes().toString().padStart(2, '0');
+  const ampm = date.getHours() >= 12 ? 'pm' : 'am';
+
+  // Construct the formatted date string
+  const formattedDate = `${month}/${day}/${year} @${hours}:${minutes}${ampm}`;
+
+  return formattedDate;
 }
 
 // calculate age
@@ -334,12 +351,12 @@ const clearInputsAndCloseAddData = () => {
 }
 
 const dayCoordinates = { // these are based off the top left corner of the container
-  sunday: 5, //switching to percentage since sun-sat is set to space between.
-  monday: 20,
-  tuesday: 35,
+  sunday: 8, //switching to percentage since sun-sat is set to space between.
+  monday: 22,
+  tuesday: 36,
   wednesday: 50,
-  thursday: 65,
-  friday: 79,
+  thursday: 64,
+  friday: 76,
   saturday: 92,
 }
 
@@ -394,99 +411,122 @@ const checkTimeAndReturnPx = (hour, min) => {
   switch (hour) {
     case 23:
 
-      returnPx = `263.${returnMinPx}`
+      // returnPx = `263.${returnMinPx}`
+      returnPx = `253.${returnMinPx}`
       break;
     case 22:
 
-      returnPx = `252.${returnMinPx}`
+      // returnPx = `252.${returnMinPx}`
+      returnPx = `242.${returnMinPx}`
       break;
     case 21:
 
-      returnPx = `241.${returnMinPx}`
+      // returnPx = `241.${returnMinPx}`
+      returnPx = `231.${returnMinPx}`
       break;
     case 20:
 
-      returnPx = `230.${returnMinPx}`
+      // returnPx = `230.${returnMinPx}`
+      returnPx = `220.${returnMinPx}`
       break;
     case 19:
 
-      returnPx = `219.${returnMinPx}`
+      // returnPx = `219.${returnMinPx}`
+      returnPx = `209.${returnMinPx}`
       break;
     case 18:
 
-      returnPx = `208.${returnMinPx}`
+      // returnPx = `208.${returnMinPx}`
+      returnPx = `198.${returnMinPx}`
       break;
     case 17:
 
-      returnPx = `197.${returnMinPx}`
+      // returnPx = `197.${returnMinPx}`
+      returnPx = `187.${returnMinPx}`
       break;
     case 16:
 
-      returnPx = `186.${returnMinPx}`
+      // returnPx = `186.${returnMinPx}`
+      returnPx = `176.${returnMinPx}`
       break;
     case 15:
 
-      returnPx = `175.${returnMinPx}`
+      // returnPx = `175.${returnMinPx}`
+      returnPx = `165.${returnMinPx}`
       break;
     case 14:
 
-      returnPx = `164.${returnMinPx}`
+      // returnPx = `164.${returnMinPx}`
+      returnPx = `154.${returnMinPx}`
       break;
     case 13:
 
-      returnPx = `153.${returnMinPx}`
+      // returnPx = `153.${returnMinPx}`
+      returnPx = `143.${returnMinPx}`
       break;
     case 12:
 
-      returnPx = `142.${returnMinPx}`
+      // returnPx = `142.${returnMinPx}`
+      returnPx = `132.${returnMinPx}`
       break;
     case 11:
 
-      returnPx = `131.${returnMinPx}`
+      // returnPx = `131.${returnMinPx}`
+      returnPx = `121.${returnMinPx}`
       break;
     case 10:
 
-      returnPx = `120.${returnMinPx}`
+      // returnPx = `120.${returnMinPx}`
+      returnPx = `110.${returnMinPx}`
       break;
     case 9:
 
-      returnPx = `109.${returnMinPx}`
+      // returnPx = `109.${returnMinPx}`
+      returnPx = `99.${returnMinPx}`
       break;
     case 8:
 
-      returnPx = `98.${returnMinPx}`
+      // returnPx = `98.${returnMinPx}`
+      returnPx = `88.${returnMinPx}`
       break;
     case 7:
 
-      returnPx = `87.${returnMinPx}`
+      // returnPx = `87.${returnMinPx}`
+      returnPx = `77.${returnMinPx}`
       break;
     case 6:
 
-      returnPx = `76.${returnMinPx}`
+      // returnPx = `76.${returnMinPx}`
+      returnPx = `66.${returnMinPx}`
       break;
     case 5:
 
-      returnPx = `65.${returnMinPx}`
+      // returnPx = `65.${returnMinPx}`
+      returnPx = `55.${returnMinPx}`
       break;
     case 4:
 
-      returnPx = `54.${returnMinPx}`
+      // returnPx = `54.${returnMinPx}`
+      returnPx = `44.${returnMinPx}`
       break;
     case 3:
 
-      returnPx = `43.${returnMinPx}`
+      // returnPx = `43.${returnMinPx}`
+      returnPx = `33.${returnMinPx}`
       break;
     case 2:
 
-      returnPx = `32.${returnMinPx}`
+      // returnPx = `32.${returnMinPx}`
+      returnPx = `22.${returnMinPx}`
       break;
     case 1:
 
-      returnPx = `21.${returnMinPx}`
+      // returnPx = `21.${returnMinPx}`
+      returnPx = `11.${returnMinPx}`
       break;
     case parseInt("00"):
 
-      returnPx = `10.${returnMinPx}`
+      returnPx = `00.${returnMinPx}`
       break;
   }
   // console.log("Returned PX: " + returnPx)

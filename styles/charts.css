@@ -1,254 +1,300 @@
 :root {
-    /* Common */
-    --border-color: #e0e0e0;
-    --btn-color: #ffffff;
-    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    --accent-danger: #E51A49;
-    --accent-two: #B364F6;
-    --accent-three: #3ca2f4;
-
+  /* Common */
+  --border-color: #e0e0e0;
+  --btn-color: #ffffff;
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --accent-danger: #e51a49;
+  --accent-two: #b364f6;
+  --accent-three: #3ca2f4;
 }
 
 :root:has(#theme_raadio_light:checked) {
-    /* Light Theme */
-    --primary-background: #f5f5f5;
-    --secondary-background: #ffffff;
-    --text-color: #333333;
-    --accent-color: #ff80ab;
-    --modal-bkg: #ff80aa4d;
-    --secondary-form-bkg: #00000024;
-    --chart-bkg-stroke: #efefef;
+  /* Light Theme */
+  --primary-background: #f5f5f5;
+  --secondary-background: #ffffff;
+  --text-color: #333333;
+  --accent-color: #ff80ab;
+  --modal-bkg: #ff80aa4d;
+  --secondary-form-bkg: #00000024;
+  --chart-bkg-stroke: #efefef;
 }
 
 :root:has(#theme_raadio_dark:checked) {
-    /* Dark Theme */
-    --primary-background: #121212;
-    --secondary-background: #1e1e1e;
-    --text-color: #ffffff;
-    --accent-color: #64b5f6;
-    --modal-bkg: #64b4f658;
-    --secondary-form-bkg: #b3b3b324;
-    --chart-bkg-stroke: #434343;
+  /* Dark Theme */
+  --primary-background: #121212;
+  --secondary-background: #1e1e1e;
+  --text-color: #ffffff;
+  --accent-color: #64b5f6;
+  --modal-bkg: #64b4f658;
+  --secondary-form-bkg: #b3b3b324;
+  --chart-bkg-stroke: #434343;
 }
 
 .widget_chart {
-    position: relative;
+  position: relative;
 }
 
 /* bm chart */
 .widget_chart_inner_cont {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
 }
 
 .chart_title_group {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .chart_title {
-    font-size: .9rem;
-    margin: 0;
+  font-size: 0.9rem;
+  margin: 0;
 }
 
 .chart_legend {
-    display: flex;
-    gap: 7px;
+  display: flex;
+  gap: 7px;
 }
 
 .chart_legend_group {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .chart_legend_group_text {
-    font-size: .6rem;
-    margin: 0;
+  font-size: 0.6rem;
+  margin: 0;
 }
 
 .bm_dot_outer {
-    width: 15px;
-    height: 15px;
-    border-radius: 1pc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+  width: 15px;
+  height: 15px;
+  border-radius: 1pc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
-
-.bm_dot_inner {
-    width: 7px;
-    height: 7px;
-    border-radius: 1pc;
+.dot_btn{
     position: absolute;
+    z-index: 9;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: red;
 }
-
+.bm_dot_inner {
+  width: 7px;
+  height: 7px;
+  border-radius: 1pc;
+  position: absolute;
+}
 
 .bm_dot_outer.potty_dot {
-    border: 1px solid #ff80ab;
+  border: 1px solid #ff80ab;
 }
 
 .bm_dot_inner.potty_dot {
-    background-color: #ff80ab;
+  background-color: #ff80ab;
 }
 
 .bm_dot_outer.poopy_dot {
-    border: 1px solid var(--accent-three);
+  border: 1px solid var(--accent-three);
 }
 
 .bm_dot_inner.poopy_dot {
-    background-color: var(--accent-three);
+  background-color: var(--accent-three);
 }
 
 .bm_dot_outer.two_for_one_dot {
-    border: 1px solid var(--accent-two);
+  border: 1px solid var(--accent-two);
 }
 
 .bm_dot_inner.two_for_one_dot {
-    background-color: var(--accent-two);
+  background-color: var(--accent-two);
 }
 
 .chart_main_cont {
-    display: flex;
-    padding-top: 10px;
+  display: flex;
+  padding-top: 10px;
 }
 
 .chart_main_cont_col.chart_y {
-    width: 5%;
+  width: 5%;
 }
 
 .chart_y_text {
-    font-size: .5rem;
-    margin: 0;
-    text-align: center;
+  font-size: 0.5rem;
+  margin: 0;
+  text-align: center;
 }
 
 .chart_main_cont_col.chart_body {
-    padding-top: 5px;
-    width: 95%;
-
-    position: relative;
-    padding-left: 5px;
+  padding-top: 5px;
+  width: 95%;
+  position: relative;
+  padding-left: 5px;
+}
+.chart_main_cont_col.bm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+}
+.chart_main_cont_col.bm>.chart_y_text {
+  text-align: right;
+  font-size: .45rem;
+}
+.chart_main_cont_col.bm.chart_y {
+  width: 7%;
 }
 
 #weight_chart_y,
 #feed_chart_y,
 #weight_chart_y {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .chart_bkg_cont {
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.chart_bkg_cont.bm {
+  padding: 0;
 }
 
 #feed_chart_bkg,
 #weight_chart_bkg {
-    justify-content: space-between;
-    height: 250px;
-    padding-bottom: 27px;
-    padding-top: 0px;
+  justify-content: space-between;
+  height: 250px;
+  padding-bottom: 27px;
+  padding-top: 0px;
 }
 
 #dot_cont {
-    padding-top: 10px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transform: scaleY(-1);
+  /* padding-top: 10px; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scaleY(-1);
 }
 
 #weight_line_cont,
 #feed_line_cont {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .chart_y_line {
-    height: 1px;
-    width: 100%;
-    background-color: var(--chart-bkg-stroke);
+  height: 1px;
+  width: 100%;
+  background-color: var(--chart-bkg-stroke);
 }
 
 .chart_footer_x {
-    display: flex;
-    padding-left: 30px;
-    padding-right: 10px;
-    justify-content: space-between;
-    padding-top: 0px;
+  display: flex;
+  padding-left: 30px;
+  padding-right: 10px;
+  justify-content: space-evenly;
+  padding-top: 0px;
 }
 
 .chart_footer_x_text {
-    font-size: .7rem;
-
+    font-size: 0.7rem;
+}
+.chart_footer_x.bm {
+    padding-top: 7px;
+    padding-left: 25px;
+    padding-right: 0px;
 }
 
 .chart_dot {
-    position: absolute;
-
+  position: absolute;
 }
 
 .no_data_note {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .show_no_data {
-    display: block;
+  display: block;
 }
 
 /* END bm chart */
 /* weight and Feed chart */
 .chart_legend_line {
-    width: 25px;
-    height: 2px;
-    margin-right: 7px;
-    background-color: var(--data-type-potty);
-    border-radius: 10px;
+  width: 25px;
+  height: 2px;
+  margin-right: 7px;
+  background-color: var(--data-type-potty);
+  border-radius: 10px;
 }
 
 .trend_bubble {
-    padding: 2px 15px;
-    height: max-content;
-    border-radius: 1pc;
-    background-color: var(--accent-three);
-    color: #fff;
+  padding: 2px 15px;
+  height: max-content;
+  border-radius: 1pc;
+  background-color: var(--accent-three);
+  color: #fff;
 }
 
 .trend_icon {
-    max-height: 18px;
+  max-height: 18px;
 }
 
-.feed_chart_footer,.weight_chart_footer {
-    padding-top: 7px;
-    justify-content: flex-start;
-    gap: 20px;
-    align-items: center;
+.feed_chart_footer,
+.weight_chart_footer {
+  padding-top: 7px;
+  justify-content: flex-start;
+  gap: 20px;
+  align-items: center;
 }
 
-.feed_chart_footer>*,.weight_chart_footer>* {
-    margin: 0;
+.feed_chart_footer > *,
+.weight_chart_footer > * {
+  margin: 0;
 }
 
 #weight_chart_bkg.chart_bkg_cont {
+  padding-bottom: 40px;
+}
 
-    padding-bottom: 40px;
+.bm_dot_outer::after {
+    content: "";
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    border-radius: 1pc;
+    z-index: -1;
+    border: 2px solid var(--accent-three);
+}
 
+.bm_dot_outer::after {
+   opacity: 0;
+   transition: all 150ms ease-out; 
+}
+
+.bm_dot_outer.viewing::after {
+   opacity: 1;
+   transition: all 150ms ease-in; 
 }
