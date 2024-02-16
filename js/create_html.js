@@ -5,7 +5,7 @@ const createBmDot = (bm, index) => {
     // console.log(coordinates.innerX)
     // console.log(coordinates.innerY)
     return `
-        <div id="data_dot_${index}" class="bm_dot_outer ${typeClassName} chart_dot"  style="top:${coordinates.innerY}px; left:${coordinates.innerX}%;">
+        <div id="data_dot_${index}" data-dotid="${bm._id}" class="bm_dot_outer ${typeClassName} chart_dot"  style="top:${coordinates.innerY}px; left:${coordinates.innerX}%;">
             <div class="bm_dot_inner ${typeClassName}"></div>
             <div class="dot_btn" data-dotid="${bm._id}"></div>
         </div>
@@ -60,9 +60,9 @@ const createBmDotInfo = (info)=>{
     console.log(info)
     return `
     <div class="dot_info">
-        <p>${info.type}</p>
-        <p>${info.note}</p>
-        <p>${formatDateWithTime(info.createdAt)}</p>
+        <p class="dot_info_type">${info.type}</p>
+        <p class="dot_info_note">"${info.note != "" ? info.note : "No Note was entered"}"</p>
+        <p class="dot_info_created_at">${formatDateWithTime(info.createdAt)}</p>
     </div>
     
     `
