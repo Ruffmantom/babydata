@@ -1,0 +1,37 @@
+{
+    "short_name": "My Baby",
+    "name": "My Baby App",
+    "icons": [
+      {
+        "src": "../assets/images/my-bb-48.png",
+        "sizes": "48x48",
+        "type": "image/webp"
+      },
+      {
+        "src": "../assets/icons/my-bb-72.png",
+        "sizes": "72x72",
+        "type": "image/x-icon"
+      },
+      {
+        "src": "../assets/icons/my-bb-96.png",
+        "sizes": "96x96",
+        "type": "image/x-icon"
+      },
+      {
+        "src": "../assets/icons/my-bb-128.png",
+        "sizes": "128x128",
+        "type": "image/x-icon"
+      },
+      {
+        "src": "../assets/icons/my-bb-256.png",
+        "sizes": "256x256",
+        "type": "image/x-icon"
+      }
+    ],
+    "lang": "en-US",
+    "start_url": "../index.html",
+    "display": "standalone",  
+    "background_color": "white",   
+    "theme_color": "black" 
+  }
+  
